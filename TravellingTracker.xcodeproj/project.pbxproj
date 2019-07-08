@@ -15,6 +15,7 @@
 		63964D9D22D2D7720039B4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63964D9B22D2D7720039B4CF /* LaunchScreen.storyboard */; };
 		63964DA822D2D7720039B4CF /* TravellingTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DA722D2D7720039B4CF /* TravellingTrackerTests.swift */; };
 		63964DB322D2D7720039B4CF /* TravellingTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */; };
+		63964DC222D2EEE40039B4CF /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		63964DAE22D2D7720039B4CF /* TravellingTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravellingTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravellingTrackerUITests.swift; sourceTree = "<group>"; };
 		63964DB422D2D7720039B4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				63964D9B22D2D7720039B4CF /* LaunchScreen.storyboard */,
 				63964D9E22D2D7720039B4CF /* Info.plist */,
 				63964D9622D2D7700039B4CF /* TravellingTracker.xcdatamodeld */,
+				63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */,
 			);
 			path = TravellingTracker;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63964DC222D2EEE40039B4CF /* TripTableViewCell.swift in Sources */,
 				63964D9222D2D7700039B4CF /* ViewController.swift in Sources */,
 				63964D9022D2D7700039B4CF /* AppDelegate.swift in Sources */,
 				63964D9822D2D7700039B4CF /* TravellingTracker.xcdatamodeld in Sources */,
