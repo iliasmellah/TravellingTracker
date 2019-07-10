@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class TripViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
     //Collcetion of Trips to be displayed in self.tripsTable
     var trips : [Trip] = []
@@ -34,6 +34,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     
     /// TableView controlled by self that displays collection of Trips
     @IBOutlet weak var tripsTable: UITableView!
+    
     
     /// Displays adialog box to allow user to enter a trip name. Then creates of a new Trip, add it to table view and saves data
     ///
@@ -127,6 +128,24 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
                 self.tripsTable.deleteRows(at: [indexPath], with: .automatic)
             }
             self.tripsTable.endUpdates()
+        }
+    }
+    
+    // MARK: - Navigation -
+    
+    let segueShowTripId = "showTripSegue"
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //gets the new view controller useing segue.destinationViewController
+        //passes the selected object to the new view controller
+        
+        //check if we have the appropriate segue
+        if segue.identifier == self.segueShowTripId {
+            if let indexPath = self.tripsTable.indexPathForSelectedRow {
+                let showTripViewController = segue.destination as! ShowTripViewController
+                showTripViewController.trip = self.trips[indexPath.row]
+                self.tripsTable.deselectRow(at: indexPath, animated: true)
+            }
         }
     }
     

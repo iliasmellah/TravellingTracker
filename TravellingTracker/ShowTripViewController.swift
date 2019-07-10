@@ -1,0 +1,41 @@
+//
+//  PlaceViewController.swift
+//  TravellingTracker
+//
+//  Created by user154076 on 7/9/19.
+//  Copyright © 2019 user154076. All rights reserved.
+//
+
+import UIKit
+
+class ShowTripViewController: UIViewController {
+
+    @IBOutlet weak var nameTrip: UILabel!
+    //@IBOutlet weak var dateStartTrip: UILabel!
+    
+    var trip : Trip? = nil
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        //if a trip has been sent, display it
+        if let atrip = self.trip {
+            self.nameTrip.text = atrip.name
+            //self.dateStartTrip.text = Date.toString(date: atrip.dateStart!)
+        }
+        
+    }
+    
+
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
