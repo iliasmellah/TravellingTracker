@@ -35,7 +35,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     /// TableView controlled by self that displays collection of Trips
     @IBOutlet weak var tripsTable: UITableView!
     
-    
+    /*
     /// Displays adialog box to allow user to enter a trip name. Then creates of a new Trip, add it to table view and saves data
     ///
     /// - Parameter sender: object that trigger action
@@ -56,13 +56,14 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         
         present(alert, animated: true)
     }
+ */
     
     // MARK: - Trip data managment -
 
     /// create a new Trip, add it to the collection and saves it
     ///
     /// - Parameter name: name of Trip to be added
-    func saveNewTrip(withName name: String) {
+    func saveNewTrip(withName name: String, andStartDate startDate: Date, andEndDate endDate: Date, andColor color: String) {
         //first get context into application delegate
         guard let context = self.getContext(errorMsg: "Save failed") else { return }
         
@@ -71,6 +72,9 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         
         //then modify the name
         trip.name = name
+        trip.dateStart = startDate
+        trip.dateEnd = endDate
+        trip.color = color
         do {
             try context.save()
             self.trips.append(trip)
@@ -147,6 +151,21 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
                 self.tripsTable.deselectRow(at: indexPath, animated: true)
             }
         }
+    }
+    
+    //Gets data from CreateTripViewController inputs when hits Save
+    @IBAction func unwindToTripsAfterSavingNewTrip(segue: UIStoryboardSegue) {
+        
+        let createTripController = segue.source as! CreateTripViewController
+        
+        let name = createTripController.tripName.text ?? ""
+        let startDate = createTripController.tripStartDateReal ?? Date.currentDate()
+        let endDate = createTripController.tripEndDateReal ?? Date.currentDate()
+        let color = createTripController.tripColor.text ?? ""
+        
+        
+        self.saveNewTrip(withName: name, andStartDate: startDate, andEndDate: endDate, andColor: color)
+        self.tripsTable.reloadData()
     }
     
     

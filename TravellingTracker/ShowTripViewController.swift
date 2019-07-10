@@ -11,7 +11,9 @@ import UIKit
 class ShowTripViewController: UIViewController {
 
     @IBOutlet weak var nameTrip: UILabel!
-    //@IBOutlet weak var dateStartTrip: UILabel!
+    @IBOutlet weak var dateStartTrip: UILabel!
+    @IBOutlet weak var dateEndTrip: UILabel!
+    @IBOutlet weak var colorTrip: UILabel!
     
     var trip : Trip? = nil
     
@@ -21,7 +23,9 @@ class ShowTripViewController: UIViewController {
         //if a trip has been sent, display it
         if let atrip = self.trip {
             self.nameTrip.text = atrip.name
-            //self.dateStartTrip.text = Date.toString(date: atrip.dateStart!)
+            self.dateStartTrip.text = Date.toString(date: atrip.dateStart ?? Date.currentDate())
+            self.dateEndTrip.text = Date.toString(date: atrip.dateEnd ?? Date.currentDate())
+            self.colorTrip.text = atrip.color
         }
         
     }

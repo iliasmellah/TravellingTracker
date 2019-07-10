@@ -8,12 +8,16 @@
 
 import UIKit
 
-class CreateTripViewController: UIViewController {
+class CreateTripViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var tripName: UITextField!
     @IBOutlet weak var tripStartDate: UITextField!
     @IBOutlet weak var tripEndDate: UITextField!
+    @IBOutlet weak var tripColor: UITextField!
+    
+    var tripStartDateReal: Date!
+    var tripEndDateReal: Date!
     
     
     private var startDatePicker: UIDatePicker?
@@ -22,6 +26,7 @@ class CreateTripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Date Picker in UITextField
         startDatePicker = UIDatePicker()
         endDatePicker = UIDatePicker()
         
@@ -37,18 +42,40 @@ class CreateTripViewController: UIViewController {
         
         tripStartDate.inputView = startDatePicker
         tripEndDate.inputView = endDatePicker
-        
-        // Do any additional setup after loading the view.
+        //End of Date Picker
     }
+    
+    // MARK : - CREATE & SAVE A TRIP
+    @IBAction func cancelTrip(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveTrip(_ sender: Any) {
+        
+    }
+    
+    // MARK : - DATE PICKER -
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
+        //Gets data with Date format
+        tripStartDateReal = Date.toDate(dateString: tripStartDate.text!)
+        tripEndDateReal = Date.toDate(dateString: tripEndDate.text!)
+        
         tripStartDate.text = Date.toString(date: startDatePicker!.date)
         tripEndDate.text = Date.toString(date: endDatePicker!.date)
         view.endEditing(true)
+    }
+    
+    
+    // MARK : - TextField Delegate -
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 
