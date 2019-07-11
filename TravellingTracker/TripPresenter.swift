@@ -63,8 +63,8 @@ class TripPresenter: NSObject {
 
                 
             } else {
-                self.name = " - "
-                self.color = "Grey"
+                self.name = ""
+                self.color = ""
                 
                 /*self.startDate = ""
                 self.endDate = ""*/
