@@ -11,7 +11,12 @@ import CoreData
 
 class TripViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
-    //Collcetion of Trips to be displayed in self.tripsTable
+    /// TableView controlled by self that displays collection of Trips
+    @IBOutlet weak var tripsTable: UITableView!
+    
+    @IBOutlet var tripPresenter: TripPresenter!
+    
+    //Collection of Trips to be displayed in self.tripsTable
     var trips : [Trip] = []
     
     override func viewDidLoad() {
@@ -32,8 +37,6 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         
     }
     
-    /// TableView controlled by self that displays collection of Trips
-    @IBOutlet weak var tripsTable: UITableView!
     
     /*
     /// Displays adialog box to allow user to enter a trip name. Then creates of a new Trip, add it to table view and saves data
@@ -114,7 +117,9 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Fetch a cell of the appropriate type.
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath) as! TripTableViewCell
-        cell.nameTripLabel.text = self.trips[indexPath.row].name
+        self.tripPresenter.configure(theCell: cell, forTrip: self.trips[indexPath.row])
+        //cell.nameTripLabel.text = self.trips[indexPath.row].name
+        //cell.colorTripLabel.text = self.trips[indexPath.row].color
         return cell
     }
     

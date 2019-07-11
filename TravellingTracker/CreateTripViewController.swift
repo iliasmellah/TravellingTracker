@@ -28,20 +28,21 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
 
         //Date Picker in UITextField
         startDatePicker = UIDatePicker()
-        endDatePicker = UIDatePicker()
-        
         startDatePicker?.datePickerMode = .date
         startDatePicker?.addTarget(self, action: #selector(CreateTripViewController.dateChanged(datePicker:)), for: .valueChanged)
         
-        endDatePicker?.datePickerMode = .date
+        endDatePicker = UIDatePicker()
+        endDatePicker?.datePickerMode = .date       
         endDatePicker?.addTarget(self, action: #selector(CreateTripViewController.dateChanged(datePicker:)), for: .valueChanged)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CreateTripViewController.viewTapped(gestureRecognizer:)))
-        
         view.addGestureRecognizer(tapGesture)
         
         tripStartDate.inputView = startDatePicker
         tripEndDate.inputView = endDatePicker
+        
+        //print("first start : ", tripEndDate.text as Any)
+        //print("first end : ", tripEndDate.text as Any)
         //End of Date Picker
     }
     
@@ -67,6 +68,8 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
         
         tripStartDate.text = Date.toString(date: startDatePicker!.date)
         tripEndDate.text = Date.toString(date: endDatePicker!.date)
+        //print("second start : ", tripStartDate.text as Any)
+        //print("second end : ", tripEndDate.text as Any)
         view.endEditing(true)
     }
     

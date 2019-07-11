@@ -36,15 +36,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wnb-43-gDM">
+                                                    <rect key="frame" x="352.33333333333331" y="11" width="41.666666666666686" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Wnb-43-gDM" firstAttribute="top" secondItem="uZK-bL-2xZ" secondAttribute="topMargin" id="64U-pC-KYt"/>
                                                 <constraint firstItem="dZe-Fu-Sai" firstAttribute="bottom" secondItem="uZK-bL-2xZ" secondAttribute="bottomMargin" id="8p7-bP-buP"/>
                                                 <constraint firstItem="dZe-Fu-Sai" firstAttribute="leading" secondItem="uZK-bL-2xZ" secondAttribute="leadingMargin" id="PdA-Gc-4pl"/>
                                                 <constraint firstItem="dZe-Fu-Sai" firstAttribute="top" secondItem="uZK-bL-2xZ" secondAttribute="topMargin" id="fl1-ha-Zny"/>
+                                                <constraint firstItem="Wnb-43-gDM" firstAttribute="bottom" secondItem="uZK-bL-2xZ" secondAttribute="bottomMargin" id="kn0-oR-33B"/>
+                                                <constraint firstItem="Wnb-43-gDM" firstAttribute="trailing" secondItem="uZK-bL-2xZ" secondAttribute="trailingMargin" id="nSX-Sg-Fqu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="nameTripLabel" destination="dZe-Fu-Sai" id="cEO-G0-kyN"/>
+                                            <outlet property="colorTripLabel" destination="Wnb-43-gDM" id="Eyh-Fe-6cL"/>
+                                            <outlet property="nameTripLabel" destination="dZe-Fu-Sai" id="Adl-ah-Yag"/>
                                             <segue destination="k5K-6F-zzp" kind="show" identifier="showTripSegue" id="LcQ-RF-dQh"/>
                                         </connections>
                                     </tableViewCell>
@@ -66,12 +76,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tripPresenter" destination="GMf-qC-jAc" id="mMg-Qp-5BA"/>
                         <outlet property="tripsTable" destination="7pc-6r-iip" id="Mrd-zz-gFU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="GMf-qC-jAc" customClass="TripPresenter" customModule="TravellingTracker" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="1068.1159420289855" y="150.66964285714286"/>
+            <point key="canvasLocation" x="1066.6666666666667" y="150.66964285714286"/>
         </scene>
         <!--Show Trip View Controller-->
         <scene sceneID="ah2-KL-fJV">
