@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		638920DC22D6DB6C00FB0702 /* TripPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638920DB22D6DB6C00FB0702 /* TripPresenter.swift */; };
+		638920DE22D7055000FB0702 /* EmbedTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638920DD22D7055000FB0702 /* EmbedTripViewController.swift */; };
 		639455E522D443BF006AFA20 /* ShowTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639455E422D443BF006AFA20 /* ShowTripViewController.swift */; };
 		639455E822D45BBE006AFA20 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639455E722D45BBE006AFA20 /* DateExtension.swift */; };
 		63964D9022D2D7700039B4CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964D8F22D2D7700039B4CF /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		638920DB22D6DB6C00FB0702 /* TripPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPresenter.swift; sourceTree = "<group>"; };
+		638920DD22D7055000FB0702 /* EmbedTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedTripViewController.swift; sourceTree = "<group>"; };
 		639455E422D443BF006AFA20 /* ShowTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTripViewController.swift; sourceTree = "<group>"; };
 		639455E722D45BBE006AFA20 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		63964D8C22D2D7700039B4CF /* TravellingTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravellingTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				63964D9122D2D7700039B4CF /* TripViewController.swift */,
 				639455E422D443BF006AFA20 /* ShowTripViewController.swift */,
 				63964D9322D2D7700039B4CF /* Main.storyboard */,
+				638920DD22D7055000FB0702 /* EmbedTripViewController.swift */,
 				63964D9922D2D7720039B4CF /* Assets.xcassets */,
 				63964D9B22D2D7720039B4CF /* LaunchScreen.storyboard */,
 				63964D9E22D2D7720039B4CF /* Info.plist */,
@@ -284,6 +287,7 @@
 			files = (
 				63964DC222D2EEE40039B4CF /* TripTableViewCell.swift in Sources */,
 				63F9A79422D56F3900C95293 /* CreateTripViewController.swift in Sources */,
+				638920DE22D7055000FB0702 /* EmbedTripViewController.swift in Sources */,
 				639455E822D45BBE006AFA20 /* DateExtension.swift in Sources */,
 				63964D9222D2D7700039B4CF /* TripViewController.swift in Sources */,
 				63964D9022D2D7700039B4CF /* AppDelegate.swift in Sources */,

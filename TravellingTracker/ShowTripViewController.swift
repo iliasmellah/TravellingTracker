@@ -22,10 +22,20 @@ class ShowTripViewController: UIViewController {
 
         //if a trip has been sent, display it
         if let atrip = self.trip {
-            self.nameTrip.text = atrip.name?.capitalized
+            if atrip.name == "" {
+                self.nameTrip.text = " - "
+            } else {
+                self.nameTrip.text = atrip.name?.capitalized
+            }
             self.dateStartTrip.text = Date.toString(date: atrip.dateStart ?? Date.currentDate())
             self.dateEndTrip.text = Date.toString(date: atrip.dateEnd ?? Date.currentDate())
-            self.colorTrip.text = atrip.color?.capitalized
+            
+            if atrip.color == "" {
+                self.colorTrip.text = " Grey "
+            } else {
+                self.colorTrip.text = atrip.color?.capitalized
+            }
+            
         }
         
     }

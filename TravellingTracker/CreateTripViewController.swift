@@ -16,34 +16,10 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tripEndDate: UITextField!
     @IBOutlet weak var tripColor: UITextField!
     
-    var tripStartDateReal: Date!
-    var tripEndDateReal: Date!
-    
-    
-    private var startDatePicker: UIDatePicker?
-    private var endDatePicker: UIDatePicker?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Date Picker in UITextField
-        startDatePicker = UIDatePicker()
-        startDatePicker?.datePickerMode = .date
-        startDatePicker?.addTarget(self, action: #selector(CreateTripViewController.dateChanged(datePicker:)), for: .valueChanged)
-        
-        endDatePicker = UIDatePicker()
-        endDatePicker?.datePickerMode = .date       
-        endDatePicker?.addTarget(self, action: #selector(CreateTripViewController.dateChanged(datePicker:)), for: .valueChanged)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CreateTripViewController.viewTapped(gestureRecognizer:)))
-        view.addGestureRecognizer(tapGesture)
-        
-        tripStartDate.inputView = startDatePicker
-        tripEndDate.inputView = endDatePicker
-        
-        //print("first start : ", tripEndDate.text as Any)
-        //print("first end : ", tripEndDate.text as Any)
-        //End of Date Picker
+
     }
     
     // MARK : - CREATE & SAVE A TRIP
@@ -54,25 +30,6 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveTrip(_ sender: Any) {
         
     }
-    
-    // MARK : - DATE PICKER -
-    
-    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
-    @objc func dateChanged(datePicker: UIDatePicker) {
-        //Gets data with Date format
-        tripStartDateReal = Date.toDate(dateString: tripStartDate.text!)
-        tripEndDateReal = Date.toDate(dateString: tripEndDate.text!)
-        
-        tripStartDate.text = Date.toString(date: startDatePicker!.date)
-        tripEndDate.text = Date.toString(date: endDatePicker!.date)
-        //print("second start : ", tripStartDate.text as Any)
-        //print("second end : ", tripEndDate.text as Any)
-        view.endEditing(true)
-    }
-    
     
     // MARK : - TextField Delegate -
     

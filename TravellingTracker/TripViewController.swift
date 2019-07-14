@@ -162,11 +162,12 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     @IBAction func unwindToTripsAfterSavingNewTrip(segue: UIStoryboardSegue) {
         
         let createTripController = segue.source as! CreateTripViewController
+        let embedTripController = createTripController.children[0] as! EmbedTripViewController
         
-        let name = createTripController.tripName.text ?? ""
-        let startDate = createTripController.tripStartDateReal ?? Date.currentDate()
-        let endDate = createTripController.tripEndDateReal ?? Date.currentDate()
-        let color = createTripController.tripColor.text ?? ""
+        let name = embedTripController.tripName.text ?? ""
+        let startDate = embedTripController.tripStartDateReal ?? Date.currentDate()
+        let endDate = embedTripController.tripEndDateReal ?? Date.currentDate()
+        let color = embedTripController.tripColor.text ?? ""
         
         
         self.saveNewTrip(withName: name, andStartDate: startDate, andEndDate: endDate, andColor: color)
