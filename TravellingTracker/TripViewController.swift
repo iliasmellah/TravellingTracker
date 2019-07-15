@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TripViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class TripViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     /// TableView controlled by self that displays collection of Trips
     @IBOutlet weak var tripsTable: UITableView!
@@ -19,20 +19,30 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     //Collection of Trips to be displayed in self.tripsTable
     var trips : [Trip] = []
     
+    fileprivate lazy var tripsFetched : NSFetchedResultsController<Trip> = {
+        //prepare a request
+        let request : NSFetchRequest<Trip> = Trip.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Trip.name) , ascending: true)]
+        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultController.delegate = self
+        return fetchResultController
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         //first get context of persistent data
-        guard let context = self.getContext(errorMsg: "Could note load data") else {return}
+        //guard let context = self.getContext(errorMsg: "Could note load data") else {return}
         
         //creates a request for "Trip" entity
-        let request : NSFetchRequest<Trip> = Trip.fetchRequest()
+        //let request : NSFetchRequest<Trip> = Trip.fetchRequest()
         do {
-            try self.trips = context.fetch(request)
+            //try self.trips = context.fetch(request)
+            try self.tripsFetched.performFetch()
         }
         catch let error as NSError{
-            self.alert(error: error)
+            DialogBoxHelper.alert(view: self, error: error)
         }
         
     }
@@ -117,14 +127,20 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     // MARK: - TableView data source protocol -
     // Return the number of rows for the table.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.trips.count
+        //return self.trips.count
+        guard let section = self.tripsFetched.sections?[section] else {
+            fatalError("Unexpected section number")
+        }
+        return section.numberOfObjects
     }
     
     // Provide a cell object for each row.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Fetch a cell of the appropriate type.
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath) as! TripTableViewCell
-        self.tripPresenter.configure(theCell: cell, forTrip: self.trips[indexPath.row])
+        let trip = self.tripsFetched.object(at: indexPath)
+        self.tripPresenter.configure(theCell: cell, forTrip: trip)
+        //self.tripPresenter.configure(theCell: cell, forTrip: self.trips[indexPath.row])
         cell.accessoryType = .detailButton
         return cell
     }
