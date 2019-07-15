@@ -19,12 +19,24 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
     var tripStartDateReal: Date!
     var tripEndDateReal: Date!
     
+    var trip : Trip? = nil
     
     private var startDatePicker: UIDatePicker?
     private var endDatePicker: UIDatePicker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("YAY", trip as Any)
+        
+        //Si on a une personne, mode edition. Sinon mode ajout
+        if let trip = self.trip {
+            print("III ", trip.name as Any )
+            self.tripName.text = trip.name
+            self.tripStartDate.text = Date.toString(date: trip.dateStart!)
+            self.tripEndDate.text = Date.toString(date: trip.dateEnd!)
+            self.tripColor.text = trip.color
+        }
 
         //Date Picker in UITextField
         startDatePicker = UIDatePicker()
@@ -40,9 +52,6 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
         
         tripStartDate.inputView = startDatePicker
         tripEndDate.inputView = endDatePicker
-        
-        //print("first start : ", tripEndDate.text as Any)
-        //print("first end : ", tripEndDate.text as Any)
         //End of Date Picker
     }
     

@@ -27,7 +27,7 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func saveTrip(_ sender: Any) {
+    @IBAction func save(_ sender: Any) {
         
     }
     
@@ -39,9 +39,19 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    /*
-    // MARK: - Navigation
-
+    
+    // MARK: - Navigation -
+    
+    let segueEmbedId = "embedFromNewTripSegue"
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == self.segueEmbedId {
+            let embedTripController = segue.destination as! EmbedTripViewController
+            embedTripController.trip = nil
+        }
+    }
+    
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

@@ -20,6 +20,9 @@
 		63964DA822D2D7720039B4CF /* TravellingTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DA722D2D7720039B4CF /* TravellingTrackerTests.swift */; };
 		63964DB322D2D7720039B4CF /* TravellingTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */; };
 		63964DC222D2EEE40039B4CF /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */; };
+		63DFF76422DC2EC700626050 /* EditTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76322DC2EC700626050 /* EditTripViewController.swift */; };
+		63DFF76622DC4F9600626050 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76522DC4F9600626050 /* CoreDataManager.swift */; };
+		63DFF76822DC527500626050 /* DialogBoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76722DC527500626050 /* DialogBoxHelper.swift */; };
 		63F9A79422D56F3900C95293 /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F9A79322D56F3900C95293 /* CreateTripViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +63,9 @@
 		63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravellingTrackerUITests.swift; sourceTree = "<group>"; };
 		63964DB422D2D7720039B4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
+		63DFF76322DC2EC700626050 /* EditTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripViewController.swift; sourceTree = "<group>"; };
+		63DFF76522DC4F9600626050 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		63DFF76722DC527500626050 /* DialogBoxHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxHelper.swift; sourceTree = "<group>"; };
 		63F9A79322D56F3900C95293 /* CreateTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				639455E722D45BBE006AFA20 /* DateExtension.swift */,
+				63DFF76522DC4F9600626050 /* CoreDataManager.swift */,
+				63DFF76722DC527500626050 /* DialogBoxHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -125,6 +133,7 @@
 				639455E422D443BF006AFA20 /* ShowTripViewController.swift */,
 				63964D9322D2D7700039B4CF /* Main.storyboard */,
 				638920DD22D7055000FB0702 /* EmbedTripViewController.swift */,
+				63DFF76322DC2EC700626050 /* EditTripViewController.swift */,
 				63964D9922D2D7720039B4CF /* Assets.xcassets */,
 				63964D9B22D2D7720039B4CF /* LaunchScreen.storyboard */,
 				63964D9E22D2D7720039B4CF /* Info.plist */,
@@ -290,10 +299,13 @@
 				638920DE22D7055000FB0702 /* EmbedTripViewController.swift in Sources */,
 				639455E822D45BBE006AFA20 /* DateExtension.swift in Sources */,
 				63964D9222D2D7700039B4CF /* TripViewController.swift in Sources */,
+				63DFF76822DC527500626050 /* DialogBoxHelper.swift in Sources */,
+				63DFF76422DC2EC700626050 /* EditTripViewController.swift in Sources */,
 				63964D9022D2D7700039B4CF /* AppDelegate.swift in Sources */,
 				638920DC22D6DB6C00FB0702 /* TripPresenter.swift in Sources */,
 				639455E522D443BF006AFA20 /* ShowTripViewController.swift in Sources */,
 				63964D9822D2D7700039B4CF /* TravellingTracker.xcdatamodeld in Sources */,
+				63DFF76622DC4F9600626050 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

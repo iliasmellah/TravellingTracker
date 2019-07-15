@@ -199,31 +199,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="caF-UP-AWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="XL8-0R-kPJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1934.7826086956522" y="552.45535714285711"/>
+            <point key="canvasLocation" x="1817" y="940"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Trip View Controller-->
         <scene sceneID="LDu-Y6-gxe">
             <objects>
-                <viewController id="PLB-3G-4Fz" sceneMemberID="viewController">
+                <viewController id="PLB-3G-4Fz" customClass="EditTripViewController" customModule="TravellingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2rL-Hu-49C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLI-f5-jxf">
-                                <rect key="frame" x="20" y="210" width="374" height="231"/>
+                                <rect key="frame" x="20" y="311" width="374" height="231"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="PBx-nE-WJe" kind="embed" identifier="editTripEmbedSegue" id="drq-cE-fUE"/>
+                                    <segue destination="PBx-nE-WJe" kind="embed" identifier="embedFromEditTripSegue" id="drq-cE-fUE"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit a trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMH-qy-KZe">
+                                <rect key="frame" x="171" y="150" width="73" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KnL-AD-GgX" firstAttribute="trailing" secondItem="lMH-qy-KZe" secondAttribute="trailing" constant="170" id="Vgb-V1-V5f"/>
+                            <constraint firstItem="lMH-qy-KZe" firstAttribute="top" secondItem="KnL-AD-GgX" secondAttribute="top" constant="62" id="tPY-Uf-QGA"/>
+                            <constraint firstItem="lMH-qy-KZe" firstAttribute="leading" secondItem="KnL-AD-GgX" secondAttribute="leading" constant="171" id="vPl-5K-NrJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KnL-AD-GgX"/>
                     </view>
+                    <connections>
+                        <segue destination="WX4-5Q-Eb7" kind="unwind" identifier="unwindToTripViewControllerFromEditing" unwindAction="unwindToTripsAfterEditingTripWithSegue:" id="odQ-uM-xOW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eT7-Aq-goR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="WX4-5Q-Eb7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2876.811594202899" y="241.74107142857142"/>
+            <point key="canvasLocation" x="2753.6231884057975" y="474.77678571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xI7-XL-9Nc">
@@ -248,7 +263,7 @@
             <objects>
                 <viewController id="PBx-nE-WJe" customClass="EmbedTripViewController" customModule="TravellingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OzV-Aa-NO7">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="333"/>
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="231"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pp4-P2-1QY">
@@ -317,10 +332,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMi-Pf-2dH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3032" y="764"/>
+            <point key="canvasLocation" x="2784" y="1007"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OH2-eE-ljH"/>
+        <segue reference="drq-cE-fUE"/>
     </inferredMetricsTieBreakers>
 </document>

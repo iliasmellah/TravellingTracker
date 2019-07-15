@@ -62,6 +62,13 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
  */
     
     // MARK: - Trip data managment -
+    
+    func save() {
+        if let error = CoreDataManager.save(){
+            DialogBoxHelper.alert(view: self, error: error
+            )
+        }
+    }
 
     /// create a new Trip, add it to the collection and saves it
     ///
@@ -138,6 +145,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     
     //edition d'un voyage
     func editHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
+        self.indexPathForShow = indexPath
         self.performSegue(withIdentifier: self.segueEditTripId, sender: self)
         self.tripsTable.setEditing(false, animated: true)
     }
@@ -195,6 +203,13 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
                 self.tripsTable.deselectRow(at: indexPath, animated: true)
             }
         }
+        
+        if segue.identifier == segueEditTripId {
+            if let indexPath = self.indexPathForShow {
+                let editTripViewController = segue.destination as! EditTripViewController
+                editTripViewController.trip = self.trips[indexPath.row]
+            }
+        }
     }
     
     //Gets data from CreateTripViewController inputs when hits Save
@@ -210,6 +225,11 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         
         
         self.saveNewTrip(withName: name, andStartDate: startDate, andEndDate: endDate, andColor: color)
+        self.tripsTable.reloadData()
+    }
+    
+    @IBAction func unwindToTripsAfterEditingTrip(segue: UIStoryboardSegue) {
+        self.save()
         self.tripsTable.reloadData()
     }
     
