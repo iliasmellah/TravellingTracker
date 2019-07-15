@@ -118,8 +118,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         // Fetch a cell of the appropriate type.
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath) as! TripTableViewCell
         self.tripPresenter.configure(theCell: cell, forTrip: self.trips[indexPath.row])
-        //cell.nameTripLabel.text = self.trips[indexPath.row].name
-        //cell.colorTripLabel.text = self.trips[indexPath.row].color
+        cell.accessoryType = .detailButton
         return cell
     }
     
@@ -128,8 +127,35 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         return true
     }
     
+    //suppression d'un voyage
+    func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
+        self.tripsTable.beginUpdates()
+        if self.delete(tripWithIndex: indexPath.row) {
+            self.tripsTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+        self.tripsTable.endUpdates()
+    }
+    
+    //edition d'un voyage
+    func editHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
+        self.performSegue(withIdentifier: self.segueEditTripId, sender: self)
+        self.tripsTable.setEditing(false, animated: true)
+    }
+    
+    // Création des boutons pour le swipe de la liste des trips
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .default, title: "Delete", handler: self.deleteHandlerAction)
+        let edit = UITableViewRowAction(style: .default, title: "Edit", handler: self.editHandlerAction)
+        
+        delete.backgroundColor = UIColor.red
+        edit.backgroundColor = UIColor.blue
+        
+        return [delete,edit]
+    }
+    
+    //supprimée pour la fonction deleteHandlerAction à la place
     //manage editing of a row
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         //just manage deleting
         if (editingStyle == UITableViewCell.EditingStyle.delete) {
             self.tripsTable.beginUpdates()
@@ -138,19 +164,32 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
             }
             self.tripsTable.endUpdates()
         }
+    }*/
+    
+    // MARK: - TableView Delegate Protocol -
+    
+    var indexPathForShow : IndexPath? = nil
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        //déclenche la liaison entre 2 boards (segue) manuellement
+        self.indexPathForShow = indexPath
+        self.performSegue(withIdentifier: self.segueShowTripId, sender: self)
     }
     
     // MARK: - Navigation -
     
     let segueShowTripId = "showTripSegue"
+    let segueEditTripId = "editTripSegue"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //gets the new view controller useing segue.destinationViewController
         //passes the selected object to the new view controller
         
         //check if we have the appropriate segue
-        if segue.identifier == self.segueShowTripId {
-            if let indexPath = self.tripsTable.indexPathForSelectedRow {
+        if segue.identifier == segueShowTripId {
+            // selection d'une cell dans un TableView : 2 possibilités
+            // if let indexPath = self.tripsTable.indexPathForSelectedRow
+            if let indexPath = self.indexPathForShow {
                 let showTripViewController = segue.destination as! ShowTripViewController
                 showTripViewController.trip = self.trips[indexPath.row]
                 self.tripsTable.deselectRow(at: indexPath, animated: true)
