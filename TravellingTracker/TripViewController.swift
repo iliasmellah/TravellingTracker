@@ -71,6 +71,28 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     }
  */
     
+    // MARK: - Action Handlers -
+    
+    //suppression d'un voyage
+    func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
+        let trip = self.tripsFetched.object(at: indexPath)
+        print("XXXXX : ", indexPath)
+        CoreDataManager.context.delete(trip)
+        /*self.tripsTable.beginUpdates()
+         if self.delete(tripWithIndex: indexPath.row) {
+            self.tripsTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+        self.tripsTable.endUpdates()*/
+    }
+    
+    //edition d'un voyage
+    func editHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
+        self.indexPathForShow = indexPath
+        self.performSegue(withIdentifier: self.segueEditTripId, sender: self)
+        self.tripsTable.setEditing(false, animated: true)
+    }
+    
+    
     // MARK: - Trip data managment -
     
     func save() {
@@ -150,22 +172,6 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         return true
     }
     
-    //suppression d'un voyage
-    func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
-        self.tripsTable.beginUpdates()
-        if self.delete(tripWithIndex: indexPath.row) {
-            self.tripsTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-        }
-        self.tripsTable.endUpdates()
-    }
-    
-    //edition d'un voyage
-    func editHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
-        self.indexPathForShow = indexPath
-        self.performSegue(withIdentifier: self.segueEditTripId, sender: self)
-        self.tripsTable.setEditing(false, animated: true)
-    }
-    
     // Création des boutons pour le swipe de la liste des trips
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .default, title: "Delete", handler: self.deleteHandlerAction)
@@ -200,6 +206,33 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         self.performSegue(withIdentifier: self.segueShowTripId, sender: self)
     }
     
+    // MARK: - NSFetchResultController Delegate Protocol
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        //on previent que la table va subir des mises a jour
+        self.tripsTable.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        //fin de mise à jour
+        self.tripsTable.endUpdates()
+        
+        //sauve les changements après modifs
+        CoreDataManager.save()
+    }
+        
+    //quelque chose a change a l'index donné
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .delete:
+            if let indexPath = indexPath {
+                self.tripsTable.deleteRows(at: [indexPath], with: .automatic)
+            }
+        default:
+            break
+        }
+    }
+    
+    
     // MARK: - Navigation -
     
     let segueShowTripId = "showTripSegue"
@@ -216,6 +249,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
             if let indexPath = self.indexPathForShow {
                 let showTripViewController = segue.destination as! ShowTripViewController
                 showTripViewController.trip = self.trips[indexPath.row]
+                print("XXXXX : ", indexPath.row)
                 self.tripsTable.deselectRow(at: indexPath, animated: true)
             }
         }
