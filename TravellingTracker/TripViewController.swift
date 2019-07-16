@@ -22,8 +22,9 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     fileprivate lazy var tripsFetched : NSFetchedResultsController<Trip> = {
         //prepare a request
         let request : NSFetchRequest<Trip> = Trip.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Trip.name) , ascending: true)]
-        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        //tri des données
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Trip.name), ascending: true)]
+        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: #keyPath(Trip.name), cacheName: nil)
         fetchResultController.delegate = self
         return fetchResultController
     }()
@@ -87,6 +88,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     
     //edition d'un voyage
     func editHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
+        print("Edit Handler : ", indexPath.row)
         self.indexPathForShow = indexPath
         self.performSegue(withIdentifier: self.segueEditTripId, sender: self)
         self.tripsTable.setEditing(false, animated: true)
@@ -147,6 +149,13 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     }
  
     // MARK: - TableView data source protocol -
+    
+    //renvoie nombre de sections
+    func numberOfSections(in tableView: UITableView) -> Int {
+        guard let sections = self.tripsFetched.sections else {return 0}
+        return sections.count
+    }
+    
     // Return the number of rows for the table.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return self.trips.count
@@ -154,6 +163,14 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
             fatalError("Unexpected section number")
         }
         return section.numberOfObjects
+    }
+    
+    //titre des sections
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let section = self.tripsFetched.sections?[section] else {
+            fatalError("Unexpected section number")
+        }
+        return section.name
     }
     
     // Provide a cell object for each row.
@@ -206,7 +223,8 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         self.performSegue(withIdentifier: self.segueShowTripId, sender: self)
     }
     
-    // MARK: - NSFetchResultController Delegate Protocol
+    // MARK: - NSFetchResultController Delegate Protocol -
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         //on previent que la table va subir des mises a jour
         self.tripsTable.beginUpdates()
@@ -227,6 +245,26 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
             if let indexPath = indexPath {
                 self.tripsTable.deleteRows(at: [indexPath], with: .automatic)
             }
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                self.tripsTable.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                self.tripsTable.reloadRows(at: [indexPath], with: .automatic)
+            }
+        default:
+            break
+        }
+    }
+    
+    //indique un changement de section
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            self.tripsTable.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            self.tripsTable.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
         default:
             break
         }
@@ -249,7 +287,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
             if let indexPath = self.indexPathForShow {
                 let showTripViewController = segue.destination as! ShowTripViewController
                 showTripViewController.trip = self.trips[indexPath.row]
-                print("XXXXX : ", indexPath.row)
+                print("Prepare Show : ", indexPath.row)
                 self.tripsTable.deselectRow(at: indexPath, animated: true)
             }
         }
@@ -257,6 +295,8 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         if segue.identifier == segueEditTripId {
             if let indexPath = self.indexPathForShow {
                 let editTripViewController = segue.destination as! EditTripViewController
+                print("Prepare Edit : ", indexPath.row)
+                print("trip 0 : ", self.trips[0])
                 editTripViewController.trip = self.trips[indexPath.row]
             }
         }

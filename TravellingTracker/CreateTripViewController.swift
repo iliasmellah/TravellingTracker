@@ -22,14 +22,6 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    // MARK : - CREATE & SAVE A TRIP
-    @IBAction func cancelTrip(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func save(_ sender: Any) {
-        
-    }
     
     // MARK : - TextField Delegate -
     
@@ -38,7 +30,33 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-
+    // MARK : - CREATE & SAVE A TRIP
+    @IBAction func cancelTrip(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+        
+    @IBAction func saveAction(_ sender: Any) {
+        guard let embedTripViewController = self.children[0] as? EmbedTripViewController else {return}
+        
+        let name: String = embedTripViewController.tripName.text ?? ""
+        let color: String = embedTripViewController.tripColor.text ?? ""
+        let dateStart: Date = embedTripViewController.tripStartDateReal ?? Date.currentDate()
+        let dateEnd: Date = embedTripViewController.tripEndDateReal ?? Date.currentDate()
+        
+        guard (name != "") else {return}
+        
+        //crée un nouveau Trip Managed Object
+        let trip = Trip(context: CoreDataManager.context)
+        
+        //modifie avec les bonnes valeurs
+        trip.name = name
+        trip.color = color
+        trip.dateStart = dateStart
+        trip.dateEnd = dateEnd
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     // MARK: - Navigation -
     
