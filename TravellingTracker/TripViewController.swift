@@ -77,8 +77,8 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     //suppression d'un voyage
     func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
         let trip = self.tripsFetched.object(at: indexPath)
-        print("XXXXX : ", indexPath)
         CoreDataManager.context.delete(trip)
+        
         /*self.tripsTable.beginUpdates()
          if self.delete(tripWithIndex: indexPath.row) {
             self.tripsTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
@@ -88,7 +88,6 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     
     //edition d'un voyage
     func editHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
-        print("Edit Handler : ", indexPath.row)
         self.indexPathForShow = indexPath
         self.performSegue(withIdentifier: self.segueEditTripId, sender: self)
         self.tripsTable.setEditing(false, animated: true)

@@ -27,11 +27,8 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("YAY", trip as Any)
-        
         //Si on a une personne, mode edition. Sinon mode ajout
         if let trip = self.trip {
-            print("III ", trip.name as Any )
             self.tripName.text = trip.name
             self.tripStartDate.text = Date.toString(date: trip.dateStart!)
             self.tripEndDate.text = Date.toString(date: trip.dateEnd!)
@@ -68,8 +65,7 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
         
         tripStartDate.text = Date.toString(date: startDatePicker!.date)
         tripEndDate.text = Date.toString(date: endDatePicker!.date)
-        //print("second start : ", tripStartDate.text as Any)
-        //print("second end : ", tripEndDate.text as Any)
+        
         view.endEditing(true)
     }
     
