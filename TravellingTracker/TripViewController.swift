@@ -286,8 +286,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
             // if let indexPath = self.tripsTable.indexPathForSelectedRow
             if let indexPath = self.indexPathForShow {
                 let showTripViewController = segue.destination as! ShowTripViewController
-                showTripViewController.trip = self.trips[indexPath.row]
-                print("Prepare Show : ", indexPath.row)
+                showTripViewController.trip = self.tripsFetched.object(at: indexPath)
                 self.tripsTable.deselectRow(at: indexPath, animated: true)
             }
         }
@@ -295,9 +294,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         if segue.identifier == segueEditTripId {
             if let indexPath = self.indexPathForShow {
                 let editTripViewController = segue.destination as! EditTripViewController
-                print("Prepare Edit : ", indexPath.row)
-                print("trip 0 : ", self.trips[0])
-                editTripViewController.trip = self.trips[indexPath.row]
+                editTripViewController.trip = self.tripsFetched.object(at: indexPath)
             }
         }
     }
