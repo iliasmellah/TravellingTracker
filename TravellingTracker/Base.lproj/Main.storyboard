@@ -36,24 +36,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wnb-43-gDM">
-                                                    <rect key="frame" x="352.33333333333331" y="11" width="41.666666666666686" height="22"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="dZe-Fu-Sai" firstAttribute="top" secondItem="uZK-bL-2xZ" secondAttribute="topMargin" id="Mda-3f-Jcy"/>
                                                 <constraint firstItem="dZe-Fu-Sai" firstAttribute="bottom" secondItem="uZK-bL-2xZ" secondAttribute="bottomMargin" id="PyF-5J-ccq"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Wnb-43-gDM" secondAttribute="trailing" id="Uy1-aj-yhn"/>
                                                 <constraint firstItem="dZe-Fu-Sai" firstAttribute="leading" secondItem="uZK-bL-2xZ" secondAttribute="leadingMargin" id="cwi-pj-KjH"/>
-                                                <constraint firstItem="Wnb-43-gDM" firstAttribute="bottom" secondItem="uZK-bL-2xZ" secondAttribute="bottomMargin" id="e7q-Vf-k49"/>
-                                                <constraint firstItem="Wnb-43-gDM" firstAttribute="top" secondItem="uZK-bL-2xZ" secondAttribute="topMargin" id="mGk-LD-JW4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="colorTripLabel" destination="Wnb-43-gDM" id="Eyh-Fe-6cL"/>
                                             <outlet property="nameTripLabel" destination="dZe-Fu-Sai" id="Adl-ah-Yag"/>
                                         </connections>
                                     </tableViewCell>
@@ -118,6 +108,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnA-0X-ARd">
+                                <rect key="frame" x="194" y="558" width="27" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="69"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fO-nh-9cb">
+                                <rect key="frame" x="170" y="672" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Photo Map"/>
+                                <connections>
+                                    <segue destination="WMT-bS-YSx" kind="show" id="BBZ-kh-Uid"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -133,6 +138,7 @@
                         <viewLayoutGuide key="safeArea" id="Djj-Y1-gbC"/>
                     </view>
                     <connections>
+                        <outlet property="colorCodeTrip" destination="nnA-0X-ARd" id="F8u-VM-OZq"/>
                         <outlet property="colorTrip" destination="a6v-Tg-AxF" id="nvy-AK-SvO"/>
                         <outlet property="dateEndTrip" destination="idU-hB-f3r" id="TsX-Ql-llA"/>
                         <outlet property="dateStartTrip" destination="DR4-eL-YcE" id="GJF-9q-N9d"/>
@@ -141,7 +147,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPg-BO-juR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1934.7826086956522" y="-232.36607142857142"/>
+            <point key="canvasLocation" x="2105.7971014492755" y="-39.508928571428569"/>
+        </scene>
+        <!--Photo Map View Controller-->
+        <scene sceneID="Lzg-Wf-kcf">
+            <objects>
+                <viewController id="WMT-bS-YSx" customClass="PhotoMapViewController" customModule="TravellingTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1tY-kh-stZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get your picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDe-S8-7gW">
+                                <rect key="frame" x="47" y="119" width="124" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpD-g6-Ecc">
+                                <rect key="frame" x="246" y="115" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ajouter"/>
+                                <connections>
+                                    <action selector="importImage:" destination="WMT-bS-YSx" eventType="touchUpInside" id="XfO-fJ-Q87"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i2d-TK-fzv">
+                                <rect key="frame" x="20" y="182" width="374" height="236"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="4WA-YE-p15"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="i2d-TK-fzv" id="1VO-R5-DQO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egf-oP-fyj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3037.68115942029" y="-40.178571428571423"/>
         </scene>
         <!--Create Trip View Controller-->
         <scene sceneID="rpX-zs-RV0">
@@ -197,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="caF-UP-AWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1817" y="940"/>
+            <point key="canvasLocation" x="1067" y="917"/>
         </scene>
         <!--Edit Trip View Controller-->
         <scene sceneID="LDu-Y6-gxe">
@@ -236,7 +281,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eT7-Aq-goR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="WX4-5Q-Eb7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2753.6231884057975" y="474.77678571428567"/>
+            <point key="canvasLocation" x="2107" y="645"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xI7-XL-9Nc">
@@ -261,7 +306,7 @@
             <objects>
                 <viewController id="PBx-nE-WJe" customClass="EmbedTripViewController" customModule="TravellingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OzV-Aa-NO7">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="333"/>
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="231"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pp4-P2-1QY">
@@ -330,10 +375,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMi-Pf-2dH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2784" y="1007"/>
+            <point key="canvasLocation" x="1983" y="1168"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OH2-eE-ljH"/>
+        <segue reference="drq-cE-fUE"/>
     </inferredMetricsTieBreakers>
 </document>

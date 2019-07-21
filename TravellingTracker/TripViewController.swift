@@ -274,9 +274,10 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     
     let segueShowTripId = "showTripSegue"
     let segueEditTripId = "editTripSegue"
+    let segueShowPlacesId = "showPlacesTripSegue"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //gets the new view controller useing segue.destinationViewController
+        //gets the new view controller using segue.destinationViewController
         //passes the selected object to the new view controller
         
         //check if we have the appropriate segue
@@ -296,6 +297,14 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
                 editTripViewController.trip = self.tripsFetched.object(at: indexPath)
             }
         }
+        
+        /*if segue.identifier == segueShowPlacesId {
+            if let indexPath = self.indexPathForShow {
+                let placeViewController = segue.destination as! PlaceViewController
+                placeViewController.trip = self.tripsFetched.object(at: indexPath)
+                self.tripsTable.deselectRow(at: indexPath, animated: true)
+            }
+        }*/
     }
     
     //Gets data from CreateTripViewController inputs when hits Save

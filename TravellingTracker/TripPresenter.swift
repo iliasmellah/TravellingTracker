@@ -10,7 +10,7 @@ import Foundation
 
 class TripPresenter: NSObject {
     fileprivate var name : String = ""
-    fileprivate var color : String = ""
+    //fileprivate var color : String = ""
     /*
     fileprivate var startDate : String = ""
     fileprivate var endDate : String = ""
@@ -29,12 +29,12 @@ class TripPresenter: NSObject {
                     self.name = xname!.capitalized
                 }
                 
-                let xcolor = trip.color
+                /*let xcolor = trip.color
                 if xcolor == "" {
                     self.color = " Grey "
                 } else {
                     self.color = xcolor!.capitalized
-                }
+                }*/
                 
                 /*if let xname = trip.name {
                     self.name = xname.capitalized
@@ -64,7 +64,7 @@ class TripPresenter: NSObject {
                 
             } else {
                 self.name = ""
-                self.color = ""
+                //self.color = ""
                 
                 /*self.startDate = ""
                 self.endDate = ""*/
@@ -76,6 +76,6 @@ class TripPresenter: NSObject {
         self.trip = forTrip
         guard let cell = theCell else { return }
         cell.nameTripLabel.text = self.name
-        cell.colorTripLabel.text = self.color
+        //cell.colorTripLabel.text = self.color
     }
 }

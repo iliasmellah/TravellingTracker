@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PhotoMap" representedClassName="PhotoMap" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
     <entity name="Place" representedClassName="Place" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
@@ -18,7 +23,8 @@
         <relationship name="iscomposedby" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="belongsto" inverseEntity="Place" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Trip" positionX="-80" positionY="-5" width="128" height="133"/>
         <element name="Place" positionX="270" positionY="-15" width="128" height="148"/>
+        <element name="Trip" positionX="-80" positionY="-5" width="128" height="133"/>
+        <element name="PhotoMap" positionX="86" positionY="226" width="128" height="88"/>
     </elements>
 </model>

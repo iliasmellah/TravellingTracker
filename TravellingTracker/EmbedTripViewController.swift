@@ -34,18 +34,18 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
             self.tripEndDate.text = Date.toString(date: trip.dateEnd!)
             self.tripColor.text = trip.color
         }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EmbedTripViewController.viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
 
         //Date Picker in UITextField
         startDatePicker = UIDatePicker()
         startDatePicker?.datePickerMode = .date
         startDatePicker?.addTarget(self, action: #selector(EmbedTripViewController.dateChanged(datePicker:)), for: .valueChanged)
-        
+
         endDatePicker = UIDatePicker()
         endDatePicker?.datePickerMode = .date
         endDatePicker?.addTarget(self, action: #selector(EmbedTripViewController.dateChanged(datePicker:)), for: .valueChanged)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EmbedTripViewController.viewTapped(gestureRecognizer:)))
-        view.addGestureRecognizer(tapGesture)
         
         tripStartDate.inputView = startDatePicker
         tripEndDate.inputView = endDatePicker
