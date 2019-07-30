@@ -100,11 +100,21 @@
                                 <rect key="frame" x="20" y="305" width="374" height="557"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please pick a picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEv-Zn-Nja">
+                                <rect key="frame" x="20" y="816" width="374" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.014614016469999999" green="0.66062176169999998" blue="0.0019080899460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8lN-Fb-nvc"/>
                     </view>
                     <connections>
+                        <outlet property="address" destination="AEv-Zn-Nja" id="03S-Ww-Dwq"/>
                         <outlet property="imageView" destination="ne9-Xe-6hk" id="pFe-KI-wNg"/>
                         <outlet property="mapView" destination="QL7-64-9RP" id="D85-qm-ylt"/>
                     </connections>

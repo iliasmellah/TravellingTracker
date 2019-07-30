@@ -17,9 +17,11 @@ class Photo3ViewController: UIViewController, UINavigationControllerDelegate, UI
     var latitudePhoto: CLLocationDegrees? = 0.0
     var longitudePhoto: CLLocationDegrees? = 0.0
     var distanceSpan: CLLocationDistance = 5000
+    var addressString = "City,Country"
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var address: UILabel!
     
     @IBAction func addPhoto(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
@@ -63,14 +65,47 @@ class Photo3ViewController: UIViewController, UINavigationControllerDelegate, UI
             self.longitudePhoto = asset.location?.coordinate.longitude
             
             let centerLocation = CLLocation(latitude: self.latitudePhoto!, longitude: self.longitudePhoto!)
+        
             
-            let annotationLocation = [
-                //"title": image.name
-                "latitude" : self.latitudePhoto, "longitude" : self.longitudePhoto
-            ]
             
-            createAnnotation(location: annotationLocation as [String : Any])
-            zoomLevel(location: centerLocation)
+            let loc = CLLocation(latitude: self.latitudePhoto!, longitude: self.longitudePhoto!)
+            
+            CLGeocoder().reverseGeocodeLocation(loc) { (placemarks, error) in
+                if error != nil {
+                    print("failed")
+                    return
+                }
+                if (placemarks?.count)! > 0 {
+                    print("\nPLACEMARK : \n")
+                    print(placemarks as Any)
+                    
+                    print("\nVILLE et PAYS: \n")
+                    print(placemarks?[0].locality ?? "VILLE" )
+                    print(",")
+                    print(placemarks?[0].country ?? "PAYS")
+                    print("\n")
+                    
+                    let villePhoto = placemarks?[0].locality ?? "VILLE"
+                    let paysPhoto = placemarks?[0].country ?? "PAYS"
+                    
+                    self.address.text = villePhoto + "," + paysPhoto
+                    self.addressString = (villePhoto + "," + paysPhoto)
+                    
+                    print("\nADDRESS STRING : \n" + self.addressString + "\n")
+                    
+                    let annotationLocation = [
+                        "title": self.addressString, "latitude" : self.latitudePhoto as Any, "longitude" : self.longitudePhoto as Any
+                        ] as [String : Any]
+                    
+                    self.createAnnotation(location: annotationLocation as [String : Any])
+                    self.zoomLevel(location: centerLocation)
+                    
+                } else {
+                    print("eroor")
+                }
+            }
+            
+          
             
         }
         
@@ -89,11 +124,35 @@ class Photo3ViewController: UIViewController, UINavigationControllerDelegate, UI
     
     func createAnnotation(location: [String : Any]) {
         let annotation = MKPointAnnotation()
-        //annotation.title = location["title"] as?String
-        annotation.title="OUI"
+        annotation.title = (location["title"] as! String)
         annotation.coordinate = CLLocationCoordinate2D(latitude: location["latitude"] as! CLLocationDegrees, longitude: location["longitude"] as! CLLocationDegrees)
         
         mapView.addAnnotation(annotation)
     }
+    
+    func lookUpCurrentLocation(location : CLLocation?, completionHandler: @escaping (CLPlacemark?) -> Void ) {
+        // Use the last reported location.
+        if let lastLocation = location {
+            let geocoder = CLGeocoder()
+            
+            // Look up the location and pass it to the completion handler
+            geocoder.reverseGeocodeLocation(lastLocation, completionHandler:
+                { (placemarks, error) in
+                    if error == nil {
+                        let firstLocation = placemarks?[0]
+                        completionHandler(firstLocation)
+                        print("PLAAAAAAACE : ", firstLocation as Any)
+                    } else {
+                        // An error occurred during geocoding.
+                        completionHandler(nil)
+                    }
+            }
+            )
+        } else {
+            // No location was available.
+            completionHandler(nil)
+        }
+    }
 }
+
 
