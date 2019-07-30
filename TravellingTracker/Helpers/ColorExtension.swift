@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-extension UIColor {
+extension String {
 
-    func colorFromHex(hex : String) -> UIColor {
-        var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+    func colorFromHex() -> UIColor {
+        var hexString = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if hexString.hasPrefix("#") {
             hexString.remove(at: hexString.startIndex)

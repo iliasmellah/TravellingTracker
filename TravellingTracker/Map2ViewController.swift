@@ -12,9 +12,6 @@ import MapKit
 class Map2ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBAction func addImageButton(_ sender: Any) {
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
