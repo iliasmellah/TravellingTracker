@@ -66,6 +66,9 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
             let asset = assets[0]
             print("\n Latitude : \n", asset.location?.coordinate.latitude as Any)
             print("\n Longitude : \n", asset.location?.coordinate.longitude as Any)
+            
+            let latitudePhoto = asset.location?.coordinate.latitude
+            let longitudePhoto = asset.location?.coordinate.longitude
         }
         
         picker.dismiss(animated: true, completion: nil)
@@ -75,7 +78,7 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,7 +92,6 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
     
     private func configureLocationServices() {
         locationManager.delegate = self
-        
         
         let status = CLLocationManager.authorizationStatus()
         

@@ -123,6 +123,14 @@
                                     <segue destination="WMT-bS-YSx" kind="show" id="BBZ-kh-Uid"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYE-yH-wNR">
+                                <rect key="frame" x="186" y="760" width="43" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Map 2"/>
+                                <connections>
+                                    <segue destination="hke-r3-HKw" kind="show" id="lP9-Nj-LcZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -287,6 +295,43 @@
                 <exit id="WX4-5Q-Eb7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2107" y="645"/>
+        </scene>
+        <!--Map2 View Controller-->
+        <scene sceneID="peh-W3-hLS">
+            <objects>
+                <viewController id="hke-r3-HKw" customClass="Map2ViewController" customModule="TravellingTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xgY-Mc-jta">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xoC-jm-s6n">
+                                <rect key="frame" x="20" y="335" width="374" height="527"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gV4-nP-B7X">
+                                <rect key="frame" x="20" y="135" width="374" height="173"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xc-Si-Drr">
+                                <rect key="frame" x="184" y="97" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addImageButton:" destination="hke-r3-HKw" eventType="touchUpInside" id="tx4-Gb-21t"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cVe-e5-gO1"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="gV4-nP-B7X" id="v48-Q6-G04"/>
+                        <outlet property="mapView" destination="xoC-jm-s6n" id="p4g-Ae-HQv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dhd-Hv-0qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3034.7826086956525" y="650.89285714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xI7-XL-9Nc">

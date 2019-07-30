@@ -38,10 +38,11 @@ class ShowTripViewController: UIViewController {
                 self.colorTrip.text = atrip.color?.capitalized
             }
             
-            self.colorCodeTrip.textColor = self.colorFromHex(hex : "#0303fc")            
+            self.colorCodeTrip.textColor = self.colorFromHex(hex : atrip.color!)
         }
     }
     
+    //Get color from hex code
     func colorFromHex(hex : String) -> UIColor {
         var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         

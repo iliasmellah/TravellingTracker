@@ -21,6 +21,7 @@
 		63964DA822D2D7720039B4CF /* TravellingTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DA722D2D7720039B4CF /* TravellingTrackerTests.swift */; };
 		63964DB322D2D7720039B4CF /* TravellingTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */; };
 		63964DC222D2EEE40039B4CF /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */; };
+		639B31A422EFE54E00F615BA /* Map2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B31A322EFE54E00F615BA /* Map2ViewController.swift */; };
 		639F167222E40A2700BFB503 /* PhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F167122E40A2700BFB503 /* PhotoMapViewController.swift */; };
 		63DFF76422DC2EC700626050 /* EditTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76322DC2EC700626050 /* EditTripViewController.swift */; };
 		63DFF76622DC4F9600626050 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76522DC4F9600626050 /* CoreDataManager.swift */; };
@@ -66,6 +67,7 @@
 		63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravellingTrackerUITests.swift; sourceTree = "<group>"; };
 		63964DB422D2D7720039B4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
+		639B31A322EFE54E00F615BA /* Map2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map2ViewController.swift; sourceTree = "<group>"; };
 		639F167122E40A2700BFB503 /* PhotoMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMapViewController.swift; sourceTree = "<group>"; };
 		63DFF76322DC2EC700626050 /* EditTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripViewController.swift; sourceTree = "<group>"; };
 		63DFF76522DC4F9600626050 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				639455E422D443BF006AFA20 /* ShowTripViewController.swift */,
 				63964D9322D2D7700039B4CF /* Main.storyboard */,
 				639F167122E40A2700BFB503 /* PhotoMapViewController.swift */,
+				639B31A322EFE54E00F615BA /* Map2ViewController.swift */,
 				638920DD22D7055000FB0702 /* EmbedTripViewController.swift */,
 				63DFF76322DC2EC700626050 /* EditTripViewController.swift */,
 				63964D9922D2D7720039B4CF /* Assets.xcassets */,
@@ -300,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				639B31A422EFE54E00F615BA /* Map2ViewController.swift in Sources */,
 				639F167222E40A2700BFB503 /* PhotoMapViewController.swift in Sources */,
 				63964DC222D2EEE40039B4CF /* TripTableViewCell.swift in Sources */,
 				63F9A79422D56F3900C95293 /* CreateTripViewController.swift in Sources */,
