@@ -27,7 +27,7 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Si on a une personne, mode edition. Sinon mode ajout
+        //Si on a un voyage, mode edition. Sinon mode ajout
         if let trip = self.trip {
             self.tripName.text = trip.name
             self.tripStartDate.text = Date.toString(date: trip.dateStart!)

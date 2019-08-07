@@ -14,6 +14,10 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     /// TableView controlled by self that displays collection of Trips
     @IBOutlet weak var tripsTable: UITableView!
     
+    @IBAction func seePlaces(_ sender: Any) {
+
+    }
+    
     @IBOutlet var tripPresenter: TripPresenter!
     
     //Collection of Trips to be displayed in self.tripsTable
@@ -92,7 +96,6 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         self.performSegue(withIdentifier: self.segueEditTripId, sender: self)
         self.tripsTable.setEditing(false, animated: true)
     }
-    
     
     // MARK: - Trip data managment -
     
@@ -180,6 +183,12 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         self.tripPresenter.configure(theCell: cell, forTrip: trip)
         //self.tripPresenter.configure(theCell: cell, forTrip: self.trips[indexPath.row])
         cell.accessoryType = .detailButton
+        
+        /*cell.buttonPlaces(self) = { sender in
+            self.indexPathForShow = indexPath
+            performSegue(withIdentifier: "placesTripSegue", sender: self)
+        }*/
+        
         return cell
     }
     
@@ -221,6 +230,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         self.indexPathForShow = indexPath
         self.performSegue(withIdentifier: self.segueShowTripId, sender: self)
     }
+    
     
     // MARK: - NSFetchResultController Delegate Protocol -
     
@@ -274,7 +284,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     
     let segueShowTripId = "showTripSegue"
     let segueEditTripId = "editTripSegue"
-    let segueShowPlacesId = "showPlacesTripSegue"
+    let segueShowPlacesId = "placesTripSegue"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //gets the new view controller using segue.destinationViewController
@@ -298,13 +308,13 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
             }
         }
         
-        /*if segue.identifier == segueShowPlacesId {
+        if segue.identifier == segueShowPlacesId {
             if let indexPath = self.indexPathForShow {
                 let placeViewController = segue.destination as! PlaceViewController
                 placeViewController.trip = self.tripsFetched.object(at: indexPath)
                 self.tripsTable.deselectRow(at: indexPath, animated: true)
             }
-        }*/
+        }
     }
     
     //Gets data from CreateTripViewController inputs when hits Save

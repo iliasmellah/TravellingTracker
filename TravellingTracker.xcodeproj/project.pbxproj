@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6354A1CB22F126E000FECD6E /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354A1CA22F126E000FECD6E /* PlaceViewController.swift */; };
+		63584E6722F6BEC60033C216 /* PickOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63584E6622F6BEC50033C216 /* PickOnMapViewController.swift */; };
 		635D38BA22E36A47001DCD80 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D38B922E36A47001DCD80 /* ColorExtension.swift */; };
 		638920DC22D6DB6C00FB0702 /* TripPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638920DB22D6DB6C00FB0702 /* TripPresenter.swift */; };
 		638920DE22D7055000FB0702 /* EmbedTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638920DD22D7055000FB0702 /* EmbedTripViewController.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6354A1CA22F126E000FECD6E /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		63584E6622F6BEC50033C216 /* PickOnMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickOnMapViewController.swift; sourceTree = "<group>"; };
 		635D38B922E36A47001DCD80 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		638920DB22D6DB6C00FB0702 /* TripPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPresenter.swift; sourceTree = "<group>"; };
 		638920DD22D7055000FB0702 /* EmbedTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedTripViewController.swift; sourceTree = "<group>"; };
@@ -143,8 +147,10 @@
 				63964D9322D2D7700039B4CF /* Main.storyboard */,
 				639F167122E40A2700BFB503 /* PhotoMapViewController.swift */,
 				639B31A522EFEE0E00F615BA /* Photo3ViewController.swift */,
+				6354A1CA22F126E000FECD6E /* PlaceViewController.swift */,
 				639B31A322EFE54E00F615BA /* Map2ViewController.swift */,
 				638920DD22D7055000FB0702 /* EmbedTripViewController.swift */,
+				63584E6622F6BEC50033C216 /* PickOnMapViewController.swift */,
 				63DFF76322DC2EC700626050 /* EditTripViewController.swift */,
 				63964D9922D2D7720039B4CF /* Assets.xcassets */,
 				63964D9B22D2D7720039B4CF /* LaunchScreen.storyboard */,
@@ -308,6 +314,7 @@
 			files = (
 				639B31A422EFE54E00F615BA /* Map2ViewController.swift in Sources */,
 				639B31A622EFEE0E00F615BA /* Photo3ViewController.swift in Sources */,
+				6354A1CB22F126E000FECD6E /* PlaceViewController.swift in Sources */,
 				639F167222E40A2700BFB503 /* PhotoMapViewController.swift in Sources */,
 				63964DC222D2EEE40039B4CF /* TripTableViewCell.swift in Sources */,
 				63F9A79422D56F3900C95293 /* CreateTripViewController.swift in Sources */,
@@ -318,6 +325,7 @@
 				63DFF76422DC2EC700626050 /* EditTripViewController.swift in Sources */,
 				63964D9022D2D7700039B4CF /* AppDelegate.swift in Sources */,
 				638920DC22D6DB6C00FB0702 /* TripPresenter.swift in Sources */,
+				63584E6722F6BEC60033C216 /* PickOnMapViewController.swift in Sources */,
 				639455E522D443BF006AFA20 /* ShowTripViewController.swift in Sources */,
 				63964D9822D2D7700039B4CF /* TravellingTracker.xcdatamodeld in Sources */,
 				63DFF76622DC4F9600626050 /* CoreDataManager.swift in Sources */,

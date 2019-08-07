@@ -21,7 +21,6 @@ class Photo3ViewController: UIViewController, UINavigationControllerDelegate, UI
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var address: UILabel!
     
     @IBAction func addPhoto(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
@@ -76,19 +75,10 @@ class Photo3ViewController: UIViewController, UINavigationControllerDelegate, UI
                     return
                 }
                 if (placemarks?.count)! > 0 {
-                    print("\nPLACEMARK : \n")
-                    print(placemarks as Any)
-                    
-                    print("\nVILLE et PAYS: \n")
-                    print(placemarks?[0].locality ?? "VILLE" )
-                    print(",")
-                    print(placemarks?[0].country ?? "PAYS")
-                    print("\n")
                     
                     let villePhoto = placemarks?[0].locality ?? "VILLE"
                     let paysPhoto = placemarks?[0].country ?? "PAYS"
                     
-                    self.address.text = villePhoto + "," + paysPhoto
                     self.addressString = (villePhoto + "," + paysPhoto)
                     
                     print("\nADDRESS STRING : \n" + self.addressString + "\n")
@@ -101,7 +91,7 @@ class Photo3ViewController: UIViewController, UINavigationControllerDelegate, UI
                     self.zoomLevel(location: centerLocation)
                     
                 } else {
-                    print("eroor")
+                    print("error")
                 }
             }
             
