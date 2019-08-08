@@ -12,6 +12,7 @@ class TripTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameTripLabel: UILabel!
     @IBAction func buttonPlaces(_ sender: Any) {
+        
     }
     
     

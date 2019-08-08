@@ -46,6 +46,7 @@ class PickOnMapViewController: UIViewController {
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: CLLocationDistance(regionInMeters), longitudinalMeters: CLLocationDistance(regionInMeters))
             mapView.setRegion(region, animated: true)
+            self.addressLabel.text = "Please choose a location"
         }
     }
     
@@ -58,7 +59,6 @@ class PickOnMapViewController: UIViewController {
     }
     
     func getCenterLocation(for mapView: MKMapView) -> CLLocation {
-        print("getCenterLocation")
         let latitude = mapView.centerCoordinate.latitude
         let longitude = mapView.centerCoordinate.longitude
         
@@ -76,24 +76,19 @@ extension PickOnMapViewController: CLLocationManagerDelegate {
 }
 
 extension PickOnMapViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        print("poooooooooo")
-    }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("mapView extension\n")
         let center = getCenterLocation(for: mapView)
         let geoCoder = CLGeocoder()
         
         //check if previous location is not too close from the current
         guard let previousLocation = self.previousLocation else {return}
-        guard center.distance(from: previousLocation) > 50 else {return}
+        guard center.distance(from: previousLocation) > 1 else {return}
         self.previousLocation = center
             
         geoCoder.reverseGeocodeLocation(center) {
             [weak self] (placemarks,error) in
             guard let self = self else {return}
-            print("geocoder\n")
             if let _ = error {
                 //How alert to user
                 return
@@ -108,8 +103,12 @@ extension PickOnMapViewController: MKMapViewDelegate {
             let cityName = placemark.locality ?? ""
             
             //DispatchQueue.main.sync {
-                print("UUUUUUUUUUUUUUUUU : ", streetNumber, " ", streetName)
-                self.addressLabel.text = streetNumber + ", " + streetName + " " + cityName.uppercased()
+                print("Adresse : ", streetNumber, " ", streetName)
+            if (streetName == "" || cityName == "") {
+                self.addressLabel.text = "No address found for this location"
+            } else {
+                self.addressLabel.text = streetNumber + " " + streetName + " " + cityName.uppercased()
+            }
             //}
         }
     }
