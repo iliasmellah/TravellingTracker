@@ -11,15 +11,9 @@ import UIKit
 class CreateTripViewController: UIViewController, UITextFieldDelegate {
     
     
-    @IBOutlet weak var tripName: UITextField!
-    @IBOutlet weak var tripStartDate: UITextField!
-    @IBOutlet weak var tripEndDate: UITextField!
-    @IBOutlet weak var tripColor: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
     }
     
     
@@ -34,28 +28,8 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
     @IBAction func cancelTrip(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-        
-    @IBAction func saveAction(_ sender: Any) {
-        guard let embedTripViewController = self.children[0] as? EmbedTripViewController else {return}
-        
-        let name: String = embedTripViewController.tripName.text ?? ""
-        let color: String = embedTripViewController.tripColor.text ?? ""
-        let dateStart: Date = embedTripViewController.tripStartDateReal ?? Date.currentDate()
-        let dateEnd: Date = embedTripViewController.tripEndDateReal ?? Date.currentDate()
-        
-        guard (name != "") else {return}
-        
-        //crée un nouveau Trip Managed Object
-        let trip = Trip(context: CoreDataManager.context)
-        
-        //modifie avec les bonnes valeurs
-        trip.name = name
-        trip.color = color
-        trip.dateStart = dateStart
-        trip.dateEnd = dateEnd
-        
-        self.dismiss(animated: true, completion: nil)
-    }
+    
+    
     
     
     // MARK: - Navigation -
@@ -67,9 +41,26 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
             let embedTripController = segue.destination as! EmbedTripViewController
             embedTripController.trip = nil
         }
+        
+        print ("Avant le guard")
+        guard let embedTripViewController = self.children.first as? EmbedTripViewController else {return}
+        
+        let name: String = embedTripViewController.tripName.text ?? ""
+        let color: String = embedTripViewController.tripColor.text ?? ""
+        let dateStart: Date = Date.toDate(dateString: embedTripViewController.tripStartDate.text!)
+        let dateEnd: Date = Date.toDate(dateString: embedTripViewController.tripEndDate.text!)
+        
+        guard (name != "") else {return}
+        
+        //crée un nouveau Trip Managed Object
+        let trip = TripModel(name: name, dateStart: dateStart, dateEnd: dateEnd, color: color.colorFromHex())
+        print("saveAction")
+        trip.save()
+        
+        self.dismiss(animated: true, completion: nil)
     }
-    
-/*
+   /*
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

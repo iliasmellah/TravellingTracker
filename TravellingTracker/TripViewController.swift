@@ -21,73 +21,27 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     @IBOutlet var tripPresenter: TripPresenter!
     
     //Collection of Trips to be displayed in self.tripsTable
-    var trips : [Trip] = []
-    
-    fileprivate lazy var tripsFetched : NSFetchedResultsController<Trip> = {
-        //prepare a request
-        let request : NSFetchRequest<Trip> = Trip.fetchRequest()
-        //tri des données
-        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Trip.name), ascending: true)]
-        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: #keyPath(Trip.name), cacheName: nil)
-        fetchResultController.delegate = self
-        return fetchResultController
-    }()
+    var trips : [TripModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        //first get context of persistent data
-        //guard let context = self.getContext(errorMsg: "Could note load data") else {return}
-        
-        //creates a request for "Trip" entity
-        //let request : NSFetchRequest<Trip> = Trip.fetchRequest()
-        do {
-            //try self.trips = context.fetch(request)
-            try self.tripsFetched.performFetch()
-        }
-        catch let error as NSError{
-            DialogBoxHelper.alert(view: self, error: error)
-        }
+        trips = Trip.getAll()!
         
     }
-    
-    
-    /*
-    /// Displays adialog box to allow user to enter a trip name. Then creates of a new Trip, add it to table view and saves data
-    ///
-    /// - Parameter sender: object that trigger action
-    @IBAction func createAction(_ sender: Any) {
-        let alert = UIAlertController(title: "New Trip", message: "Create a new trip", preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: "Create", style: .default)
-        {
-            [unowned self] action in guard let textField = alert.textFields?.first, let tripToSave = textField.text else {
-                return
-            }
-            self.saveNewTrip(withName: tripToSave)
-            self.tripsTable.reloadData()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-        alert.addTextField()
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
-    }
- */
     
     // MARK: - Action Handlers -
     
     //suppression d'un voyage
     func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
-        let trip = self.tripsFetched.object(at: indexPath)
-        CoreDataManager.context.delete(trip)
-        
-        /*self.tripsTable.beginUpdates()
-         if self.delete(tripWithIndex: indexPath.row) {
-            self.tripsTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-        }
-        self.tripsTable.endUpdates()*/
+        let trip = self.trips[indexPath.row]
+        trip.delete()
+        self.reloadTripTableView()
+    }
+    
+    func reloadTripTableView() {
+        self.trips = Trip.getAll()!
+        self.tripsTable.reloadData()
     }
     
     //edition d'un voyage
@@ -97,97 +51,25 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         self.tripsTable.setEditing(false, animated: true)
     }
     
-    // MARK: - Trip data managment -
     
-    func save() {
-        if let error = CoreDataManager.save(){
-            DialogBoxHelper.alert(view: self, error: error
-            )
-        }
-    }
-
-    /// create a new Trip, add it to the collection and saves it
-    ///
-    /// - Parameter name: name of Trip to be added
-    func saveNewTrip(withName name: String, andStartDate startDate: Date, andEndDate endDate: Date, andColor color: String) {
-        //first get context into application delegate
-        guard let context = self.getContext(errorMsg: "Save failed") else { return }
-        
-        //creates a Trips managedObject
-        let trip = Trip(context: context)
-        
-        //then modify the name
-        trip.name = name
-        trip.dateStart = startDate
-        trip.dateEnd = endDate
-        trip.color = color
-        do {
-            try context.save()
-            self.trips.append(trip)
-        } catch let error as NSError {
-            self.alert(error: error)
-            return
-        }
-    }
-    
-    //suppression d'un trip
-    /// deletes a trip fro mcollection thanks to its index
-    /// - Precondition: tripWithIndex must be into bound of colelction
-    /// - Parameter index: tripWithIndex description
-    /// - Returns: true if collection occurs, else false
-    func delete(tripWithIndex index: Int) -> Bool {
-        guard let context = self.getContext(errorMsg: "Could not delete Trip") else {return false}
-        let trip = self.trips[index]
-        context.delete(trip)
-        do{
-            try context.save()
-            self.trips.remove(at: index)
-            return true
-        }
-        catch let error as NSError {
-            self.alert(error: error)
-            return false
-        }
-    }
  
     // MARK: - TableView data source protocol -
     
-    //renvoie nombre de sections
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = self.tripsFetched.sections else {return 0}
-        return sections.count
-    }
-    
     // Return the number of rows for the table.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.trips.count
-        guard let section = self.tripsFetched.sections?[section] else {
-            fatalError("Unexpected section number")
-        }
-        return section.numberOfObjects
-    }
-    
-    //titre des sections
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let section = self.tripsFetched.sections?[section] else {
-            fatalError("Unexpected section number")
-        }
-        return section.name
+       return self.trips.count
     }
     
     // Provide a cell object for each row.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Fetch a cell of the appropriate type.
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath) as! TripTableViewCell
-        let trip = self.tripsFetched.object(at: indexPath)
-        self.tripPresenter.configure(theCell: cell, forTrip: trip)
-        //self.tripPresenter.configure(theCell: cell, forTrip: self.trips[indexPath.row])
-        cell.accessoryType = .detailButton
+        let trip = self.trips[indexPath.row]
         
-        /*cell.buttonPlaces(self) = { sender in
-            self.indexPathForShow = indexPath
-            performSegue(withIdentifier: "placesTripSegue", sender: self)
-        }*/
+        cell.nameTripLabel.text = trip.name
+        
+        //TO DO : collection view
+        cell.accessoryType = .detailButton
         
         return cell
     }
@@ -208,18 +90,6 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         return [delete,edit]
     }
     
-    //supprimée pour la fonction deleteHandlerAction à la place
-    //manage editing of a row
-    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //just manage deleting
-        if (editingStyle == UITableViewCell.EditingStyle.delete) {
-            self.tripsTable.beginUpdates()
-            if self.delete(tripWithIndex: indexPath.row){
-                self.tripsTable.deleteRows(at: [indexPath], with: .automatic)
-            }
-            self.tripsTable.endUpdates()
-        }
-    }*/
     
     // MARK: - TableView Delegate Protocol -
     
@@ -296,7 +166,7 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
             // if let indexPath = self.tripsTable.indexPathForSelectedRow
             if let indexPath = self.indexPathForShow {
                 let showTripViewController = segue.destination as! ShowTripViewController
-                showTripViewController.trip = self.tripsFetched.object(at: indexPath)
+                showTripViewController.trip = self.trips[indexPath.row]
                 self.tripsTable.deselectRow(at: indexPath, animated: true)
             }
         }
@@ -304,14 +174,14 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
         if segue.identifier == segueEditTripId {
             if let indexPath = self.indexPathForShow {
                 let editTripViewController = segue.destination as! EditTripViewController
-                editTripViewController.trip = self.tripsFetched.object(at: indexPath)
+                editTripViewController.trip = self.trips[indexPath.row]
             }
         }
         
         if segue.identifier == segueShowPlacesId {
             if let indexPath = self.indexPathForShow {
                 let placeViewController = segue.destination as! PlaceViewController
-                placeViewController.trip = self.tripsFetched.object(at: indexPath)
+                placeViewController.trip = self.trips[indexPath.row]
                 self.tripsTable.deselectRow(at: indexPath, animated: true)
             }
         }
@@ -319,22 +189,17 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     
     //Gets data from CreateTripViewController inputs when hits Save
     @IBAction func unwindToTripsAfterSavingNewTrip(segue: UIStoryboardSegue) {
-        
-        let createTripController = segue.source as! CreateTripViewController
-        let embedTripController = createTripController.children[0] as! EmbedTripViewController
-        
-        let name = embedTripController.tripName.text ?? ""
-        let startDate = embedTripController.tripStartDateReal ?? Date.currentDate()
-        let endDate = embedTripController.tripEndDateReal ?? Date.currentDate()
-        let color = embedTripController.tripColor.text ?? ""
-        
-        
-        self.saveNewTrip(withName: name, andStartDate: startDate, andEndDate: endDate, andColor: color)
+        self.trips = Trip.getAll()!
         self.tripsTable.reloadData()
+        
     }
     
     @IBAction func unwindToTripsAfterEditingTrip(segue: UIStoryboardSegue) {
-        self.save()
+        if let controller = segue.source as? EditTripViewController {
+            if let trip = controller.trip {
+                trip.save()
+            }
+        }
         self.tripsTable.reloadData()
     }
     
@@ -374,4 +239,3 @@ class TripViewController: UIViewController,UITableViewDataSource, UITableViewDel
     }
 
 }
-

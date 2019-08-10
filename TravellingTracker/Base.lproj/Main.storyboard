@@ -150,12 +150,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6v-Tg-AxF">
-                                <rect key="frame" x="186.33333333333334" y="515.33333333333337" width="41.333333333333343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EndDate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idU-hB-f3r">
                                 <rect key="frame" x="174.33333333333334" y="454.33333333333331" width="65.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -208,16 +202,13 @@
                             <constraint firstItem="A3N-td-JsH" firstAttribute="centerX" secondItem="UX2-QV-udw" secondAttribute="centerX" id="5Au-gB-zi5"/>
                             <constraint firstItem="DR4-eL-YcE" firstAttribute="centerX" secondItem="UX2-QV-udw" secondAttribute="centerX" id="6DB-nB-Whc"/>
                             <constraint firstItem="A3N-td-JsH" firstAttribute="top" secondItem="Djj-Y1-gbC" secondAttribute="top" constant="245" id="8SM-WB-wac"/>
-                            <constraint firstItem="a6v-Tg-AxF" firstAttribute="centerX" secondItem="UX2-QV-udw" secondAttribute="centerX" id="OPQ-3z-eCS"/>
                             <constraint firstItem="DR4-eL-YcE" firstAttribute="top" secondItem="A3N-td-JsH" secondAttribute="bottom" constant="40" id="U9s-Ii-TdF"/>
                             <constraint firstItem="idU-hB-f3r" firstAttribute="top" secondItem="DR4-eL-YcE" secondAttribute="bottom" constant="40" id="X2k-3p-lts"/>
-                            <constraint firstItem="a6v-Tg-AxF" firstAttribute="top" secondItem="idU-hB-f3r" secondAttribute="bottom" constant="40" id="gAl-wa-bbd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Djj-Y1-gbC"/>
                     </view>
                     <connections>
                         <outlet property="colorCodeTrip" destination="nnA-0X-ARd" id="F8u-VM-OZq"/>
-                        <outlet property="colorTrip" destination="a6v-Tg-AxF" id="nvy-AK-SvO"/>
                         <outlet property="dateEndTrip" destination="idU-hB-f3r" id="TsX-Ql-llA"/>
                         <outlet property="dateStartTrip" destination="DR4-eL-YcE" id="GJF-9q-N9d"/>
                         <outlet property="nameTrip" destination="A3N-td-JsH" id="P9Q-qr-CGX"/>
@@ -339,6 +330,7 @@
                                         <color key="tintColor" red="0.014614016473426715" green="0.6606217616580311" blue="0.0019080899464107646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="saveAction:" destination="8qR-LQ-F6J" id="UHE-Kx-art"/>
+                                            <segue destination="a8c-dY-rfM" kind="unwind" unwindAction="unwindToTripsAfterSavingNewTripWithSegue:" id="6BY-LF-3mf"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="j8N-0b-GmI"/>
@@ -362,6 +354,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="caF-UP-AWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="a8c-dY-rfM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1067" y="917"/>
         </scene>
@@ -499,7 +492,7 @@
             <objects>
                 <viewController id="PBx-nE-WJe" customClass="EmbedTripViewController" customModule="TravellingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OzV-Aa-NO7">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="231"/>
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="333"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pp4-P2-1QY">
@@ -575,6 +568,6 @@
         <image name="pin" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="drq-cE-fUE"/>
+        <segue reference="OH2-eE-ljH"/>
     </inferredMetricsTieBreakers>
 </document>

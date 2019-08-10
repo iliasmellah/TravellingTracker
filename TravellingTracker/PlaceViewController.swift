@@ -12,7 +12,7 @@ class PlaceViewController: UIViewController {
 
     @IBOutlet weak var nameTripLabel: UILabel!
     
-    var trip : Trip? = nil
+    var trip : TripModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class PlaceViewController: UIViewController {
             if atrip.name == "" {
                 self.nameTripLabel.text = " - "
             } else {
-                self.nameTripLabel.text = atrip.name?.capitalized
+                self.nameTripLabel.text = atrip.name.capitalized
             }
         }
     }

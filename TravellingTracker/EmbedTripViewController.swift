@@ -16,10 +16,8 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tripEndDate: UITextField!
     @IBOutlet weak var tripColor: UITextField!
     
-    var tripStartDateReal: Date!
-    var tripEndDateReal: Date!
     
-    var trip : Trip? = nil
+    var trip : TripModel? = nil
     
     private var startDatePicker: UIDatePicker?
     private var endDatePicker: UIDatePicker?
@@ -30,9 +28,9 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
         //Si on a un voyage, mode edition. Sinon mode ajout
         if let trip = self.trip {
             self.tripName.text = trip.name
-            self.tripStartDate.text = Date.toString(date: trip.dateStart!)
-            self.tripEndDate.text = Date.toString(date: trip.dateEnd!)
-            self.tripColor.text = trip.color
+            self.tripStartDate.text = Date.toString(date: trip.dateStart)
+            self.tripEndDate.text = Date.toString(date: trip.dateEnd)
+            self.tripColor.text = trip.color.toHexString()
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EmbedTripViewController.viewTapped(gestureRecognizer:)))
@@ -60,8 +58,6 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
     
     @objc func dateChanged(datePicker: UIDatePicker) {
         //Gets data with Date format
-        tripStartDateReal = Date.toDate(dateString: tripStartDate.text!)
-        tripEndDateReal = Date.toDate(dateString: tripEndDate.text!)
         
         tripStartDate.text = Date.toString(date: startDatePicker!.date)
         tripEndDate.text = Date.toString(date: endDatePicker!.date)

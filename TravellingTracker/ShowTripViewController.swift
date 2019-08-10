@@ -12,12 +12,10 @@ class ShowTripViewController: UIViewController {
 
     @IBOutlet weak var nameTrip: UILabel!
     @IBOutlet weak var dateStartTrip: UILabel!
-    @IBOutlet weak var dateEndTrip: UILabel!
-    @IBOutlet weak var colorTrip: UILabel!
-    
+    @IBOutlet weak var dateEndTrip: UILabel!    
     @IBOutlet weak var colorCodeTrip: UILabel!
     
-    var trip : Trip? = nil
+    var trip : TripModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,18 +25,11 @@ class ShowTripViewController: UIViewController {
             if atrip.name == "" {
                 self.nameTrip.text = " - "
             } else {
-                self.nameTrip.text = atrip.name?.capitalized
+                self.nameTrip.text = atrip.name.capitalized
             }
-            self.dateStartTrip.text = Date.toString(date: atrip.dateStart ?? Date.currentDate())
-            self.dateEndTrip.text = Date.toString(date: atrip.dateEnd ?? Date.currentDate())
-            
-            if atrip.color == "" {
-                self.colorTrip.text = " Grey "
-            } else {
-                self.colorTrip.text = atrip.color?.capitalized
-            }
-            
-            self.colorCodeTrip.textColor = atrip.color!.colorFromHex()
+            self.dateStartTrip.text = Date.toString(date: atrip.dateStart)
+            self.dateEndTrip.text = Date.toString(date: atrip.dateEnd)
+            self.colorCodeTrip.textColor = atrip.color
         }
     }
     

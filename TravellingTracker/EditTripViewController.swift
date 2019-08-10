@@ -10,7 +10,8 @@ import UIKit
 
 class EditTripViewController: UIViewController {
     
-    var trip : Trip? = nil
+    var trip : TripModel? = nil
+    var DEFAULT_COLOR = "#000000"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +38,15 @@ class EditTripViewController: UIViewController {
     
     @IBAction func saveAction(sender: UIBarButtonItem) {
         guard let trip = self.trip else {return}
-        let editTripController = self.children[0] as! EmbedTripViewController
+        let editTripController = self.children.first as! EmbedTripViewController
         guard (editTripController.tripName.text != "" || editTripController.tripColor.text != "") else {
             alert(WithTitle: "I need at least the name and color of your trip", andMessage: "")
             return
         }
-        trip.name = editTripController.tripName.text
-        trip.color = editTripController.tripColor.text
-        trip.dateStart = editTripController.tripStartDateReal
-        trip.dateEnd = editTripController.tripEndDateReal
+        trip.name = editTripController.tripName.text ?? ""
+        trip.color = editTripController.tripColor.text?.colorFromHex() ?? DEFAULT_COLOR.colorFromHex()
+        trip.dateStart = Date.toDate(dateString: editTripController.tripStartDate.text!)
+        trip.dateEnd = Date.toDate(dateString: editTripController.tripEndDate.text!)
         self.performSegue(withIdentifier: self.segueUnwindId, sender: self)
     }
     

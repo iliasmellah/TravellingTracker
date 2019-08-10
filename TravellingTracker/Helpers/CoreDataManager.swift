@@ -29,4 +29,8 @@ class CoreDataManager: NSObject {
             return error
         }
     }
+    
+    class func delete(object: NSManagedObject) throws {
+        CoreDataManager.context.delete(object)
+    }
 }
