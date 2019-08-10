@@ -30,8 +30,6 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    
-    
     // MARK: - Navigation -
     
     let segueEmbedId = "embedFromNewTripSegue"
@@ -42,7 +40,6 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
             embedTripController.trip = nil
         }
         
-        print ("Avant le guard")
         guard let embedTripViewController = self.children.first as? EmbedTripViewController else {return}
         
         let name: String = embedTripViewController.tripName.text ?? ""

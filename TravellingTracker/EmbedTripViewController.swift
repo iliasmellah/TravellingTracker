@@ -12,9 +12,9 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var tripName: UITextField!
+    @IBOutlet weak var tripColor: UITextField!
     @IBOutlet weak var tripStartDate: UITextField!
     @IBOutlet weak var tripEndDate: UITextField!
-    @IBOutlet weak var tripColor: UITextField!
     
     
     var trip : TripModel? = nil

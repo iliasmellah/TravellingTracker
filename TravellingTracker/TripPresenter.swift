@@ -75,7 +75,7 @@ class TripPresenter: NSObject {
     func configure(theCell : TripTableViewCell?, forTrip : Trip?) {
         self.trip = forTrip
         guard let cell = theCell else { return }
-        cell.nameTripLabel.text = self.name
+        cell.tripName.text = self.name
         //cell.colorTripLabel.text = self.color
     }
 }

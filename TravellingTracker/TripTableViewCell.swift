@@ -8,16 +8,12 @@
 
 import UIKit
 
-protocol TripTableViewCellDelegate {
-    func didTapSeePlaces(trip: Trip)
-}
-
-class TripTableViewCell: UITableViewCell {
+class TripTableViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var nameTripLabel: UILabel!
+    @IBOutlet weak var tripName: UILabel!
+    @IBOutlet weak var tripColor: UILabel!
+    @IBOutlet weak var tripBeginDate: UILabel!
+    @IBOutlet weak var tripEndDate: UILabel!
     
-    @IBAction func buttonPlaces(_ sender: Any) {
-        
-    }
-
+    var trip : TripModel? = nil
 }

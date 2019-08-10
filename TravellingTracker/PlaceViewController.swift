@@ -9,21 +9,24 @@
 import UIKit
 
 class PlaceViewController: UIViewController {
-
-    @IBOutlet weak var nameTripLabel: UILabel!
+    
+    @IBOutlet weak var placesCollection: UICollectionView!
     
     var trip : TripModel? = nil
     
+    @IBOutlet weak var nameTrip: UILabel!
+    @IBOutlet weak var colorTrip: UILabel!
+    @IBOutlet weak var dateBeginTrip: UILabel!
+    @IBOutlet weak var dateEndTrip: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let atrip = self.trip {
-            if atrip.name == "" {
-                self.nameTripLabel.text = " - "
-            } else {
-                self.nameTripLabel.text = atrip.name.capitalized
-            }
-        }
+        print("\nArrivé dans le placeViewController\n")
+        self.nameTrip.text = trip?.name
+        self.colorTrip.textColor = trip?.color
+        self.dateBeginTrip.text = Date.toString(date: trip!.dateStart)
+        self.dateEndTrip.text = Date.toString(date: trip!.dateEnd)
     }
     
 
