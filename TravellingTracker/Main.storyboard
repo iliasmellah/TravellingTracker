@@ -408,34 +408,48 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPe-5i-ycG" userLabel="edit trip">
-                                        <rect key="frame" x="340" y="10" width="25" height="25"/>
+                                        <rect key="frame" x="300" y="10" width="25" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="dLF-cV-ucT"/>
-                                            <constraint firstAttribute="width" constant="25" id="g5d-dR-faq"/>
+                                            <constraint firstAttribute="height" constant="25" id="NXL-Uz-bdE"/>
+                                            <constraint firstAttribute="width" constant="25" id="wDU-sD-1Ay"/>
                                         </constraints>
                                         <state key="normal" title="EDIT" image="edit-button"/>
                                         <connections>
                                             <segue destination="0AE-WB-r8R" kind="presentation" identifier="editTrip" id="oZ6-VS-NAF"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="New-8q-CWZ">
+                                        <rect key="frame" x="340" y="10" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="vNr-hf-DD4"/>
+                                            <constraint firstAttribute="height" constant="25" id="zBE-Ox-FJV"/>
+                                        </constraints>
+                                        <state key="normal" title="delete trip" image="delete-button"/>
+                                        <connections>
+                                            <action selector="deleteTripButton:" destination="ZNR-sj-5cg" eventType="touchUpInside" id="o4F-yp-OZ0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="dT3-BU-srX" secondAttribute="bottom" constant="17" id="1XW-Sq-IKD"/>
+                                    <constraint firstItem="New-8q-CWZ" firstAttribute="leading" secondItem="fPe-5i-ycG" secondAttribute="trailing" constant="15" id="1h0-6h-4Am"/>
                                     <constraint firstItem="M7i-a6-vjb" firstAttribute="top" secondItem="llr-Fd-dBG" secondAttribute="top" constant="11" id="1mJ-P6-y5z"/>
                                     <constraint firstItem="QW2-SA-PmH" firstAttribute="leading" secondItem="nG1-WS-fXv" secondAttribute="trailing" constant="5" id="4Bn-jW-j9A"/>
                                     <constraint firstItem="0hR-WO-4nU" firstAttribute="leading" secondItem="dT3-BU-srX" secondAttribute="trailing" constant="5" id="8GH-XC-9XC"/>
                                     <constraint firstItem="M7i-a6-vjb" firstAttribute="leading" secondItem="YUo-mT-edE" secondAttribute="trailing" constant="4" id="96w-da-AN0"/>
                                     <constraint firstAttribute="bottom" secondItem="wfF-9m-Khv" secondAttribute="bottom" constant="4" id="ArL-Lc-pd0"/>
                                     <constraint firstItem="nG1-WS-fXv" firstAttribute="top" secondItem="M7i-a6-vjb" secondAttribute="bottom" constant="13" id="DVM-qY-7Q8"/>
+                                    <constraint firstItem="fPe-5i-ycG" firstAttribute="top" secondItem="llr-Fd-dBG" secondAttribute="top" constant="10" id="GoH-dM-PZB"/>
                                     <constraint firstItem="nG1-WS-fXv" firstAttribute="leading" secondItem="llr-Fd-dBG" secondAttribute="leading" constant="27" id="GoI-Dd-0Yi"/>
                                     <constraint firstItem="QW2-SA-PmH" firstAttribute="top" secondItem="M7i-a6-vjb" secondAttribute="bottom" constant="11" id="ICN-1Z-IXj"/>
                                     <constraint firstItem="0hR-WO-4nU" firstAttribute="top" secondItem="QW2-SA-PmH" secondAttribute="bottom" constant="13" id="RdI-3h-cNP"/>
+                                    <constraint firstAttribute="trailing" secondItem="New-8q-CWZ" secondAttribute="trailing" constant="10" id="XdB-xL-RBF"/>
                                     <constraint firstItem="YUo-mT-edE" firstAttribute="leading" secondItem="llr-Fd-dBG" secondAttribute="leading" constant="5" id="aAq-lC-CDP"/>
                                     <constraint firstItem="dT3-BU-srX" firstAttribute="top" secondItem="nG1-WS-fXv" secondAttribute="bottom" constant="17" id="aa3-SB-V30"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="111" id="adc-8U-xRY"/>
-                                    <constraint firstAttribute="trailing" secondItem="fPe-5i-ycG" secondAttribute="trailing" constant="10" id="eO0-cT-NXD"/>
                                     <constraint firstAttribute="height" constant="111" id="hIF-HI-mSU"/>
+                                    <constraint firstItem="New-8q-CWZ" firstAttribute="top" secondItem="llr-Fd-dBG" secondAttribute="top" constant="10" id="j6f-mX-evL"/>
                                     <constraint firstAttribute="trailing" secondItem="wfF-9m-Khv" secondAttribute="trailing" constant="9" id="jq7-NS-zs0"/>
                                     <constraint firstItem="QW2-SA-PmH" firstAttribute="leading" secondItem="nG1-WS-fXv" secondAttribute="trailing" constant="5" id="nG0-os-Fva"/>
                                     <constraint firstItem="QW2-SA-PmH" firstAttribute="top" secondItem="M7i-a6-vjb" secondAttribute="bottom" constant="11" id="rdw-ap-Ylx"/>
@@ -443,7 +457,6 @@
                                     <constraint firstItem="dT3-BU-srX" firstAttribute="leading" secondItem="llr-Fd-dBG" secondAttribute="leading" constant="27" id="sPR-1g-1Ge"/>
                                     <constraint firstItem="0hR-WO-4nU" firstAttribute="top" secondItem="QW2-SA-PmH" secondAttribute="bottom" constant="13" id="suw-KJ-5mE"/>
                                     <constraint firstItem="dT3-BU-srX" firstAttribute="top" secondItem="nG1-WS-fXv" secondAttribute="bottom" constant="17" id="t13-Gz-7cb"/>
-                                    <constraint firstItem="fPe-5i-ycG" firstAttribute="top" secondItem="llr-Fd-dBG" secondAttribute="top" constant="10" id="xp1-O7-Xp0"/>
                                     <constraint firstItem="YUo-mT-edE" firstAttribute="top" secondItem="llr-Fd-dBG" secondAttribute="top" constant="5" id="yu5-el-bds"/>
                                 </constraints>
                             </view>
@@ -470,9 +483,11 @@
                         <outlet property="dateEndTrip" destination="0hR-WO-4nU" id="7bm-4B-Emt"/>
                         <outlet property="nameTrip" destination="M7i-a6-vjb" id="4aK-oz-xrK"/>
                         <outlet property="placesCollection" destination="FLa-GQ-oDt" id="vah-W4-jnm"/>
+                        <segue destination="h2p-x6-zZg" kind="unwind" identifier="unwindAfterDeleteTrip" unwindAction="unwindToTripsAfterDeletingTripWithSegue:" id="sH4-mZ-Wn3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="za7-V3-Hnv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="h2p-x6-zZg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1960.8" y="137.18140929535232"/>
         </scene>
@@ -693,6 +708,7 @@
     </scenes>
     <resources>
         <image name="calendar-interface-symbol-tool" width="32" height="32"/>
+        <image name="delete-button" width="64" height="64"/>
         <image name="edit-button" width="32" height="32"/>
         <image name="maps-and-flags" width="32" height="32"/>
         <image name="placeholder" width="1000" height="675"/>

@@ -207,6 +207,11 @@ class TripViewController: UIViewController,UICollectionViewDataSource, UICollect
         self.tripsCollection.reloadData()
     }
     
+    @IBAction func unwindToTripsAfterDeletingTrip(segue: UIStoryboardSegue) {
+        self.trips = Trip.getAll()!
+        self.tripsCollection.reloadData()
+    }
+    
     
     // MARK: - helper methods -
     /// get context of core data initialized in application delegate
