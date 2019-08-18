@@ -17,37 +17,38 @@ class EditTripViewController: UIViewController {
         super.viewDidLoad()
 
         guard (self.trip != nil) else {return}
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveAction))
     }
-    
-
     
     // MARK: - Navigation
      
     let segueEmbedId = "embedFromEditTripSegue"
-    let segueUnwindId = "unwindToTripViewControllerFromEditing"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.segueEmbedId {
             let embedTripController = segue.destination as! EmbedTripViewController
             embedTripController.trip = self.trip
         }
-    }
-    
-    // MARK: - Save -
-    
-    @IBAction func saveAction(sender: UIBarButtonItem) {
+        
         guard let trip = self.trip else {return}
-        let editTripController = self.children.first as! EmbedTripViewController
-        guard (editTripController.tripName.text != "" || editTripController.tripColor.text != "") else {
+        guard let embedTripViewController = self.children.first as? EmbedTripViewController else {return}
+        
+        guard (embedTripViewController.tripName.text != "" || embedTripViewController.tripColor.text != "") else {
             alert(WithTitle: "I need at least the name and color of your trip", andMessage: "")
             return
         }
-        trip.name = editTripController.tripName.text ?? ""
-        trip.color = editTripController.tripColor.text?.colorFromHex() ?? DEFAULT_COLOR.colorFromHex()
-        trip.dateStart = Date.toDate(dateString: editTripController.tripStartDate.text!)
-        trip.dateEnd = Date.toDate(dateString: editTripController.tripEndDate.text!)
-        self.performSegue(withIdentifier: self.segueUnwindId, sender: self)
+        trip.name = embedTripViewController.tripName.text ?? ""
+        trip.color = embedTripViewController.tripColor.text?.colorFromHex() ?? DEFAULT_COLOR.colorFromHex()
+        trip.dateStart = Date.toDate(dateString: embedTripViewController.tripStartDate.text!)
+        trip.dateEnd = Date.toDate(dateString: embedTripViewController.tripEndDate.text!)
+        
+        trip.save()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Cancel and Save -
+    
+    @IBAction func cancelAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     

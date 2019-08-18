@@ -186,7 +186,6 @@ class TripViewController: UIViewController,UICollectionViewDataSource, UICollect
         
         if let controller = segue.destination as? PlaceViewController {
             if let cell = sender as? TripTableViewCell {
-                print("\nXXXXXX\n")
                 controller.trip = cell.trip
             }
         }

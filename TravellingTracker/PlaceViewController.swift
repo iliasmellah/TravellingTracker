@@ -28,7 +28,14 @@ class PlaceViewController: UIViewController {
         self.dateBeginTrip.text = Date.toString(date: trip!.dateStart)
         self.dateEndTrip.text = Date.toString(date: trip!.dateEnd)
     }
+
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editTrip" {
+            let editTripViewController = segue.destination as! EditTripViewController
+            editTripViewController.trip = self.trip
+        }
+    }
 
     /*
     // MARK: - Navigation

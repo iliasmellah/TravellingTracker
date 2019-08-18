@@ -10,12 +10,10 @@ import UIKit
 
 class EmbedTripViewController: UIViewController, UITextFieldDelegate {
 
-    
     @IBOutlet weak var tripName: UITextField!
     @IBOutlet weak var tripColor: UITextField!
     @IBOutlet weak var tripStartDate: UITextField!
     @IBOutlet weak var tripEndDate: UITextField!
-    
     
     var trip : TripModel? = nil
     
@@ -24,9 +22,14 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let textFieldColor = "#a7c3fc".colorFromHex()
+        tripName.layer.borderColor = textFieldColor.cgColor
+        tripName.layer.borderWidth = 1.0
+        
         
         //Si on a un voyage, mode edition. Sinon mode ajout
         if let trip = self.trip {
+            print("\n ARRIVE DANS LE EMBED : ", trip.name, "\n")
             self.tripName.text = trip.name
             self.tripStartDate.text = Date.toString(date: trip.dateStart)
             self.tripEndDate.text = Date.toString(date: trip.dateEnd)

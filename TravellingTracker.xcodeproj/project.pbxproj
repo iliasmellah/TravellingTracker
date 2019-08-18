@@ -110,6 +110,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+			isa = PBXGroup;
+			children = (
+				63F9A79322D56F3900C95293 /* CreateTripViewController.swift */,
+				63964D9122D2D7700039B4CF /* TripViewController.swift */,
+				639455E422D443BF006AFA20 /* ShowTripViewController.swift */,
+				638920DD22D7055000FB0702 /* EmbedTripViewController.swift */,
+				63DFF76322DC2EC700626050 /* EditTripViewController.swift */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
 		639455E622D45B3F006AFA20 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,8 +157,6 @@
 			children = (
 				639455E622D45B3F006AFA20 /* Helpers */,
 				63964D8F22D2D7700039B4CF /* AppDelegate.swift */,
-				63964D9122D2D7700039B4CF /* TripViewController.swift */,
-				639455E422D443BF006AFA20 /* ShowTripViewController.swift */,
 				631509CD22FF18F900A4FC26 /* Main.storyboard */,
 				639F167122E40A2700BFB503 /* PhotoMapViewController.swift */,
 				63C06D3622FEAAD600BEF842 /* DAO */,
@@ -155,16 +164,13 @@
 				63C06D3722FEAAE000BEF842 /* Models */,
 				6354A1CA22F126E000FECD6E /* PlaceViewController.swift */,
 				639B31A322EFE54E00F615BA /* Map2ViewController.swift */,
-				638920DD22D7055000FB0702 /* EmbedTripViewController.swift */,
 				63C06D3822FEAB0000BEF842 /* Controllers */,
 				63584E6622F6BEC50033C216 /* PickOnMapViewController.swift */,
-				63DFF76322DC2EC700626050 /* EditTripViewController.swift */,
 				63964D9922D2D7720039B4CF /* Assets.xcassets */,
 				63964D9B22D2D7720039B4CF /* LaunchScreen.storyboard */,
 				63964D9E22D2D7720039B4CF /* Info.plist */,
 				63964D9622D2D7700039B4CF /* TravellingTracker.xcdatamodeld */,
 				63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */,
-				63F9A79322D56F3900C95293 /* CreateTripViewController.swift */,
 				638920DB22D6DB6C00FB0702 /* TripPresenter.swift */,
 			);
 			path = TravellingTracker;
@@ -207,6 +213,7 @@
 		63C06D3822FEAB0000BEF842 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				637A7BF7230940BE009C8103 /* Trip */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
