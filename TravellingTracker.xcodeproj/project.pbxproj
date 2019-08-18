@@ -110,6 +110,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		637A7BF7230940BE009C8103 /* Trip */ = {
 			isa = PBXGroup;
 			children = (
 				63F9A79322D56F3900C95293 /* CreateTripViewController.swift */,
