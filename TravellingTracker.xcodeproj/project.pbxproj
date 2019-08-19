@@ -11,6 +11,9 @@
 		6354A1CB22F126E000FECD6E /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354A1CA22F126E000FECD6E /* PlaceViewController.swift */; };
 		63584E6722F6BEC60033C216 /* PickOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63584E6622F6BEC50033C216 /* PickOnMapViewController.swift */; };
 		635D38BA22E36A47001DCD80 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D38B922E36A47001DCD80 /* ColorExtension.swift */; };
+		6386C6E023099FE60091F9B2 /* PlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386C6DF23099FE60091F9B2 /* PlaceCollectionViewCell.swift */; };
+		6386C6E22309A1BD0091F9B2 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386C6E12309A1BD0091F9B2 /* PlaceModel.swift */; };
+		6386C6E42309A9690091F9B2 /* PlaceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386C6E32309A9690091F9B2 /* PlaceDAO.swift */; };
 		638920DC22D6DB6C00FB0702 /* TripPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638920DB22D6DB6C00FB0702 /* TripPresenter.swift */; };
 		638920DE22D7055000FB0702 /* EmbedTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638920DD22D7055000FB0702 /* EmbedTripViewController.swift */; };
 		639455E522D443BF006AFA20 /* ShowTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639455E422D443BF006AFA20 /* ShowTripViewController.swift */; };
@@ -22,7 +25,7 @@
 		63964D9D22D2D7720039B4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63964D9B22D2D7720039B4CF /* LaunchScreen.storyboard */; };
 		63964DA822D2D7720039B4CF /* TravellingTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DA722D2D7720039B4CF /* TravellingTrackerTests.swift */; };
 		63964DB322D2D7720039B4CF /* TravellingTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */; };
-		63964DC222D2EEE40039B4CF /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */; };
+		63964DC222D2EEE40039B4CF /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DC122D2EEE40039B4CF /* TripCollectionViewCell.swift */; };
 		639B31A422EFE54E00F615BA /* Map2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B31A322EFE54E00F615BA /* Map2ViewController.swift */; };
 		639B31A622EFEE0E00F615BA /* Photo3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B31A522EFEE0E00F615BA /* Photo3ViewController.swift */; };
 		639F167222E40A2700BFB503 /* PhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F167122E40A2700BFB503 /* PhotoMapViewController.swift */; };
@@ -31,6 +34,8 @@
 		63DFF76422DC2EC700626050 /* EditTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76322DC2EC700626050 /* EditTripViewController.swift */; };
 		63DFF76622DC4F9600626050 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76522DC4F9600626050 /* CoreDataManager.swift */; };
 		63DFF76822DC527500626050 /* DialogBoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76722DC527500626050 /* DialogBoxHelper.swift */; };
+		63E7D6AF2309CB650061E712 /* CreatePlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D6AE2309CB650061E712 /* CreatePlaceViewController.swift */; };
+		63E7D6B12309CB840061E712 /* EmbedPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D6B02309CB840061E712 /* EmbedPlaceViewController.swift */; };
 		63F9A79422D56F3900C95293 /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F9A79322D56F3900C95293 /* CreateTripViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +61,9 @@
 		6354A1CA22F126E000FECD6E /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		63584E6622F6BEC50033C216 /* PickOnMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickOnMapViewController.swift; sourceTree = "<group>"; };
 		635D38B922E36A47001DCD80 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		6386C6DF23099FE60091F9B2 /* PlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCollectionViewCell.swift; sourceTree = "<group>"; };
+		6386C6E12309A1BD0091F9B2 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		6386C6E32309A9690091F9B2 /* PlaceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDAO.swift; sourceTree = "<group>"; };
 		638920DB22D6DB6C00FB0702 /* TripPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPresenter.swift; sourceTree = "<group>"; };
 		638920DD22D7055000FB0702 /* EmbedTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedTripViewController.swift; sourceTree = "<group>"; };
 		639455E422D443BF006AFA20 /* ShowTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTripViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +81,7 @@
 		63964DAE22D2D7720039B4CF /* TravellingTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravellingTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravellingTrackerUITests.swift; sourceTree = "<group>"; };
 		63964DB422D2D7720039B4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
+		63964DC122D2EEE40039B4CF /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
 		639B31A322EFE54E00F615BA /* Map2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map2ViewController.swift; sourceTree = "<group>"; };
 		639B31A522EFEE0E00F615BA /* Photo3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo3ViewController.swift; sourceTree = "<group>"; };
 		639F167122E40A2700BFB503 /* PhotoMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMapViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +90,8 @@
 		63DFF76322DC2EC700626050 /* EditTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripViewController.swift; sourceTree = "<group>"; };
 		63DFF76522DC4F9600626050 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		63DFF76722DC527500626050 /* DialogBoxHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxHelper.swift; sourceTree = "<group>"; };
+		63E7D6AE2309CB650061E712 /* CreatePlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlaceViewController.swift; sourceTree = "<group>"; };
+		63E7D6B02309CB840061E712 /* EmbedPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedPlaceViewController.swift; sourceTree = "<group>"; };
 		63F9A79322D56F3900C95293 /* CreateTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +132,23 @@
 			path = Trip;
 			sourceTree = "<group>";
 		};
+		6386C6DD23099F5D0091F9B2 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				638920DB22D6DB6C00FB0702 /* TripPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		6386C6DE23099F940091F9B2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				63964DC122D2EEE40039B4CF /* TripCollectionViewCell.swift */,
+				6386C6DF23099FE60091F9B2 /* PlaceCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		639455E622D45B3F006AFA20 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,23 +183,21 @@
 		63964D8E22D2D7700039B4CF /* TravellingTracker */ = {
 			isa = PBXGroup;
 			children = (
-				639455E622D45B3F006AFA20 /* Helpers */,
 				63964D8F22D2D7700039B4CF /* AppDelegate.swift */,
-				631509CD22FF18F900A4FC26 /* Main.storyboard */,
-				639F167122E40A2700BFB503 /* PhotoMapViewController.swift */,
 				63C06D3622FEAAD600BEF842 /* DAO */,
-				639B31A522EFEE0E00F615BA /* Photo3ViewController.swift */,
+				639455E622D45B3F006AFA20 /* Helpers */,
+				6386C6DD23099F5D0091F9B2 /* Presenters */,
 				63C06D3722FEAAE000BEF842 /* Models */,
-				6354A1CA22F126E000FECD6E /* PlaceViewController.swift */,
-				639B31A322EFE54E00F615BA /* Map2ViewController.swift */,
 				63C06D3822FEAB0000BEF842 /* Controllers */,
-				63584E6622F6BEC50033C216 /* PickOnMapViewController.swift */,
 				63964D9922D2D7720039B4CF /* Assets.xcassets */,
+				631509CD22FF18F900A4FC26 /* Main.storyboard */,
 				63964D9B22D2D7720039B4CF /* LaunchScreen.storyboard */,
 				63964D9E22D2D7720039B4CF /* Info.plist */,
 				63964D9622D2D7700039B4CF /* TravellingTracker.xcdatamodeld */,
-				63964DC122D2EEE40039B4CF /* TripTableViewCell.swift */,
-				638920DB22D6DB6C00FB0702 /* TripPresenter.swift */,
+				639F167122E40A2700BFB503 /* PhotoMapViewController.swift */,
+				639B31A322EFE54E00F615BA /* Map2ViewController.swift */,
+				639B31A522EFEE0E00F615BA /* Photo3ViewController.swift */,
+				63584E6622F6BEC50033C216 /* PickOnMapViewController.swift */,
 			);
 			path = TravellingTracker;
 			sourceTree = "<group>";
@@ -199,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				63C06D3922FEAB2900BEF842 /* TripDAO.swift */,
+				6386C6E32309A9690091F9B2 /* PlaceDAO.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -207,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				63C06D3B22FEAFD800BEF842 /* TripModel.swift */,
+				6386C6E12309A1BD0091F9B2 /* PlaceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,9 +241,21 @@
 		63C06D3822FEAB0000BEF842 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6386C6DE23099F940091F9B2 /* Cells */,
+				63DAF8E123099CC700B925C3 /* Place */,
 				637A7BF7230940BE009C8103 /* Trip */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		63DAF8E123099CC700B925C3 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				6354A1CA22F126E000FECD6E /* PlaceViewController.swift */,
+				63E7D6AE2309CB650061E712 /* CreatePlaceViewController.swift */,
+				63E7D6B02309CB840061E712 /* EmbedPlaceViewController.swift */,
+			);
+			path = Place;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,21 +389,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E7D6B12309CB840061E712 /* EmbedPlaceViewController.swift in Sources */,
 				639B31A422EFE54E00F615BA /* Map2ViewController.swift in Sources */,
 				639B31A622EFEE0E00F615BA /* Photo3ViewController.swift in Sources */,
 				6354A1CB22F126E000FECD6E /* PlaceViewController.swift in Sources */,
 				639F167222E40A2700BFB503 /* PhotoMapViewController.swift in Sources */,
-				63964DC222D2EEE40039B4CF /* TripTableViewCell.swift in Sources */,
+				63964DC222D2EEE40039B4CF /* TripCollectionViewCell.swift in Sources */,
 				63F9A79422D56F3900C95293 /* CreateTripViewController.swift in Sources */,
 				638920DE22D7055000FB0702 /* EmbedTripViewController.swift in Sources */,
+				6386C6E22309A1BD0091F9B2 /* PlaceModel.swift in Sources */,
 				639455E822D45BBE006AFA20 /* DateExtension.swift in Sources */,
 				63964D9222D2D7700039B4CF /* TripViewController.swift in Sources */,
+				6386C6E42309A9690091F9B2 /* PlaceDAO.swift in Sources */,
 				63DFF76822DC527500626050 /* DialogBoxHelper.swift in Sources */,
 				63DFF76422DC2EC700626050 /* EditTripViewController.swift in Sources */,
 				63964D9022D2D7700039B4CF /* AppDelegate.swift in Sources */,
 				638920DC22D6DB6C00FB0702 /* TripPresenter.swift in Sources */,
 				63584E6722F6BEC60033C216 /* PickOnMapViewController.swift in Sources */,
+				6386C6E023099FE60091F9B2 /* PlaceCollectionViewCell.swift in Sources */,
 				639455E522D443BF006AFA20 /* ShowTripViewController.swift in Sources */,
+				63E7D6AF2309CB650061E712 /* CreatePlaceViewController.swift in Sources */,
 				63964D9822D2D7700039B4CF /* TravellingTracker.xcdatamodeld in Sources */,
 				63DFF76622DC4F9600626050 /* CoreDataManager.swift in Sources */,
 				63C06D3A22FEAB2900BEF842 /* TripDAO.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import UIKit
 
 class TripModel {
@@ -33,6 +34,16 @@ class TripModel {
         set { self.tripCD.dateEnd = newValue }
     }
     
+    var places: [Place] {
+        get{
+            if let pls = self.tripCD.places?.allObjects as? [Place] {
+                return pls
+            } else {
+                return []
+            }
+        }
+    }
+    
     func delete() {
         Trip.delete(trip: self.tripCD)
     }
@@ -42,6 +53,14 @@ class TripModel {
     }
     
     init(name: String, dateStart: Date, dateEnd : Date, color : UIColor) {
+        self.tripCD = Trip.create()
+        self.name = name
+        self.dateStart = dateStart
+        self.dateEnd = dateEnd
+        self.color = color
+    }
+    
+    init(name: String, dateStart: Date, dateEnd : Date, color : UIColor, places: [Place]) {
         self.tripCD = Trip.create()
         self.name = name
         self.dateStart = dateStart

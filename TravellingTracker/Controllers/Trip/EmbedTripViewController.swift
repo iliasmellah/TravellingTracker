@@ -29,7 +29,6 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
         
         //Si on a un voyage, mode edition. Sinon mode ajout
         if let trip = self.trip {
-            print("\n ARRIVE DANS LE EMBED : ", trip.name, "\n")
             self.tripName.text = trip.name
             self.tripStartDate.text = Date.toString(date: trip.dateStart)
             self.tripEndDate.text = Date.toString(date: trip.dateEnd)
@@ -75,14 +74,4 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

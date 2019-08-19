@@ -22,7 +22,9 @@ class TripViewController: UIViewController,UICollectionViewDataSource, UICollect
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\nXXXXXXXXXXXXXXXXX\n")
         trips = Trip.getAll()!
+        print("\nYYYYYYYYYYYYYYY\n", trips.count)
         
     }
     
@@ -59,7 +61,7 @@ class TripViewController: UIViewController,UICollectionViewDataSource, UICollect
     // Provide a cell object for each row.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Fetch a cell of the appropriate type.
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tripCell", for: indexPath) as! TripTableViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tripCell", for: indexPath) as! TripCollectionViewCell
         let trip = self.trips[indexPath.row]
         
         cell.trip = trip
@@ -185,7 +187,7 @@ class TripViewController: UIViewController,UICollectionViewDataSource, UICollect
         }*/
         
         if let controller = segue.destination as? PlaceViewController {
-            if let cell = sender as? TripTableViewCell {
+            if let cell = sender as? TripCollectionViewCell {
                 controller.trip = cell.trip
             }
         }

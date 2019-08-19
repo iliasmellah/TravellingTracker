@@ -19,19 +19,27 @@ extension Trip {
         var tripModels : [TripModel] = []
         do {
             try tripsFetched = context.fetch(request)
-            
             if let trips = tripsFetched {
                 for trip in trips {
                     let sanitizedTrip = TripModel(trip: trip)
                     tripModels.append(sanitizedTrip)
                 }
             }
-
         } catch {
             fatalError()
         }
-        
         return tripModels
+    }
+    
+    static func getAllPlaces(trip: TripModel?) -> [PlaceModel]? {
+        let places = trip!.tripCD.places?.allObjects as? [Place]
+        var placesModels: [PlaceModel] = []
+        if let place = places {
+            for plc in place {
+                placesModels.append(PlaceModel(place: plc))
+            }
+        }
+        return placesModels
     }
     
     static func delete(trip: Trip) {

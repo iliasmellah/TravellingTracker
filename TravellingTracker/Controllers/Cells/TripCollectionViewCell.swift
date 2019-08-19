@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TripTableViewCell: UICollectionViewCell {
+class TripCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var tripName: UILabel!
     @IBOutlet weak var tripColor: UILabel!

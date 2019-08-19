@@ -72,7 +72,7 @@ class TripPresenter: NSObject {
         }
     }
     
-    func configure(theCell : TripTableViewCell?, forTrip : Trip?) {
+    func configure(theCell : TripCollectionViewCell?, forTrip : Trip?) {
         self.trip = forTrip
         guard let cell = theCell else { return }
         cell.tripName.text = self.name
