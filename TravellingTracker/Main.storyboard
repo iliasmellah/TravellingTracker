@@ -304,6 +304,7 @@
                                             <constraint firstItem="qem-MG-gj7" firstAttribute="leading" secondItem="K9V-7K-yGB" secondAttribute="leading" constant="4" id="wXv-WW-DYQ"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="placeAddress" destination="lMP-CR-24R" id="wJb-UJ-uj7"/>
                                             <outlet property="placeName" destination="4Je-D3-e6g" id="pko-mP-rEd"/>
                                             <outlet property="placePicture" destination="qem-MG-gj7" id="3XJ-GI-gWK"/>
                                         </connections>
@@ -846,28 +847,52 @@
                                     <action selector="addPicture:" destination="TXc-YW-wJS" eventType="touchUpInside" id="QlG-Wm-xnD"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx4-E9-DFP">
+                                <rect key="frame" x="0.0" y="351" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="0VS-ed-14j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7EX-3B-xbI">
+                                <rect key="frame" x="8" y="380" width="327" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="wJu-8T-97J"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ENS-pb-jks" firstAttribute="leading" secondItem="I03-Zz-yNr" secondAttribute="leading" id="1S3-3O-Msv"/>
+                            <constraint firstItem="Xx4-E9-DFP" firstAttribute="trailing" secondItem="I03-Zz-yNr" secondAttribute="trailing" id="2uh-kX-dNl"/>
+                            <constraint firstItem="I03-Zz-yNr" firstAttribute="trailing" secondItem="7EX-3B-xbI" secondAttribute="trailing" constant="8" id="AFD-KW-U2U"/>
                             <constraint firstItem="hO5-3q-x8f" firstAttribute="top" secondItem="ENS-pb-jks" secondAttribute="bottom" constant="60" id="BDC-2h-PsY"/>
                             <constraint firstItem="j5q-nV-izY" firstAttribute="centerX" secondItem="jcy-5A-QHr" secondAttribute="centerX" id="Ecp-5R-n8h"/>
                             <constraint firstItem="KUB-Iz-MZl" firstAttribute="leading" secondItem="ENS-pb-jks" secondAttribute="trailing" constant="9" id="Eha-r7-5zM"/>
                             <constraint firstItem="iNe-vH-uji" firstAttribute="top" secondItem="KUB-Iz-MZl" secondAttribute="bottom" constant="50" id="LFF-im-PHC"/>
+                            <constraint firstItem="7EX-3B-xbI" firstAttribute="top" secondItem="Xx4-E9-DFP" secondAttribute="bottom" constant="8" id="TO7-yd-5Ub"/>
                             <constraint firstItem="iNe-vH-uji" firstAttribute="trailing" secondItem="I03-Zz-yNr" secondAttribute="trailing" id="TQ3-N8-gsz"/>
                             <constraint firstItem="I03-Zz-yNr" firstAttribute="trailing" secondItem="1oz-dr-0k7" secondAttribute="trailing" constant="25" id="VSA-1t-OZU"/>
                             <constraint firstItem="j5q-nV-izY" firstAttribute="top" secondItem="1oz-dr-0k7" secondAttribute="bottom" constant="8" id="WcN-bc-LNv"/>
                             <constraint firstItem="iNe-vH-uji" firstAttribute="leading" secondItem="hO5-3q-x8f" secondAttribute="trailing" constant="17" id="cqI-RX-S0w"/>
+                            <constraint firstItem="7EX-3B-xbI" firstAttribute="leading" secondItem="I03-Zz-yNr" secondAttribute="leading" constant="8" id="hHR-h9-1kx"/>
+                            <constraint firstItem="Xx4-E9-DFP" firstAttribute="leading" secondItem="I03-Zz-yNr" secondAttribute="leading" id="mPr-9p-AIh"/>
                             <constraint firstItem="KUB-Iz-MZl" firstAttribute="trailing" secondItem="I03-Zz-yNr" secondAttribute="trailing" id="qjH-XX-vwk"/>
                             <constraint firstItem="hO5-3q-x8f" firstAttribute="leading" secondItem="I03-Zz-yNr" secondAttribute="leading" id="uUf-eh-cP8"/>
+                            <constraint firstItem="7EX-3B-xbI" firstAttribute="centerX" secondItem="jcy-5A-QHr" secondAttribute="centerX" id="udK-H7-iP8"/>
                             <constraint firstItem="1oz-dr-0k7" firstAttribute="top" secondItem="iNe-vH-uji" secondAttribute="bottom" constant="40" id="wWM-Xn-UrU"/>
                             <constraint firstItem="ENS-pb-jks" firstAttribute="top" secondItem="I03-Zz-yNr" secondAttribute="top" constant="25" id="wi2-zH-ozj"/>
                             <constraint firstItem="1oz-dr-0k7" firstAttribute="leading" secondItem="I03-Zz-yNr" secondAttribute="leading" constant="25" id="wrI-nu-8BC"/>
+                            <constraint firstItem="Xx4-E9-DFP" firstAttribute="top" secondItem="j5q-nV-izY" secondAttribute="bottom" constant="15" id="x6p-Ww-g2W"/>
                             <constraint firstItem="KUB-Iz-MZl" firstAttribute="top" secondItem="I03-Zz-yNr" secondAttribute="top" constant="20" id="z7D-If-pvv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I03-Zz-yNr"/>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="7EX-3B-xbI" id="ckl-6I-Vw6"/>
+                        <outlet property="placeAddress" destination="Xx4-E9-DFP" id="g5B-80-xxf"/>
                         <outlet property="placeDate" destination="iNe-vH-uji" id="N2n-J8-Fgd"/>
                         <outlet property="placeName" destination="KUB-Iz-MZl" id="1VE-a6-1g7"/>
                         <outlet property="placePicture" destination="1oz-dr-0k7" id="Oyi-GQ-QJd"/>
@@ -875,7 +900,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssL-Dr-3Nf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3340" y="1793"/>
+            <point key="canvasLocation" x="3340" y="1792.353823088456"/>
         </scene>
         <!--Edit Place View Controller-->
         <scene sceneID="9fX-Wl-DnL">

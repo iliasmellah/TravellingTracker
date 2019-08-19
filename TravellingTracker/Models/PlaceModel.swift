@@ -58,10 +58,11 @@ class PlaceModel {
         Place.save()
     }
     
-    init(name: String, picture: UIImage, trip: TripModel) {
+    init(name: String, picture: UIImage, address: String, trip: TripModel) {
         self.placeCD = Place.create()
         self.placeCD.name = name
         self.placeCD.picture = picture.pngData()
+        self.placeCD.address = address
         self.placeCD.trip = trip.tripCD
     }
     

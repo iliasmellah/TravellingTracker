@@ -12,6 +12,7 @@ class PlaceCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var placeName: UILabel!
     @IBOutlet weak var placePicture: UIImageView!
+    @IBOutlet weak var placeAddress: UILabel!
     
     var trip : TripModel? = nil
     var place : PlaceModel? = nil
