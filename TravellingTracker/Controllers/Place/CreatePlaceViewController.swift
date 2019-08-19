@@ -32,11 +32,12 @@ class CreatePlaceViewController: UIViewController {
         
         let name: String = embedPlaceViewController.placeName.text ?? ""
         let date: Date = Date.toDate(dateString: embedPlaceViewController.placeDate.text!)
+        let picture: UIImage = embedPlaceViewController.placePicture.image!
         
         guard (name != "") else {return}
         
         //crée un nouveau Trip Managed Object
-        let place = PlaceModel(name: name, date: date, trip: trip)
+        let place = PlaceModel(name: name, picture: picture, trip: trip)
         place.save()
         
         self.dismiss(animated: true, completion: nil)

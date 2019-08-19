@@ -31,6 +31,7 @@
 		639F167222E40A2700BFB503 /* PhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F167122E40A2700BFB503 /* PhotoMapViewController.swift */; };
 		63C06D3A22FEAB2900BEF842 /* TripDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C06D3922FEAB2900BEF842 /* TripDAO.swift */; };
 		63C06D3C22FEAFD800BEF842 /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C06D3B22FEAFD800BEF842 /* TripModel.swift */; };
+		63D93643230AA035002617AB /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D93642230AA035002617AB /* ImageExtension.swift */; };
 		63DFF76422DC2EC700626050 /* EditTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76322DC2EC700626050 /* EditTripViewController.swift */; };
 		63DFF76622DC4F9600626050 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76522DC4F9600626050 /* CoreDataManager.swift */; };
 		63DFF76822DC527500626050 /* DialogBoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF76722DC527500626050 /* DialogBoxHelper.swift */; };
@@ -87,6 +88,7 @@
 		639F167122E40A2700BFB503 /* PhotoMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMapViewController.swift; sourceTree = "<group>"; };
 		63C06D3922FEAB2900BEF842 /* TripDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDAO.swift; sourceTree = "<group>"; };
 		63C06D3B22FEAFD800BEF842 /* TripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
+		63D93642230AA035002617AB /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		63DFF76322DC2EC700626050 /* EditTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripViewController.swift; sourceTree = "<group>"; };
 		63DFF76522DC4F9600626050 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		63DFF76722DC527500626050 /* DialogBoxHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxHelper.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				63DFF76522DC4F9600626050 /* CoreDataManager.swift */,
 				63DFF76722DC527500626050 /* DialogBoxHelper.swift */,
 				635D38B922E36A47001DCD80 /* ColorExtension.swift */,
+				63D93642230AA035002617AB /* ImageExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				63DFF76822DC527500626050 /* DialogBoxHelper.swift in Sources */,
 				63DFF76422DC2EC700626050 /* EditTripViewController.swift in Sources */,
 				63964D9022D2D7700039B4CF /* AppDelegate.swift in Sources */,
+				63D93643230AA035002617AB /* ImageExtension.swift in Sources */,
 				638920DC22D6DB6C00FB0702 /* TripPresenter.swift in Sources */,
 				63584E6722F6BEC60033C216 /* PickOnMapViewController.swift in Sources */,
 				6386C6E023099FE60091F9B2 /* PlaceCollectionViewCell.swift in Sources */,

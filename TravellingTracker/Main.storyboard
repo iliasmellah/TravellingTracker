@@ -305,6 +305,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="placeName" destination="4Je-D3-e6g" id="pko-mP-rEd"/>
+                                            <outlet property="placePicture" destination="qem-MG-gj7" id="3XJ-GI-gWK"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -828,25 +829,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRk-Ya-fvl">
-                                <rect key="frame" x="150" y="224" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1oz-dr-0k7">
+                                <rect key="frame" x="25" y="170" width="293" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="bwl-t6-FTF"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5q-nV-izY">
+                                <rect key="frame" x="147" y="306" width="49" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="WXg-H5-MgT"/>
+                                    <constraint firstAttribute="height" constant="30" id="fJt-E0-87Z"/>
+                                </constraints>
+                                <state key="normal" title="Picture"/>
+                                <connections>
+                                    <action selector="addPicture:" destination="TXc-YW-wJS" eventType="touchUpInside" id="QlG-Wm-xnD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ENS-pb-jks" firstAttribute="leading" secondItem="I03-Zz-yNr" secondAttribute="leading" id="1S3-3O-Msv"/>
                             <constraint firstItem="hO5-3q-x8f" firstAttribute="top" secondItem="ENS-pb-jks" secondAttribute="bottom" constant="60" id="BDC-2h-PsY"/>
+                            <constraint firstItem="j5q-nV-izY" firstAttribute="centerX" secondItem="jcy-5A-QHr" secondAttribute="centerX" id="Ecp-5R-n8h"/>
                             <constraint firstItem="KUB-Iz-MZl" firstAttribute="leading" secondItem="ENS-pb-jks" secondAttribute="trailing" constant="9" id="Eha-r7-5zM"/>
                             <constraint firstItem="iNe-vH-uji" firstAttribute="top" secondItem="KUB-Iz-MZl" secondAttribute="bottom" constant="50" id="LFF-im-PHC"/>
                             <constraint firstItem="iNe-vH-uji" firstAttribute="trailing" secondItem="I03-Zz-yNr" secondAttribute="trailing" id="TQ3-N8-gsz"/>
+                            <constraint firstItem="I03-Zz-yNr" firstAttribute="trailing" secondItem="1oz-dr-0k7" secondAttribute="trailing" constant="25" id="VSA-1t-OZU"/>
+                            <constraint firstItem="j5q-nV-izY" firstAttribute="top" secondItem="1oz-dr-0k7" secondAttribute="bottom" constant="8" id="WcN-bc-LNv"/>
                             <constraint firstItem="iNe-vH-uji" firstAttribute="leading" secondItem="hO5-3q-x8f" secondAttribute="trailing" constant="17" id="cqI-RX-S0w"/>
                             <constraint firstItem="KUB-Iz-MZl" firstAttribute="trailing" secondItem="I03-Zz-yNr" secondAttribute="trailing" id="qjH-XX-vwk"/>
                             <constraint firstItem="hO5-3q-x8f" firstAttribute="leading" secondItem="I03-Zz-yNr" secondAttribute="leading" id="uUf-eh-cP8"/>
+                            <constraint firstItem="1oz-dr-0k7" firstAttribute="top" secondItem="iNe-vH-uji" secondAttribute="bottom" constant="40" id="wWM-Xn-UrU"/>
                             <constraint firstItem="ENS-pb-jks" firstAttribute="top" secondItem="I03-Zz-yNr" secondAttribute="top" constant="25" id="wi2-zH-ozj"/>
+                            <constraint firstItem="1oz-dr-0k7" firstAttribute="leading" secondItem="I03-Zz-yNr" secondAttribute="leading" constant="25" id="wrI-nu-8BC"/>
                             <constraint firstItem="KUB-Iz-MZl" firstAttribute="top" secondItem="I03-Zz-yNr" secondAttribute="top" constant="20" id="z7D-If-pvv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I03-Zz-yNr"/>
@@ -854,7 +870,7 @@
                     <connections>
                         <outlet property="placeDate" destination="iNe-vH-uji" id="N2n-J8-Fgd"/>
                         <outlet property="placeName" destination="KUB-Iz-MZl" id="1VE-a6-1g7"/>
-                        <outlet property="tripName" destination="IRk-Ya-fvl" id="yFI-ba-YKB"/>
+                        <outlet property="placePicture" destination="1oz-dr-0k7" id="Oyi-GQ-QJd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssL-Dr-3Nf" userLabel="First Responder" sceneMemberID="firstResponder"/>
