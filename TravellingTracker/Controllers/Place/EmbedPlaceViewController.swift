@@ -20,6 +20,7 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var placeAddress: UILabel!
     @IBOutlet weak var placeLatitude: UILabel!
     @IBOutlet weak var placeLongitude: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     var latitudePhoto: CLLocationDegrees? = 0.0
     var longitudePhoto: CLLocationDegrees? = 0.0
@@ -27,7 +28,7 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
     var addressString = ""
     
     let locationManager = CLLocationManager()
-    let regionInMeters = 10000
+    let regionInMeters = 1000
     var previousLocation: CLLocation?
     
     var trip : TripModel?
@@ -37,6 +38,8 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkLocationServices()
         
         if let place = self.place {
             self.placeName.text = place.name
@@ -65,9 +68,10 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
     }
     
     @IBAction func addPicture(_ sender: Any) {
-        let imagePickerController = UIImagePickerController()
+        /*let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         let alert = UIAlertController(title: "Add a photo", message: "Please select an option", preferredStyle: .actionSheet)
+        
         alert.addAction(UIAlertAction(title: "Take a new photo", style: .default , handler:{ (UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePickerController.sourceType = .camera
@@ -82,7 +86,34 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
         }))
+        self.present(alert, animated: true, completion: nil)*/
+        let alert = UIAlertController(title: "Update your photo", message: "Please select an option", preferredStyle: .actionSheet)
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        alert.addAction(UIAlertAction(title: "Take a new photo", style: .default , handler:{ (UIAlertAction)in
+            self.presentUIImagePicker(sourceType: .camera)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Choose from Library", style: .default , handler:{ (UIAlertAction)in
+            self.presentUIImagePicker(sourceType: .photoLibrary)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+        }))
+        
+        
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func presentUIImagePicker(sourceType: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = sourceType
+        present(picker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -107,6 +138,7 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
                 self.placeLatitude.text = "none"
                 self.placeLongitude.text = "none"
             } else {
+                let centerLocation = CLLocation(latitude: self.latitudePhoto!, longitude: self.longitudePhoto!)
                 let loc = CLLocation(latitude: self.latitudePhoto!, longitude: self.longitudePhoto!)
             
                 CLGeocoder().reverseGeocodeLocation(loc) { (placemarks, error) in
@@ -122,13 +154,9 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
                         self.placeAddress.text = self.addressString
                         self.placeLatitude.text = "\(String(describing: self.latitudePhoto!))"
                         self.placeLongitude.text = "\(String(describing: self.longitudePhoto!))"
+                        self.zoomLevel(location: centerLocation)
                         
-                        /*let annotationLocation = [
-                            "title": self.addressString, "latitude" : self.latitudePhoto as Any, "longitude" : self.longitudePhoto as Any
-                            ] as [String : Any]
-                        
-                        self.createAnnotation(location: annotationLocation as [String : Any])
-                        self.zoomLevel(location: centerLocation)*/
+                        //self.checkLocationServices()
                     } else {
                         print("error")
                     }
@@ -138,18 +166,10 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    /*func zoomLevel(location: CLLocation) {
+    func zoomLevel(location: CLLocation) {
         let mapCoordinates = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: distanceSpan, longitudinalMeters: distanceSpan)
         
         mapView.setRegion(mapCoordinates, animated: true)
-    }
-    
-    func createAnnotation(location: [String : Any]) {
-        let annotation = MKPointAnnotation()
-        annotation.title = (location["title"] as! String)
-        annotation.coordinate = CLLocationCoordinate2D(latitude: location["latitude"] as! CLLocationDegrees, longitude: location["longitude"] as! CLLocationDegrees)
-        
-        mapView.addAnnotation(annotation)
     }
     
     func checkLocationServices() {
@@ -186,11 +206,8 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
         let latitude = mapView.centerCoordinate.latitude
         let longitude = mapView.centerCoordinate.longitude
         
-        print("latitude :", latitude)
-        print("longitude :", longitude, "\n")
-        
         return CLLocation(latitude: latitude, longitude: longitude)
-    }*/
+    }
     
     // MARK : - TextField Delegate
     
@@ -201,7 +218,7 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
     
 }
 
-/*extension EmbedPlaceViewController: CLLocationManagerDelegate {
+extension EmbedPlaceViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         //startTrackingUserLocation()
     }
@@ -234,14 +251,17 @@ extension EmbedPlaceViewController: MKMapViewDelegate {
             let streetName = placemark.thoroughfare ?? ""
             let cityName = placemark.locality ?? ""
             
-            //DispatchQueue.main.sync {
-            print("Adresse : ", streetNumber, " ", streetName)
+            let lat = placemark.location?.coordinate.latitude
+            let long = placemark.location?.coordinate.longitude
+            
+            self.placeLatitude.text = "\(String(describing: lat!))"
+            self.placeLongitude.text = "\(String(describing: long!))"
+            
             if (streetName == "" || cityName == "") {
                 self.placeAddress.text = "No address found for this location"
             } else {
                 self.placeAddress.text = streetNumber + " " + streetName + " " + cityName.uppercased()
             }
-            //}
         }
     }
-}*/
+}

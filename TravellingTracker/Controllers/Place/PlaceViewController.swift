@@ -79,7 +79,7 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
         cell.place = place
         
         cell.placeName.text = place.name
-        cell.placePicture.image = place.picture//.rotate(radians: .pi/2)
+        cell.placePicture.image = place.picture.rotate(radians: .pi/2)
         cell.placeAddress.text = place.address
         
         return cell
