@@ -26,6 +26,8 @@
 		63964DA822D2D7720039B4CF /* TravellingTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DA722D2D7720039B4CF /* TravellingTrackerTests.swift */; };
 		63964DB322D2D7720039B4CF /* TravellingTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */; };
 		63964DC222D2EEE40039B4CF /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63964DC122D2EEE40039B4CF /* TripCollectionViewCell.swift */; };
+		6397AB06230C2F9500C0C490 /* ShowPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6397AB05230C2F9500C0C490 /* ShowPlaceViewController.swift */; };
+		6397AB08230C465500C0C490 /* EditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6397AB07230C465500C0C490 /* EditPlaceViewController.swift */; };
 		639B31A422EFE54E00F615BA /* Map2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B31A322EFE54E00F615BA /* Map2ViewController.swift */; };
 		639B31A622EFEE0E00F615BA /* Photo3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B31A522EFEE0E00F615BA /* Photo3ViewController.swift */; };
 		639F167222E40A2700BFB503 /* PhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F167122E40A2700BFB503 /* PhotoMapViewController.swift */; };
@@ -83,6 +85,8 @@
 		63964DB222D2D7720039B4CF /* TravellingTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravellingTrackerUITests.swift; sourceTree = "<group>"; };
 		63964DB422D2D7720039B4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63964DC122D2EEE40039B4CF /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
+		6397AB05230C2F9500C0C490 /* ShowPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPlaceViewController.swift; sourceTree = "<group>"; };
+		6397AB07230C465500C0C490 /* EditPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaceViewController.swift; sourceTree = "<group>"; };
 		639B31A322EFE54E00F615BA /* Map2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map2ViewController.swift; sourceTree = "<group>"; };
 		639B31A522EFEE0E00F615BA /* Photo3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo3ViewController.swift; sourceTree = "<group>"; };
 		639F167122E40A2700BFB503 /* PhotoMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMapViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 				6354A1CA22F126E000FECD6E /* PlaceViewController.swift */,
 				63E7D6AE2309CB650061E712 /* CreatePlaceViewController.swift */,
 				63E7D6B02309CB840061E712 /* EmbedPlaceViewController.swift */,
+				6397AB05230C2F9500C0C490 /* ShowPlaceViewController.swift */,
+				6397AB07230C465500C0C490 /* EditPlaceViewController.swift */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -410,12 +416,14 @@
 				63D93643230AA035002617AB /* ImageExtension.swift in Sources */,
 				638920DC22D6DB6C00FB0702 /* TripPresenter.swift in Sources */,
 				63584E6722F6BEC60033C216 /* PickOnMapViewController.swift in Sources */,
+				6397AB08230C465500C0C490 /* EditPlaceViewController.swift in Sources */,
 				6386C6E023099FE60091F9B2 /* PlaceCollectionViewCell.swift in Sources */,
 				639455E522D443BF006AFA20 /* ShowTripViewController.swift in Sources */,
 				63E7D6AF2309CB650061E712 /* CreatePlaceViewController.swift in Sources */,
 				63964D9822D2D7700039B4CF /* TravellingTracker.xcdatamodeld in Sources */,
 				63DFF76622DC4F9600626050 /* CoreDataManager.swift in Sources */,
 				63C06D3A22FEAB2900BEF842 /* TripDAO.swift in Sources */,
+				6397AB06230C2F9500C0C490 /* ShowPlaceViewController.swift in Sources */,
 				63C06D3C22FEAFD800BEF842 /* TripModel.swift in Sources */,
 				635D38BA22E36A47001DCD80 /* ColorExtension.swift in Sources */,
 			);

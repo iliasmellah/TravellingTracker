@@ -306,6 +306,7 @@
                                             <outlet property="placeAddress" destination="lMP-CR-24R" id="wJb-UJ-uj7"/>
                                             <outlet property="placeName" destination="4Je-D3-e6g" id="pko-mP-rEd"/>
                                             <outlet property="placePicture" destination="qem-MG-gj7" id="3XJ-GI-gWK"/>
+                                            <segue destination="E6u-4a-elC" kind="show" identifier="showPlace" id="p6V-R8-MQo"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -497,6 +498,167 @@
                 <exit id="h2p-x6-zZg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1960.8" y="137.18140929535232"/>
+        </scene>
+        <!--Show Place View Controller-->
+        <scene sceneID="yYG-Wq-zHf">
+            <objects>
+                <viewController id="E6u-4a-elC" userLabel="Show Place View Controller" customClass="ShowPlaceViewController" customModule="TravellingTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7oR-8T-NT5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNp-A6-oNn">
+                                <rect key="frame" x="119" y="100" width="176" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="jjr-VT-apb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9f-x8-xAH" userLabel="delete place">
+                                <rect key="frame" x="369" y="102" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="Hmq-Zj-avo"/>
+                                    <constraint firstAttribute="height" constant="25" id="PMB-aK-wd4"/>
+                                </constraints>
+                                <state key="normal" title="delete trip" image="delete-button"/>
+                                <connections>
+                                    <action selector="deletePlaceButton:" destination="E6u-4a-elC" eventType="touchUpInside" id="ewU-tG-vl2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2Q-yJ-Efg">
+                                <rect key="frame" x="96" y="170.66666666666666" width="281" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="281" id="DnD-5r-jup"/>
+                                    <constraint firstAttribute="height" constant="22" id="eBf-3m-6ak"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="Rfr-6E-TMD">
+                                <rect key="frame" x="34" y="164" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="4ku-bQ-ftv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="TR2-te-71S"/>
+                                    <constraint firstAttribute="width" constant="35" id="VhM-aL-wdK"/>
+                                    <constraint firstAttribute="height" constant="35" id="aGO-ry-qw9"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar-show-place" translatesAutoresizingMaskIntoConstraints="NO" id="W6u-MV-hjo">
+                                <rect key="frame" x="34" y="224" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="5Ke-8S-37H"/>
+                                    <constraint firstAttribute="width" constant="35" id="z6F-IU-3Zv"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPo-bV-9bq">
+                                <rect key="frame" x="96" y="230.66666666666666" width="281" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="281" id="gbc-NH-0dp"/>
+                                    <constraint firstAttribute="height" constant="22" id="jJw-UI-8mh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="latitude-pin" translatesAutoresizingMaskIntoConstraints="NO" id="gVb-ra-VYG">
+                                <rect key="frame" x="34" y="294" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="1pu-CJ-Rb6"/>
+                                    <constraint firstAttribute="height" constant="35" id="3UP-kP-ulz"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="longitude-pin" translatesAutoresizingMaskIntoConstraints="NO" id="5Lr-Vi-z2W">
+                                <rect key="frame" x="34" y="360" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="SLm-Si-WGb"/>
+                                    <constraint firstAttribute="height" constant="35" id="rUH-ZQ-anK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place latitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCd-DN-3mv">
+                                <rect key="frame" x="96" y="300.66666666666669" width="281" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Vee-is-nWE"/>
+                                    <constraint firstAttribute="width" constant="281" id="sVD-Uf-Klb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place longitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAh-Rk-HY0">
+                                <rect key="frame" x="96" y="360" width="281" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="XsZ-li-dgS"/>
+                                    <constraint firstAttribute="width" constant="281" id="maK-T6-MMB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-CW-urq">
+                                <rect key="frame" x="0.0" y="435" width="414" height="377"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5l-Rt-keX" userLabel="edit place">
+                                <rect key="frame" x="325" y="102" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="cvo-CJ-Yx7"/>
+                                    <constraint firstAttribute="height" constant="25" id="w7R-4v-pha"/>
+                                </constraints>
+                                <state key="normal" title="EDIT" image="edit-button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="t5l-Rt-keX" firstAttribute="leading" secondItem="aNp-A6-oNn" secondAttribute="trailing" constant="30" id="3F5-XS-fqk"/>
+                            <constraint firstItem="Rfr-6E-TMD" firstAttribute="top" secondItem="B2l-o1-o4K" secondAttribute="top" constant="76" id="3Lv-g2-nQp"/>
+                            <constraint firstItem="5Lr-Vi-z2W" firstAttribute="leading" secondItem="gVb-ra-VYG" secondAttribute="leading" id="4zc-NH-2sT"/>
+                            <constraint firstItem="2FV-CW-urq" firstAttribute="trailing" secondItem="B2l-o1-o4K" secondAttribute="trailing" id="5Q6-1d-KgA"/>
+                            <constraint firstItem="bCd-DN-3mv" firstAttribute="leading" secondItem="j2Q-yJ-Efg" secondAttribute="leading" id="8Fp-TD-iES"/>
+                            <constraint firstItem="aNp-A6-oNn" firstAttribute="leading" secondItem="B2l-o1-o4K" secondAttribute="leading" constant="119" id="ABz-wd-yoS"/>
+                            <constraint firstItem="B2l-o1-o4K" firstAttribute="trailing" secondItem="Z9f-x8-xAH" secondAttribute="trailing" constant="20" id="Cs5-Gu-UwF"/>
+                            <constraint firstItem="2FV-CW-urq" firstAttribute="leading" secondItem="B2l-o1-o4K" secondAttribute="leading" id="Fnt-8g-XOV"/>
+                            <constraint firstItem="j2Q-yJ-Efg" firstAttribute="centerY" secondItem="Rfr-6E-TMD" secondAttribute="centerY" id="IFU-V2-pau"/>
+                            <constraint firstItem="2FV-CW-urq" firstAttribute="centerX" secondItem="aNp-A6-oNn" secondAttribute="centerX" id="Ihe-B3-cpJ"/>
+                            <constraint firstItem="bCd-DN-3mv" firstAttribute="top" secondItem="mPo-bV-9bq" secondAttribute="bottom" constant="48" id="JH1-N0-hG9"/>
+                            <constraint firstItem="bCd-DN-3mv" firstAttribute="centerY" secondItem="gVb-ra-VYG" secondAttribute="centerY" id="KmO-Di-Bxf"/>
+                            <constraint firstItem="2FV-CW-urq" firstAttribute="top" secondItem="5Lr-Vi-z2W" secondAttribute="bottom" constant="40" id="NMx-fk-BTM"/>
+                            <constraint firstItem="vAh-Rk-HY0" firstAttribute="leading" secondItem="5Lr-Vi-z2W" secondAttribute="trailing" constant="27" id="Nmm-hF-zyT"/>
+                            <constraint firstItem="bCd-DN-3mv" firstAttribute="leading" secondItem="mPo-bV-9bq" secondAttribute="leading" id="SBF-Zd-77U"/>
+                            <constraint firstItem="W6u-MV-hjo" firstAttribute="centerY" secondItem="mPo-bV-9bq" secondAttribute="centerY" id="TOT-m1-K5Z"/>
+                            <constraint firstItem="Rfr-6E-TMD" firstAttribute="leading" secondItem="B2l-o1-o4K" secondAttribute="leading" constant="34" id="VR3-NV-ffj"/>
+                            <constraint firstItem="5Lr-Vi-z2W" firstAttribute="top" secondItem="gVb-ra-VYG" secondAttribute="bottom" constant="31" id="Vtt-yi-rOA"/>
+                            <constraint firstItem="2FV-CW-urq" firstAttribute="leading" secondItem="7oR-8T-NT5" secondAttribute="leading" id="WPv-lK-0Be"/>
+                            <constraint firstItem="Z9f-x8-xAH" firstAttribute="top" secondItem="B2l-o1-o4K" secondAttribute="top" constant="14" id="WgX-T1-cDp"/>
+                            <constraint firstItem="bCd-DN-3mv" firstAttribute="leading" secondItem="vAh-Rk-HY0" secondAttribute="leading" id="Wmc-oG-gs5"/>
+                            <constraint firstItem="5Lr-Vi-z2W" firstAttribute="top" secondItem="vAh-Rk-HY0" secondAttribute="top" id="Yc1-CF-x8v"/>
+                            <constraint firstItem="5Lr-Vi-z2W" firstAttribute="top" secondItem="7oR-8T-NT5" secondAttribute="top" constant="360" id="aGt-Eq-ymc"/>
+                            <constraint firstItem="aNp-A6-oNn" firstAttribute="top" secondItem="B2l-o1-o4K" secondAttribute="top" constant="12" id="aYt-Zq-LrP"/>
+                            <constraint firstItem="2FV-CW-urq" firstAttribute="top" secondItem="5Lr-Vi-z2W" secondAttribute="bottom" constant="40" id="dF6-hC-Owc"/>
+                            <constraint firstItem="B2l-o1-o4K" firstAttribute="bottom" secondItem="2FV-CW-urq" secondAttribute="bottom" constant="50" id="dc7-2j-LSA"/>
+                            <constraint firstItem="t5l-Rt-keX" firstAttribute="top" secondItem="B2l-o1-o4K" secondAttribute="top" constant="14" id="kSX-A8-JUh"/>
+                            <constraint firstItem="Z9f-x8-xAH" firstAttribute="leading" secondItem="t5l-Rt-keX" secondAttribute="trailing" constant="19" id="ke9-JV-oWN"/>
+                            <constraint firstItem="5Lr-Vi-z2W" firstAttribute="leading" secondItem="W6u-MV-hjo" secondAttribute="leading" id="oXU-TZ-EQK"/>
+                            <constraint firstItem="aNp-A6-oNn" firstAttribute="centerX" secondItem="7oR-8T-NT5" secondAttribute="centerX" id="rjw-kP-mml"/>
+                            <constraint firstItem="5Lr-Vi-z2W" firstAttribute="leading" secondItem="Rfr-6E-TMD" secondAttribute="leading" id="weR-vl-Cfd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B2l-o1-o4K"/>
+                    </view>
+                    <connections>
+                        <outlet property="placeAddress" destination="j2Q-yJ-Efg" id="JNb-nI-qaS"/>
+                        <outlet property="placeDate" destination="mPo-bV-9bq" id="KfX-ci-6rh"/>
+                        <outlet property="placeLatitude" destination="bCd-DN-3mv" id="xuy-YK-Q1e"/>
+                        <outlet property="placeLongitude" destination="vAh-Rk-HY0" id="Y91-cO-iOn"/>
+                        <outlet property="placeName" destination="aNp-A6-oNn" id="Ngf-cf-zJR"/>
+                        <outlet property="placePicture" destination="2FV-CW-urq" id="dt1-bS-Pua"/>
+                        <segue destination="8KS-bs-RgW" kind="unwind" identifier="unwindAfterDeletePlace" unwindAction="unwindToPlacesAfterDeletingPlaceWithSegue:" id="Rop-g8-Pnj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6N-pB-ENE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8KS-bs-RgW" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2915.9420289855075" y="136.60714285714286"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ras-77-oJM">
@@ -1019,8 +1181,11 @@
     </scenes>
     <resources>
         <image name="calendar-interface-symbol-tool" width="32" height="32"/>
+        <image name="calendar-show-place" width="64" height="64"/>
         <image name="delete-button" width="64" height="64"/>
         <image name="edit-button" width="32" height="32"/>
+        <image name="latitude-pin" width="64" height="64"/>
+        <image name="longitude-pin" width="64" height="64"/>
         <image name="maps-and-flags" width="32" height="32"/>
         <image name="pin" width="256" height="256"/>
         <image name="placeholder" width="1000" height="675"/>

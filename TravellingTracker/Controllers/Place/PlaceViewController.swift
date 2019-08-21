@@ -41,7 +41,21 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
         } else if segue.identifier == "addPlace" {
             let createPlaceViewController = segue.destination as! CreatePlaceViewController
                 createPlaceViewController.trip = self.trip
+        } else if let controller = segue.destination as? ShowPlaceViewController {
+            if let cell = sender as? PlaceCollectionViewCell {
+                controller.trip = cell.trip
+                controller.place = cell.place
+            }
         }
+        /*else if segue.identifier == "showPlace" {
+            if let indexPath = self.indexPathForShow {
+                let showPlaceViewController = segue.destination as! ShowPlaceViewController
+                showPlaceViewController.trip = self.trip
+                print("\n TRIP : ", trip!.name)
+                print("\n PLACE : ", places[indexPath.row].name, "\n")
+                showPlaceViewController.place = self.places[indexPath.row]
+            }
+        }*/
     }
     
     @IBAction func deleteTripButton(_ sender: Any) {
@@ -93,6 +107,19 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
     //Gets data from CreatePlaceViewController inputs when hits Save
     @IBAction func unwindToPlacesAfterSavingNewPlace(segue: UIStoryboardSegue) {
         reloadPlaceCollectionView()
+    }
+    
+    @IBAction func unwindToPlacesAfterDeletingPlace(segue: UIStoryboardSegue) {
+        reloadPlaceCollectionView()
+    }
+    
+    @IBAction func unwindToPlacesAfterEditingPlace(segue: UIStoryboardSegue) {
+        if let controller = segue.source as? EditPlaceViewController {
+            if let place = controller.place {
+                place.save()
+            }
+        }
+        self.placesCollection.reloadData()
     }
 
 }

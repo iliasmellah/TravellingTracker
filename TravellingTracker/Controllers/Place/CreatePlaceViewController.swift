@@ -31,14 +31,16 @@ class CreatePlaceViewController: UIViewController {
         guard let embedPlaceViewController = self.children.first as? EmbedPlaceViewController else {return}
         
         let name: String = embedPlaceViewController.placeName.text ?? ""
-        let date: Date = Date.toDate(dateString: embedPlaceViewController.placeDate.text!)
+        let date: Date = Date.toDate(dateString: embedPlaceViewController.placeDate.text ?? Date.currentDate().format())
         let picture: UIImage = embedPlaceViewController.placePicture.image!
         let address: String = embedPlaceViewController.placeAddress.text ?? ""
+        let latitude: String = embedPlaceViewController.placeLatitude.text ?? ""
+        let longitude: String = embedPlaceViewController.placeLongitude.text ?? ""
         
         guard (name != "") else {return}
         
         //crée un nouveau Trip Managed Object
-        let place = PlaceModel(name: name, picture: picture, address: address, trip: trip)
+        let place = PlaceModel(name: name, address: address, date: date, latitude: latitude, longitude: longitude, picture: picture, trip: trip)
         place.save()
         
         self.dismiss(animated: true, completion: nil)
