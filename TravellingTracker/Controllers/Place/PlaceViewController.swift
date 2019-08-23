@@ -41,21 +41,17 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
         } else if segue.identifier == "addPlace" {
             let createPlaceViewController = segue.destination as! CreatePlaceViewController
                 createPlaceViewController.trip = self.trip
+        } else if segue.identifier == "fullMapSegue" {
+            let fullMapViewController = segue.destination as! FullMapViewController
+            fullMapViewController.trip = self.trip
+            fullMapViewController.places = self.places
+            fullMapViewController.placeCenter = self.places[0]
         } else if let controller = segue.destination as? ShowPlaceViewController {
             if let cell = sender as? PlaceCollectionViewCell {
                 controller.trip = cell.trip
                 controller.place = cell.place
             }
         }
-        /*else if segue.identifier == "showPlace" {
-            if let indexPath = self.indexPathForShow {
-                let showPlaceViewController = segue.destination as! ShowPlaceViewController
-                showPlaceViewController.trip = self.trip
-                print("\n TRIP : ", trip!.name)
-                print("\n PLACE : ", places[indexPath.row].name, "\n")
-                showPlaceViewController.place = self.places[indexPath.row]
-            }
-        }*/
     }
     
     @IBAction func deleteTripButton(_ sender: Any) {
