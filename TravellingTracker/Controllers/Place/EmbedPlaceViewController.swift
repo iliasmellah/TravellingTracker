@@ -44,6 +44,19 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
         if let place = self.place {
             self.placeName.text = place.name
             self.placeDate.text = Date.toString(date: place.date)
+            self.placePicture.image = place.picture.rotate(radians: .pi/2)
+            self.placeAddress.text = Date.toString(date: place.date)
+            self.placeLatitude.text = place.latitude
+            self.placeLongitude.text = place.longitude
+            
+            let latitudeDegrees : CLLocationDegrees = Double(place.latitude) as! CLLocationDegrees
+            let longitudeDegrees : CLLocationDegrees = Double(place.longitude) as! CLLocationDegrees
+            
+            let locationInit : CLLocation = CLLocation.init(latitude: latitudeDegrees, longitude: longitudeDegrees)
+            
+            let center = CLLocationCoordinate2D(latitude: locationInit.coordinate.latitude, longitude: locationInit.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            mapView.setRegion(region, animated: true)
         } else {
             self.placeAddress.text = "Please choose a picture"
         }
