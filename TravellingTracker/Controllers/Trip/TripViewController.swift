@@ -22,38 +22,23 @@ class TripViewController: UIViewController,UICollectionViewDataSource, UICollect
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\nXXXXXXXXXXXXXXXXX\n")
+        
+        //get all trips
         trips = Trip.getAll()!
-        print("\nYYYYYYYYYYYYYYY\n", trips.count)
+        
+        //sort by date of start trip : get the new on top
+        trips.sort(by: { $0.dateStart > $1.dateStart })
         
     }
-    
-    // MARK: - Action Handlers -
-    
-//    //suppression d'un voyage
-//    func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
-//        let trip = self.trips[indexPath.row]
-//        trip.delete()
-//        self.reloadTripTableView()
-//    }
-//
+
     func reloadTripTableView() {
         self.trips = Trip.getAll()!
         self.tripsCollection.reloadData()
     }
-    
-//    //edition d'un voyage
-//    func editHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void {
-//        self.indexPathForShow = indexPath
-//        self.performSegue(withIdentifier: self.segueEditTripId, sender: self)
-//        self.tripsTable.setEditing(false, animated: true)
-//    }
-//
-    
  
     // MARK: - TableView data source protocol -
     
-    // Return the number of rows for the table.
+    // Return the number of rows for the collection.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        return self.trips.count
     }
@@ -158,34 +143,6 @@ class TripViewController: UIViewController,UICollectionViewDataSource, UICollect
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //gets the new view controller using segue.destinationViewController
         //passes the selected object to the new view controller
-        
-        //check if we have the appropriate segue
-        /*if segue.identifier == segueShowTripId {
-            // selection d'une cell dans un TableView : 2 possibilités
-            // if let indexPath = self.tripsTable.indexPathForSelectedRow
-            if let indexPath = self.indexPathForShow {
-                let showTripViewController = segue.destination as! ShowTripViewController
-                showTripViewController.trip = self.trips[indexPath.row]
-                //self.tripsTable.deselectRow(at: indexPath, animated: true)
-            }
-        }
-        
-        if segue.identifier == segueEditTripId {
-            if let indexPath = self.indexPathForShow {
-                let editTripViewController = segue.destination as! EditTripViewController
-                editTripViewController.trip = self.trips[indexPath.row]
-            }
-        }
-       
-        if segue.identifier == segueShowPlacesId {
-            if let indexPath = self.indexPathForShow {
-                print("aarivé dans le bon segue\n")
-                let placeViewController = segue.destination as! PlaceViewController
-                placeViewController.trip = self.trips[indexPath.row]
-                //self.tripsCollection.deselectRow(at: indexPath, animated: true)
-            }
-        }*/
-        
         if let controller = segue.destination as? PlaceViewController {
             if let cell = sender as? TripCollectionViewCell {
                 controller.trip = cell.trip
@@ -214,22 +171,7 @@ class TripViewController: UIViewController,UICollectionViewDataSource, UICollect
         self.tripsCollection.reloadData()
     }
     
-    
-    // MARK: - helper methods -
-    /// get context of core data initialized in application delegate
-    ///
-    /// - Parameters:
-    ///   - errorMsg: main error message
-    ///   - userInfoMsg: additional information user wants to display
-    /// - Returns: context of CoreData
-    func getContext(errorMsg: String, userInfoMsg: String = "could not retrieve data context") -> NSManagedObjectContext?{
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            self.alert(WithTitle: errorMsg, andMessage: userInfoMsg)
-            return nil
-        }
-        return appDelegate.persistentContainer.viewContext
-    }
-    
+
     /// Show an alert dialog box with 2 messages
     ///
     /// - Parameters:

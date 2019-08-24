@@ -32,10 +32,10 @@ class EditTripViewController: UIViewController {
         guard let trip = self.trip else {return}
         guard let embedTripViewController = self.children.first as? EmbedTripViewController else {return}
         
-        guard (embedTripViewController.tripName.text != "" || embedTripViewController.tripColor.text != "") else {
-            alert(WithTitle: "I need at least the name and color of your trip", andMessage: "")
+        /*guard (embedTripViewController.tripName.text != "") else {
+            alert(WithTitle: "I need at least the name of your trip", andMessage: "XX")
             return
-        }
+        }*/
         trip.name = embedTripViewController.tripName.text ?? ""
         trip.color = embedTripViewController.tripColor.text?.colorFromHex() ?? DEFAULT_COLOR.colorFromHex()
         trip.dateStart = Date.toDate(dateString: embedTripViewController.tripStartDate.text!)

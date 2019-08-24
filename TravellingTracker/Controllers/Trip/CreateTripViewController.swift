@@ -51,7 +51,6 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
         
         //crée un nouveau Trip Managed Object
         let trip = TripModel(name: name, dateStart: dateStart, dateEnd: dateEnd, color: color.colorFromHex())
-        print("saveAction")
         trip.save()
         
         self.dismiss(animated: true, completion: nil)

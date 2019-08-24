@@ -59,17 +59,17 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         imageView.image = image
         
-        if let URL = info[UIImagePickerController.InfoKey.referenceURL] as? URL {
-            let opts = PHFetchOptions()
-            opts.fetchLimit = 1
-            let assets = PHAsset.fetchAssets(withALAssetURLs: [URL], options: opts)
-            let asset = assets[0]
-            print("\n Latitude : \n", asset.location?.coordinate.latitude as Any)
-            print("\n Longitude : \n", asset.location?.coordinate.longitude as Any)
-            
-            let latitudePhoto = asset.location?.coordinate.latitude
-            let longitudePhoto = asset.location?.coordinate.longitude
-        }
+//        if let URL = info[UIImagePickerController.InfoKey.referenceURL] as? URL {
+//            let opts = PHFetchOptions()
+//            opts.fetchLimit = 1
+//            let assets = PHAsset.fetchAssets(withALAssetURLs: [URL], options: opts)
+//            let asset = assets[0]
+//            print("\n Latitude : \n", asset.location?.coordinate.latitude as Any)
+//            print("\n Longitude : \n", asset.location?.coordinate.longitude as Any)
+//            
+//            //let latitudePhoto = asset.location?.coordinate.latitude
+//            //let longitudePhoto = asset.location?.coordinate.longitude
+//        }
         
         picker.dismiss(animated: true, completion: nil)
     }
@@ -130,17 +130,17 @@ extension PhotoMapViewController: CLLocationManagerDelegate {
         print("Location reçue")
         
         // - MARK : Localiser polytech à l'initialisation -
-        let latitudeString : String = "43.63277"
-        let longitudeString : String = "3.8626449"
+        //let latitudeString : String = "43.63277"
+        //let longitudeString : String = "3.8626449"
         
-        let latitudeDegrees : CLLocationDegrees = Double(latitudeString) as! CLLocationDegrees
-        let longitudeDegrees : CLLocationDegrees = Double(longitudeString) as! CLLocationDegrees
+        //let latitudeDegrees : CLLocationDegrees = Double(latitudeString) as! CLLocationDegrees
+        //let longitudeDegrees : CLLocationDegrees = Double(longitudeString) as! CLLocationDegrees
         
-        let locationPolytech : CLLocation = CLLocation.init(latitude: latitudeDegrees, longitude: longitudeDegrees)
+        //let locationPolytech : CLLocation = CLLocation.init(latitude: latitudeDegrees, longitude: longitudeDegrees)
        
-        let center = CLLocationCoordinate2D(latitude: locationPolytech.coordinate.latitude, longitude: locationPolytech.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        mapView.setRegion(region, animated: true)
+//        let center = CLLocationCoordinate2D(latitude: locationPolytech.coordinate.latitude, longitude: locationPolytech.coordinate.longitude)
+//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+//        mapView.setRegion(region, animated: true)
         
         /*
          guard let latestLocation = locations.first else {return}

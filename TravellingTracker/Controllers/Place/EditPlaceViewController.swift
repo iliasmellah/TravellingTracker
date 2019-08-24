@@ -31,12 +31,12 @@ class EditPlaceViewController: UIViewController {
         guard (self.trip != nil || self.place != nil) else {return}
         guard let embedPlaceViewController = self.children.first as? EmbedPlaceViewController else {return}
         
-        guard (embedPlaceViewController.placeName.text != "") else {
+        /*guard (embedPlaceViewController.placeName.text != "") else {
             alert(WithTitle: "I need at least the name of your place", andMessage: "")
             return
-        }
+        }*/
         
-        place?.name = embedPlaceViewController.placeName.text ?? ""
+        place?.name = embedPlaceViewController.placeName.text ?? "No name yet"
         place?.date = Date.toDate(dateString: embedPlaceViewController.placeDate.text!)
         place?.picture = embedPlaceViewController.placePicture.image ?? UIImage(named: "placeholder")!
         place?.address = embedPlaceViewController.placeAddress.text ?? "No address found for this location"

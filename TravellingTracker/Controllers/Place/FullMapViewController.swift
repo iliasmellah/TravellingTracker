@@ -14,7 +14,7 @@ class FullMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     var trip : TripModel?
-    var places : [PlaceModel] = []
+    var places : [PlaceModel]? = []
     var placeCenter : PlaceModel? = nil
     
     var latitudeDegrees : CLLocationDegrees = 0.0
@@ -26,22 +26,19 @@ class FullMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        latitudeDegrees = Double(self.placeCenter!.latitude) as! CLLocationDegrees
-        longitudeDegrees = Double(self.placeCenter!.longitude) as! CLLocationDegrees
-        let centerLocation = CLLocation(latitude: self.latitudeDegrees, longitude: self.longitudeDegrees)
-        
-        annotationLocations.removeAll()
-        for i in 0...places.count-1 {
-            print("\nPLACE : ", places[i].name)
-            print("LAT : ", places[i].latitude)
-            print("LONG : ", places[i].longitude, "\n")
-            annotationLocations.append(["title" : places[i].name, "latitude" : Double(places[i].latitude)!, "longitude" : Double(places[i].longitude)!])
+        if let places = self.places, let _ = self.placeCenter {
+            latitudeDegrees = Double(self.placeCenter!.latitude) as! CLLocationDegrees
+            longitudeDegrees = Double(self.placeCenter!.longitude) as! CLLocationDegrees
+            let centerLocation = CLLocation(latitude: self.latitudeDegrees, longitude: self.longitudeDegrees)
+            
+            annotationLocations.removeAll()
+            for i in 0...places.count-1 {
+                annotationLocations.append(["title" : places[i].name, "latitude" : Double(places[i].latitude)!, "longitude" : Double(places[i].longitude)!])
+            }
+            
+            createAnnotations(locations: annotationLocations)
+            zoomLevel(location: centerLocation)
         }
-        //annotationLocations.remove(at: 0)
-        print("\nXXXXXXXXX : ", annotationLocations, "\n")
-        
-        createAnnotations(locations: annotationLocations)
-        zoomLevel(location: centerLocation)
     }
     
     

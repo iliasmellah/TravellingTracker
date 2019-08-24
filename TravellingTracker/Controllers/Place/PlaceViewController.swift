@@ -11,7 +11,7 @@ import UIKit
 class PlaceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var trip : TripModel? = nil
-    var places : [PlaceModel] = []
+    var places : [PlaceModel]? = []
     
     @IBOutlet weak var nameTrip: UILabel!
     @IBOutlet weak var colorTrip: UILabel!
@@ -31,6 +31,9 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         //get all places of given trip
         places = Trip.getAllPlaces(trip: trip)!
+        
+        //sort by date : get the new on top
+        places?.sort(by: { $0.date > $1.date })
     }
 
     
@@ -45,7 +48,9 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
             let fullMapViewController = segue.destination as! FullMapViewController
             fullMapViewController.trip = self.trip
             fullMapViewController.places = self.places
-            fullMapViewController.placeCenter = self.places[0]
+            if !self.places!.isEmpty {
+                fullMapViewController.placeCenter = self.places![0]
+            }
         } else if let controller = segue.destination as? ShowPlaceViewController {
             if let cell = sender as? PlaceCollectionViewCell {
                 controller.trip = cell.trip
@@ -78,17 +83,18 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
     var indexPathForShow : IndexPath? = nil
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.places.count
+        return self.places!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Fetch a cell of the appropriate type.
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "placeCell", for: indexPath) as! PlaceCollectionViewCell
-        let place = self.places[indexPath.row]
+        let place = self.places![indexPath.row]
         
+        cell.trip = self.trip
         cell.place = place
         
-        cell.placeName.text = place.name
+        if place.name != "" { cell.placeName.text = place.name } else { cell.placeName.text = "No name yet" }
         cell.placePicture.image = place.picture.rotate(radians: .pi/2)
         cell.placeAddress.text = place.address
         

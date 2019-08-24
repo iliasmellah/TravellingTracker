@@ -30,14 +30,26 @@ class CreatePlaceViewController: UIViewController {
         
         guard let embedPlaceViewController = self.children.first as? EmbedPlaceViewController else {return}
         
-        let name: String = embedPlaceViewController.placeName.text ?? ""
+        let name: String = embedPlaceViewController.placeName.text ?? "No name yet"
         let date: Date = Date.toDate(dateString: embedPlaceViewController.placeDate.text ?? Date.currentDate().format())
-        let picture: UIImage = embedPlaceViewController.placePicture.image!
+        let picture: UIImage = embedPlaceViewController.placePicture.image ?? UIImage(named: "placeholder")!
         let address: String = embedPlaceViewController.placeAddress.text ?? ""
-        let latitude: String = embedPlaceViewController.placeLatitude.text ?? ""
-        let longitude: String = embedPlaceViewController.placeLongitude.text ?? ""
         
-        guard (name != "") else {return}
+        var latitude : String = ""
+        if embedPlaceViewController.placeLatitude.text == "Latitude" {
+            latitude = "0"
+        } else {
+            latitude = embedPlaceViewController.placeLatitude.text!
+        }
+        
+        var longitude : String = ""
+        if embedPlaceViewController.placeLongitude.text == "Longitude" {
+            longitude = "0"
+        } else {
+            longitude = embedPlaceViewController.placeLongitude.text!
+        }
+        
+        guard (name != "" || picture != UIImage(named: "placeholder")) else {return}
         
         //crée un nouveau Trip Managed Object
         let place = PlaceModel(name: name, address: address, date: date, latitude: latitude, longitude: longitude, picture: picture, trip: trip)

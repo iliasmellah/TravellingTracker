@@ -54,49 +54,49 @@ class Photo3ViewController: UIViewController, UINavigationControllerDelegate, UI
             imageView.image = image
         }
         
-        if let URL = info[UIImagePickerController.InfoKey.referenceURL] as? URL {
-            let opts = PHFetchOptions()
-            opts.fetchLimit = 1
-            let assets = PHAsset.fetchAssets(withALAssetURLs: [URL], options: opts)
-            let asset = assets[0]
-            
-            self.latitudePhoto = asset.location?.coordinate.latitude
-            self.longitudePhoto = asset.location?.coordinate.longitude
-            
-            let centerLocation = CLLocation(latitude: self.latitudePhoto!, longitude: self.longitudePhoto!)
-        
-            
-            
-            let loc = CLLocation(latitude: self.latitudePhoto!, longitude: self.longitudePhoto!)
-            
-            CLGeocoder().reverseGeocodeLocation(loc) { (placemarks, error) in
-                if error != nil {
-                    print("failed")
-                    return
-                }
-                if (placemarks?.count)! > 0 {
-                    
-                    let villePhoto = placemarks?[0].locality ?? "VILLE"
-                    let paysPhoto = placemarks?[0].country ?? "PAYS"
-                    
-                    self.addressString = (villePhoto + "," + paysPhoto)
-                    
-                    print("\nADDRESS STRING : \n" + self.addressString + "\n")
-                    
-                    let annotationLocation = [
-                        "title": self.addressString, "latitude" : self.latitudePhoto as Any, "longitude" : self.longitudePhoto as Any
-                        ] as [String : Any]
-                    
-                    self.createAnnotation(location: annotationLocation as [String : Any])
-                    self.zoomLevel(location: centerLocation)
-                    
-                } else {
-                    print("error")
-                }
-            }
-            
-          
-            
+//        if let URL = info[UIImagePickerController.InfoKey.referenceURL] as? URL {
+//            let opts = PHFetchOptions()
+//            opts.fetchLimit = 1
+//            let assets = PHAsset.fetchAssets(withALAssetURLs: [URL], options: opts)
+//            let asset = assets[0]
+//            
+//            self.latitudePhoto = asset.location?.coordinate.latitude
+//            self.longitudePhoto = asset.location?.coordinate.longitude
+//            
+//            let centerLocation = CLLocation(latitude: self.latitudePhoto!, longitude: self.longitudePhoto!)
+//        
+//            
+//            
+//            let loc = CLLocation(latitude: self.latitudePhoto!, longitude: self.longitudePhoto!)
+//            
+//            CLGeocoder().reverseGeocodeLocation(loc) { (placemarks, error) in
+//                if error != nil {
+//                    print("failed")
+//                    return
+//                }
+//                if (placemarks?.count)! > 0 {
+//                    
+//                    let villePhoto = placemarks?[0].locality ?? "VILLE"
+//                    let paysPhoto = placemarks?[0].country ?? "PAYS"
+//                    
+//                    self.addressString = (villePhoto + "," + paysPhoto)
+//                    
+//                    print("\nADDRESS STRING : \n" + self.addressString + "\n")
+//                    
+//                    let annotationLocation = [
+//                        "title": self.addressString, "latitude" : self.latitudePhoto as Any, "longitude" : self.longitudePhoto as Any
+//                        ] as [String : Any]
+//                    
+//                    self.createAnnotation(location: annotationLocation as [String : Any])
+//                    self.zoomLevel(location: centerLocation)
+//                    
+//                } else {
+//                    print("error")
+//                }
+//            }
+//            
+//          
+//            
         }
         
         picker.dismiss(animated: true, completion: nil)

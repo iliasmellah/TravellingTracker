@@ -22,12 +22,8 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let textFieldColor = "#a7c3fc".colorFromHex()
-        tripName.layer.borderColor = textFieldColor.cgColor
-        tripName.layer.borderWidth = 1.0
         
-        
-        //Si on a un voyage, mode edition. Sinon mode ajout
+        //If a trip is received : edition mode. If not, creation mode
         if let trip = self.trip {
             self.tripName.text = trip.name
             self.tripStartDate.text = Date.toString(date: trip.dateStart)
@@ -49,26 +45,44 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
         
         tripStartDate.inputView = startDatePicker
         tripEndDate.inputView = endDatePicker
-        //End of Date Picker
+        
+        tripStartDate.inputAccessoryView = createToolBar()
+        tripEndDate.inputAccessoryView = createToolBar()
     }
     
-    // MARK : - DATE PICKER -
+    //Add top tool bar to the date picker
+    func createToolBar() -> UIToolbar {
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed(sender:)))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        toolBar.setItems([flexibleSpace,doneButton, flexibleSpace], animated: true)
+        return toolBar
+    }
+    
+    @objc func doneButtonPressed(sender: UIBarButtonItem) {
+        tripStartDate.resignFirstResponder()
+        tripEndDate.resignFirstResponder()
+    }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
+
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
-        //Gets data with Date format
-        
+        //Cast date to string
         tripStartDate.text = Date.toString(date: startDatePicker!.date)
         tripEndDate.text = Date.toString(date: endDatePicker!.date)
         
-        view.endEditing(true)
+        //Checks if End Date is after Begin Date
+        if Date.toDate(dateString: tripStartDate.text!) >  Date.toDate(dateString: tripEndDate.text!) {
+            let correctedEndDate = Date.toDate(dateString: tripStartDate.text!).addingTimeInterval(24 * 60 * 60)
+            endDatePicker!.date = correctedEndDate
+            tripEndDate.text = Date.toString(date: correctedEndDate)
+        }
     }
     
     // MARK : - TextField Delegate
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

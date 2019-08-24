@@ -18,12 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="m0X-wL-6Uf">
-                                <rect key="frame" x="0.0" y="270" width="414" height="356"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="m0X-wL-6Uf">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="9ov-rg-UTK"/>
+                                    <constraint firstAttribute="width" constant="250" id="w8y-6J-Maw"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travelling Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VM-zU-88q">
+                                <rect key="frame" x="40" y="164" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PZV-R6-UXb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="46"/>
+                                <color key="textColor" red="0.098039215686274508" green="0.56862745098039214" blue="0.65450879580624033" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="m0X-wL-6Uf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8hf-b0-Xrk"/>
+                            <constraint firstItem="m0X-wL-6Uf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DMQ-LN-uHh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0VM-zU-88q" secondAttribute="trailing" constant="40" id="GlY-Mf-Ck3"/>
+                            <constraint firstItem="0VM-zU-88q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="PCr-lj-wVZ"/>
+                            <constraint firstItem="0VM-zU-88q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="REG-f3-nmV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -33,6 +52,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="200" height="200"/>
+        <image name="logo2" width="1024" height="1024"/>
     </resources>
 </document>

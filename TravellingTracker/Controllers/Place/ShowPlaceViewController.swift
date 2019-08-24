@@ -18,13 +18,19 @@ class ShowPlaceViewController: UIViewController {
     @IBOutlet weak var placeLongitude: UILabel!
     @IBOutlet weak var placePicture: UIImageView!
     
+    
+    
     var trip : TripModel? = nil
     var place : PlaceModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.placeName.text = place?.name
+        self.placeName.numberOfLines = 0
+        self.placeName.lineBreakMode = .byWordWrapping
+        self.placeName.sizeToFit()
+        
+        if place?.name != "" { self.placeName.text = place?.name } else { self.placeName.text = "No name yet" }
         self.placeAddress.text = place?.address
         self.placeDate.text = Date.toString(date: place!.date)
         self.placeLatitude.text = place?.latitude

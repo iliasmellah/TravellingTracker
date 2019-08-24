@@ -12,7 +12,7 @@ import MapKit
 import AssetsLibrary
 import Photos
 
-class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var placeName: UITextField!
     @IBOutlet weak var placeDate: UITextField!
@@ -45,7 +45,7 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
             self.placeName.text = place.name
             self.placeDate.text = Date.toString(date: place.date)
             self.placePicture.image = place.picture.rotate(radians: .pi/2)
-            self.placeAddress.text = Date.toString(date: place.date)
+            self.placeAddress.text = place.address
             self.placeLatitude.text = place.latitude
             self.placeLongitude.text = place.longitude
             
@@ -66,8 +66,23 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
         
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
+        datePicker?.date = place?.date ?? Date.currentDate()
         datePicker?.addTarget(self, action: #selector(EmbedPlaceViewController.dateChanged(datePicker:)), for: .valueChanged)
         placeDate.inputView = datePicker
+        placeDate.inputAccessoryView = createToolBar()
+    }
+    
+    //Add top tool bar to the date picker
+    func createToolBar() -> UIToolbar {
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed(sender:)))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        toolBar.setItems([flexibleSpace,doneButton, flexibleSpace], animated: true)
+        return toolBar
+    }
+    
+    @objc func doneButtonPressed(sender: UIBarButtonItem) {
+        placeDate.resignFirstResponder()
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
@@ -77,29 +92,14 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
     @objc func dateChanged(datePicker: UIDatePicker) {
         //Gets data with Date format
         placeDate.text = Date.toString(date: datePicker.date)
-        view.endEditing(true)
+        print("\n TRIP Date : ", trip?.name, "\n")
+        if (datePicker.date < trip!.dateStart) || (datePicker.date > trip!.dateEnd) {
+            datePicker.date = trip!.dateStart
+            placeDate.text = Date.toString(date: trip!.dateStart)
+        }
     }
     
     @IBAction func addPicture(_ sender: Any) {
-        /*let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        let alert = UIAlertController(title: "Add a photo", message: "Please select an option", preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Take a new photo", style: .default , handler:{ (UIAlertAction) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                imagePickerController.sourceType = .camera
-                self.present(imagePickerController, animated: true, completion: nil)
-            } else {
-                print("No camera available")
-            }
-        }))
-        alert.addAction(UIAlertAction(title: "Choose from Library", style: .default , handler:{ (UIAlertAction) in
-            imagePickerController.sourceType = .photoLibrary
-            self.present(imagePickerController, animated: true, completion: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
-        }))
-        self.present(alert, animated: true, completion: nil)*/
         let alert = UIAlertController(title: "Update your photo", message: "Please select an option", preferredStyle: .actionSheet)
         if let popoverController = alert.popoverPresentationController {
             popoverController.sourceView = self.view
@@ -191,15 +191,12 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
     }
     
     func setupLocationManager() {
-        print("setupLocationManager\n")
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.delegate = self
-        
     }
     
     func centerViewOnUserLocation() {
-        print("centerViewOnUser")
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: CLLocationDistance(regionInMeters), longitudinalMeters: CLLocationDistance(regionInMeters))
             mapView.setRegion(region, animated: true)
@@ -208,7 +205,6 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
     }
     
     func startTrackingUserLocation() {
-        print("startTracking\n")
         mapView.showsUserLocation = true
         centerViewOnUserLocation()
         locationManager.startUpdatingLocation()
@@ -223,7 +219,6 @@ class EmbedPlaceViewController: UIViewController, UINavigationControllerDelegate
     }
     
     // MARK : - TextField Delegate
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
