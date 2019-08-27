@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 
 class CoreDataManager: NSObject {
-    //already lazy
+    
     static var context : NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             exit(EXIT_FAILURE)
@@ -19,9 +19,10 @@ class CoreDataManager: NSObject {
         return appDelegate.persistentContainer.viewContext
     }()
     
-    @discardableResult    //permet a une fonction d'etre utilisée comme une procédure
+    //permet a une fonction d'etre utilisée comme une procédure
+    @discardableResult
     class func save() -> NSError? {
-        //try to save
+        //tries to save
         do {
             try CoreDataManager.context.save()
             return nil

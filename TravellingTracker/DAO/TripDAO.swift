@@ -12,6 +12,7 @@ import UIKit
 
 extension Trip {
     
+    // gets all trips
     static func getAll() -> [TripModel]? {
         let context = CoreDataManager.context
         let request : NSFetchRequest<Trip> = Trip.fetchRequest()
@@ -31,6 +32,7 @@ extension Trip {
         return tripModels
     }
     
+    // gets all places for a given trip
     static func getAllPlaces(trip: TripModel?) -> [PlaceModel]? {
         let places = trip!.tripCD.places?.allObjects as? [Place]
         var placesModels: [PlaceModel] = []
@@ -42,6 +44,7 @@ extension Trip {
         return placesModels
     }
     
+    //d eletes a given trip
     static func delete(trip: Trip) {
         do {
             try CoreDataManager.delete(object: trip)
@@ -51,10 +54,12 @@ extension Trip {
         }
     }
     
+    // creates a trip
     static func create() -> Trip {
         return Trip(context: CoreDataManager.context)
     }
     
+    // saves a trip
     static func save() {
         CoreDataManager.save()
     }

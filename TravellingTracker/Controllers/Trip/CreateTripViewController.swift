@@ -10,15 +10,11 @@ import UIKit
 
 class CreateTripViewController: UIViewController, UITextFieldDelegate {
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
     // MARK : - TextField Delegate -
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -29,9 +25,7 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
     // MARK: - Navigation -
-    
     let segueEmbedId = "embedFromNewTripSegue"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,19 +43,10 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
         
         guard (name != "") else {return}
         
-        //crée un nouveau Trip Managed Object
+        //crée un nouveau Trip Managed Object et le sauve
         let trip = TripModel(name: name, dateStart: dateStart, dateEnd: dateEnd, color: color.colorFromHex())
         trip.save()
         
         self.dismiss(animated: true, completion: nil)
     }
-   /*
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

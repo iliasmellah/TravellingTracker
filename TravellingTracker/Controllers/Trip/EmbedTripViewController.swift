@@ -66,11 +66,10 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
-
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
-        //Cast date to string
+        // date to string
         tripStartDate.text = Date.toString(date: startDatePicker!.date)
         tripEndDate.text = Date.toString(date: endDatePicker!.date)
         
@@ -82,7 +81,7 @@ class EmbedTripViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK : - TextField Delegate
+    // MARK : - TextField Delegate -
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

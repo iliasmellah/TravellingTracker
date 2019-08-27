@@ -26,6 +26,7 @@ extension Date {
         return Calendar.current.date(from: dc)!
     }
     
+    // returns current Date
     static func currentDate() -> Date{
         let date = Date()
         let format = DateFormatter()
@@ -34,12 +35,14 @@ extension Date {
         return Date.toDate(dateString: formattedDate)
     }
     
+    // String to Date
     static func toDate(dateString: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         return dateFormatter.date(from: dateString) ?? currentDate()
     }
     
+    // Date to String
     static func toString(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MMM-yyyy"

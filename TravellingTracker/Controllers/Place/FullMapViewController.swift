@@ -41,16 +41,13 @@ class FullMapViewController: UIViewController {
         }
     }
     
-    
-    
+    // defines map zoom level
     func zoomLevel(location: CLLocation) {
         let mapCoordinates = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: distanceSpan, longitudinalMeters: distanceSpan)
-        
         mapView.setRegion(mapCoordinates, animated: true)
     }
-
     
-    
+    //creates an annotation on the map
     func createAnnotations(locations: [[String : Any]]) {
         for location in locations {
             let annotations = MKPointAnnotation()

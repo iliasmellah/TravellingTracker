@@ -20,6 +20,7 @@ class CreatePlaceViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Navigation -
     let segueEmbedId = "embedFromNewPlaceSegue"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,7 +52,7 @@ class CreatePlaceViewController: UIViewController {
         
         guard (name != "" || picture != UIImage(named: "placeholder")) else {return}
         
-        //crée un nouveau Trip Managed Object
+        // creates a new Place Managed Object
         let place = PlaceModel(name: name, address: address, date: date, latitude: latitude, longitude: longitude, picture: picture, trip: trip)
         place.save()
         

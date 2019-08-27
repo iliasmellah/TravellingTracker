@@ -15,10 +15,13 @@ class EditPlaceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
+    @IBAction func cancelAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Navigation -
     let segueEmbedId = "embedFromEditPlaceSegue"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -31,11 +34,6 @@ class EditPlaceViewController: UIViewController {
         guard (self.trip != nil || self.place != nil) else {return}
         guard let embedPlaceViewController = self.children.first as? EmbedPlaceViewController else {return}
         
-        /*guard (embedPlaceViewController.placeName.text != "") else {
-            alert(WithTitle: "I need at least the name of your place", andMessage: "")
-            return
-        }*/
-        
         place?.name = embedPlaceViewController.placeName.text ?? "No name yet"
         place?.date = Date.toDate(dateString: embedPlaceViewController.placeDate.text!)
         place?.picture = embedPlaceViewController.placePicture.image ?? UIImage(named: "placeholder")!
@@ -45,19 +43,6 @@ class EditPlaceViewController: UIViewController {
         
         place?.save()
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func cancelAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    // MARK: - Helper Methods
-    func alert(WithTitle title : String, andMessage msg : String = "") {
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Ok", style: .default)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
     }
 
 }

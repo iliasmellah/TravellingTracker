@@ -12,6 +12,7 @@ import CoreData
 
 extension Place {
     
+    // deletes a given place
     static func delete(place: Place) {
         do {
             try CoreDataManager.delete(object: place)
@@ -21,10 +22,12 @@ extension Place {
         }
     }
     
+    // creates a place
     static func create() -> Place {
         return Place(context: CoreDataManager.context)
     }
     
+    // saves a place
     static func save() {
         CoreDataManager.save()
     }

@@ -11,6 +11,7 @@ import UIKit
 
 extension String {
 
+    // Hex String to UIColor
     func colorFromHex() -> UIColor {
         var hexString = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
@@ -33,6 +34,8 @@ extension String {
 }
 
 extension UIColor {
+    
+    // UIColor to Hex String
     func toHexString() -> String {
         var r:CGFloat = 0
         var g:CGFloat = 0

@@ -58,7 +58,7 @@ class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigat
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             mapView.setRegion(region, animated: true)
         } else {
-            self.placeAddress.text = "Please choose a picture"
+            self.placeAddress.text = "Please choose a picture or location"
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EmbedPlaceViewController.viewTapped(gestureRecognizer:)))
@@ -92,7 +92,6 @@ class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigat
     @objc func dateChanged(datePicker: UIDatePicker) {
         //Gets data with Date format
         placeDate.text = Date.toString(date: datePicker.date)
-        print("\n TRIP Date : ", trip?.name, "\n")
         if (datePicker.date < trip!.dateStart) || (datePicker.date > trip!.dateEnd) {
             datePicker.date = trip!.dateStart
             placeDate.text = Date.toString(date: trip!.dateStart)
@@ -100,6 +99,19 @@ class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigat
     }
     
     @IBAction func addPicture(_ sender: Any) {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            self.displayImagePicker()
+        case .notDetermined:
+            print("Permission Not Determined")
+            PHPhotoLibrary.requestAuthorization({ (status) in })
+        default:
+            break
+        }
+    }
+    
+    func displayImagePicker() {
         let alert = UIAlertController(title: "Update your photo", message: "Please select an option", preferredStyle: .actionSheet)
         if let popoverController = alert.popoverPresentationController {
             popoverController.sourceView = self.view
@@ -118,7 +130,6 @@ class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigat
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
         }))
         
-        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -132,7 +143,6 @@ class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             placePicture.image = image
-           
         }
         
         if let URL = info[UIImagePickerController.InfoKey.referenceURL] as? URL {
@@ -143,8 +153,6 @@ class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigat
             
             self.latitudePhoto = asset.location?.coordinate.latitude
             self.longitudePhoto = asset.location?.coordinate.longitude
-            
-            //let centerLocation = CLLocation(latitude: self.latitudePhoto!, longitude: self.longitudePhoto!)
             
             if (self.latitudePhoto == nil || self.longitudePhoto == nil) {
                 self.placeAddress.text = "This picture has no location information"
@@ -168,8 +176,6 @@ class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigat
                         self.placeLatitude.text = "\(String(describing: self.latitudePhoto!))"
                         self.placeLongitude.text = "\(String(describing: self.longitudePhoto!))"
                         self.zoomLevel(location: centerLocation)
-                        
-                        //self.checkLocationServices()
                     } else {
                         print("error")
                     }
@@ -218,7 +224,7 @@ class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigat
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
-    // MARK : - TextField Delegate
+    // MARK : - TextField Delegate -
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -228,7 +234,6 @@ class EmbedPlaceViewController: UIViewController, UITextFieldDelegate, UINavigat
 
 extension EmbedPlaceViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        //startTrackingUserLocation()
     }
 }
 
@@ -238,7 +243,7 @@ extension EmbedPlaceViewController: MKMapViewDelegate {
         let center = getCenterLocation(for: mapView)
         let geoCoder = CLGeocoder()
         
-        //check if previous location is not too close from the current
+        //check if previous location is not too close or same as from the current
         guard let previousLocation = self.previousLocation else {return}
         guard center.distance(from: previousLocation) > 1 else {return}
         self.previousLocation = center
@@ -247,7 +252,6 @@ extension EmbedPlaceViewController: MKMapViewDelegate {
             [weak self] (placemarks,error) in
             guard let self = self else {return}
             if let _ = error {
-                //How alert to user
                 return
             }
             
@@ -258,13 +262,14 @@ extension EmbedPlaceViewController: MKMapViewDelegate {
             let streetNumber = placemark.subThoroughfare ?? ""
             let streetName = placemark.thoroughfare ?? ""
             let cityName = placemark.locality ?? ""
-            
             let lat = placemark.location?.coordinate.latitude
             let long = placemark.location?.coordinate.longitude
             
+            //displays coordinates
             self.placeLatitude.text = "\(String(describing: lat!))"
             self.placeLongitude.text = "\(String(describing: long!))"
             
+            // displays address if found one from the coordinates
             if (streetName == "" || cityName == "") {
                 self.placeAddress.text = "No address found for this location"
             } else {

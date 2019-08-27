@@ -23,63 +23,38 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //get info of trip
+        //get info of trip from Trip View COntroller and displays it
         self.nameTrip.text = trip?.name
         self.colorTrip.textColor = trip?.color
         self.dateBeginTrip.text = Date.toString(date: trip!.dateStart)
         self.dateEndTrip.text = Date.toString(date: trip!.dateEnd)
         
-        //get all places of given trip
+        //get all places of the given trip and sort by date : get the new on top
         places = Trip.getAllPlaces(trip: trip)!
-        
-        //sort by date : get the new on top
         places?.sort(by: { $0.date > $1.date })
-    }
-
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editTrip" {
-            let editTripViewController = segue.destination as! EditTripViewController
-            editTripViewController.trip = self.trip
-        } else if segue.identifier == "addPlace" {
-            let createPlaceViewController = segue.destination as! CreatePlaceViewController
-                createPlaceViewController.trip = self.trip
-        } else if segue.identifier == "fullMapSegue" {
-            let fullMapViewController = segue.destination as! FullMapViewController
-            fullMapViewController.trip = self.trip
-            fullMapViewController.places = self.places
-            if !self.places!.isEmpty {
-                fullMapViewController.placeCenter = self.places![0]
-            }
-        } else if let controller = segue.destination as? ShowPlaceViewController {
-            if let cell = sender as? PlaceCollectionViewCell {
-                controller.trip = cell.trip
-                controller.place = cell.place
-            }
-        }
     }
     
     @IBAction func deleteTripButton(_ sender: Any) {
-        // Declare Alert message
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this trip ?", preferredStyle: .alert)
         
-        // Create OK button with action handler
+        // creates OK button with aits ction handler
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.trip!.delete()
             self.performSegue(withIdentifier: "unwindAfterDeleteTrip", sender: self)
         })
         
-        // Create Cancel button with action handlder
+        // creates Cancel button with its action handlder
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in }
         
-        //Add OK and Cancel button to dialog message
+        // adds OK and Cancel button to dialog message
         dialogMessage.addAction(ok)
         dialogMessage.addAction(cancel)
         
-        // Present dialog message to user
+        // displays dialog message to user
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
+    // MARK: - Collection View -
     var indexPathForShow : IndexPath? = nil
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -106,6 +81,7 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
         self.placesCollection.reloadData()
     }
     
+    // MARK: - Unwinds -
     //Gets data from CreatePlaceViewController inputs when hits Save
     @IBAction func unwindToPlacesAfterSavingNewPlace(segue: UIStoryboardSegue) {
         reloadPlaceCollectionView()
@@ -122,6 +98,29 @@ class PlaceViewController: UIViewController, UICollectionViewDataSource, UIColle
             }
         }
         self.placesCollection.reloadData()
+    }
+    
+    // MARK: - Navigation -
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editTrip" {
+            let editTripViewController = segue.destination as! EditTripViewController
+            editTripViewController.trip = self.trip
+        } else if segue.identifier == "addPlace" {
+            let createPlaceViewController = segue.destination as! CreatePlaceViewController
+            createPlaceViewController.trip = self.trip
+        } else if segue.identifier == "fullMapSegue" {
+            let fullMapViewController = segue.destination as! FullMapViewController
+            fullMapViewController.trip = self.trip
+            fullMapViewController.places = self.places
+            if !self.places!.isEmpty {
+                fullMapViewController.placeCenter = self.places![0]
+            }
+        } else if let controller = segue.destination as? ShowPlaceViewController {
+            if let cell = sender as? PlaceCollectionViewCell {
+                controller.trip = cell.trip
+                controller.place = cell.place
+            }
+        }
     }
 
 }

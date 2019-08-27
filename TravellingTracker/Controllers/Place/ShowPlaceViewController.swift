@@ -9,7 +9,6 @@
 import UIKit
 
 class ShowPlaceViewController: UIViewController {
-
     
     @IBOutlet weak var placeName: UILabel!
     @IBOutlet weak var placeAddress: UILabel!
@@ -17,8 +16,6 @@ class ShowPlaceViewController: UIViewController {
     @IBOutlet weak var placeLatitude: UILabel!
     @IBOutlet weak var placeLongitude: UILabel!
     @IBOutlet weak var placePicture: UIImageView!
-    
-    
     
     var trip : TripModel? = nil
     var place : PlaceModel? = nil
@@ -39,26 +36,26 @@ class ShowPlaceViewController: UIViewController {
     }
     
     
-    @IBAction func deletePlaceButton(_ sender: Any) {        // Declare Alert message
+    @IBAction func deletePlaceButton(_ sender: Any) {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this place ?", preferredStyle: .alert)
         
-        // Create OK button with action handler
+        // creates OK button with action handler
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.place!.delete()
             self.performSegue(withIdentifier: "unwindAfterDeletePlace", sender: self)
         })
         
-        // Create Cancel button with action handlder
+        // creates Cancel button with action handlder
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in }
         
-        //Add OK and Cancel button to dialog message
+        // adds OK and Cancel button to dialog message
         dialogMessage.addAction(ok)
         dialogMessage.addAction(cancel)
-        
-        // Present dialog message to user
+
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
+    // mARK: - Navigation -
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editPlace" {
             let editPlaceViewController = segue.destination as! EditPlaceViewController
