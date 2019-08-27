@@ -26,7 +26,7 @@ class FullMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let places = self.places, let _ = self.placeCenter {
+        if let places = self.places {
             latitudeDegrees = Double(self.placeCenter!.latitude) as! CLLocationDegrees
             longitudeDegrees = Double(self.placeCenter!.longitude) as! CLLocationDegrees
             let centerLocation = CLLocation(latitude: self.latitudeDegrees, longitude: self.longitudeDegrees)

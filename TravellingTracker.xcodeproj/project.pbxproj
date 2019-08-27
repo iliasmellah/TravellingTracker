@@ -10,7 +10,6 @@
 		631509CE22FF18F900A4FC26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 631509CD22FF18F900A4FC26 /* Main.storyboard */; };
 		6354A1CB22F126E000FECD6E /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354A1CA22F126E000FECD6E /* PlaceViewController.swift */; };
 		635D38BA22E36A47001DCD80 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D38B922E36A47001DCD80 /* ColorExtension.swift */; };
-		63736C3C231572BE00DAA1B3 /* AttachmentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63736C3B231572BE00DAA1B3 /* AttachmentHandler.swift */; };
 		6386C6E023099FE60091F9B2 /* PlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386C6DF23099FE60091F9B2 /* PlaceCollectionViewCell.swift */; };
 		6386C6E22309A1BD0091F9B2 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386C6E12309A1BD0091F9B2 /* PlaceModel.swift */; };
 		6386C6E42309A9690091F9B2 /* PlaceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386C6E32309A9690091F9B2 /* PlaceDAO.swift */; };
@@ -59,7 +58,6 @@
 		631509CD22FF18F900A4FC26 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6354A1CA22F126E000FECD6E /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		635D38B922E36A47001DCD80 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		63736C3B231572BE00DAA1B3 /* AttachmentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentHandler.swift; sourceTree = "<group>"; };
 		6386C6DF23099FE60091F9B2 /* PlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		6386C6E12309A1BD0091F9B2 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		6386C6E32309A9690091F9B2 /* PlaceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDAO.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 			children = (
 				63DFF76522DC4F9600626050 /* CoreDataManager.swift */,
 				639455E722D45BBE006AFA20 /* DateExtension.swift */,
-				63736C3B231572BE00DAA1B3 /* AttachmentHandler.swift */,
 				635D38B922E36A47001DCD80 /* ColorExtension.swift */,
 				63D93642230AA035002617AB /* ImageExtension.swift */,
 				63DFF76722DC527500626050 /* DialogBoxHelper.swift */,
@@ -166,11 +163,11 @@
 		63964D8E22D2D7700039B4CF /* TravellingTracker */ = {
 			isa = PBXGroup;
 			children = (
-				63964D8F22D2D7700039B4CF /* AppDelegate.swift */,
 				63C06D3622FEAAD600BEF842 /* DAO */,
-				639455E622D45B3F006AFA20 /* Helpers */,
 				63C06D3722FEAAE000BEF842 /* Models */,
 				63C06D3822FEAB0000BEF842 /* Controllers */,
+				639455E622D45B3F006AFA20 /* Helpers */,
+				63964D8F22D2D7700039B4CF /* AppDelegate.swift */,
 				63964D9922D2D7720039B4CF /* Assets.xcassets */,
 				631509CD22FF18F900A4FC26 /* Main.storyboard */,
 				63964D9B22D2D7720039B4CF /* LaunchScreen.storyboard */,
@@ -371,7 +368,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				63E7D6B12309CB840061E712 /* EmbedPlaceViewController.swift in Sources */,
-				63736C3C231572BE00DAA1B3 /* AttachmentHandler.swift in Sources */,
 				6354A1CB22F126E000FECD6E /* PlaceViewController.swift in Sources */,
 				63964DC222D2EEE40039B4CF /* TripCollectionViewCell.swift in Sources */,
 				63F9A79422D56F3900C95293 /* CreateTripViewController.swift in Sources */,

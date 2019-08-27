@@ -197,7 +197,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new trip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MR-NB-TWo">
-                                <rect key="frame" x="82.333333333333329" y="94" width="249.33333333333337" height="28"/>
+                                <rect key="frame" x="82.666666666666686" y="94" width="249" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="6xo-fe-ZzL"/>
                                 </constraints>
@@ -619,7 +619,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place latitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCd-DN-3mv">
-                                <rect key="frame" x="136" y="300.66666666666669" width="201" height="22"/>
+                                <rect key="frame" x="136" y="300.66666666666669" width="201.33333333333337" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="Vee-is-nWE"/>
                                 </constraints>
@@ -628,7 +628,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place longitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAh-Rk-HY0">
-                                <rect key="frame" x="169.66666666666669" y="360" width="133.66666666666669" height="22"/>
+                                <rect key="frame" x="169.66666666666666" y="360" width="133.99999999999997" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="XsZ-li-dgS"/>
                                 </constraints>
@@ -889,7 +889,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit trip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrR-IL-PRo">
-                                <rect key="frame" x="148.33333333333334" y="94" width="117.33333333333334" height="28"/>
+                                <rect key="frame" x="148.66666666666666" y="94" width="116.99999999999997" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="WiN-DU-7H5"/>
                                 </constraints>
@@ -972,12 +972,6 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8J3-M0-qKV"/>
                                 </items>
                             </toolbar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYH-Ml-8EO">
-                                <rect key="frame" x="16" y="137" width="382" height="671"/>
-                                <connections>
-                                    <segue destination="TXc-YW-wJS" kind="embed" identifier="embedFromNewPlaceSegue" id="dm3-cI-Juk"/>
-                                </connections>
-                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new place" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oi-yU-okQ">
                                 <rect key="frame" x="68.666666666666686" y="71" width="277" height="28"/>
                                 <constraints>
@@ -988,17 +982,37 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lai-Oq-GQV">
+                                <rect key="frame" x="0.0" y="107" width="414" height="711"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYH-Ml-8EO">
+                                        <rect key="frame" x="16" y="20" width="382" height="671"/>
+                                        <connections>
+                                            <segue destination="TXc-YW-wJS" kind="embed" identifier="embedFromNewPlaceSegue" id="dm3-cI-Juk"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="jYH-Ml-8EO" firstAttribute="top" secondItem="lai-Oq-GQV" secondAttribute="top" constant="20" id="4u7-hN-I0L"/>
+                                    <constraint firstItem="jYH-Ml-8EO" firstAttribute="centerX" secondItem="lai-Oq-GQV" secondAttribute="centerX" id="A2x-kp-pIQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="jYH-Ml-8EO" secondAttribute="trailing" constant="16" id="H2x-2M-jIq"/>
+                                    <constraint firstItem="jYH-Ml-8EO" firstAttribute="leading" secondItem="lai-Oq-GQV" secondAttribute="leading" constant="16" id="LKb-ul-hzv"/>
+                                    <constraint firstItem="jYH-Ml-8EO" firstAttribute="centerY" secondItem="lai-Oq-GQV" secondAttribute="centerY" id="efr-rT-SxD"/>
+                                    <constraint firstAttribute="bottom" secondItem="jYH-Ml-8EO" secondAttribute="bottom" constant="20" id="ogI-1P-6XR"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jYH-Ml-8EO" firstAttribute="top" secondItem="0oi-yU-okQ" secondAttribute="bottom" constant="38" id="1jy-QA-G2S"/>
                             <constraint firstItem="0oi-yU-okQ" firstAttribute="centerX" secondItem="8rO-s9-Ec7" secondAttribute="centerX" id="7Jf-3I-pdV"/>
                             <constraint firstItem="87m-Vi-laO" firstAttribute="leading" secondItem="8rO-s9-Ec7" secondAttribute="leading" id="Cq3-Ih-FGp"/>
+                            <constraint firstItem="lai-Oq-GQV" firstAttribute="bottom" secondItem="87m-Vi-laO" secondAttribute="top" id="Ntm-Ok-REe"/>
                             <constraint firstItem="87m-Vi-laO" firstAttribute="bottom" secondItem="4a5-FR-eWX" secondAttribute="bottom" id="QM7-57-9KO"/>
-                            <constraint firstItem="jYH-Ml-8EO" firstAttribute="leading" secondItem="4a5-FR-eWX" secondAttribute="leading" constant="16" id="f2q-cN-Bfk"/>
-                            <constraint firstItem="4a5-FR-eWX" firstAttribute="trailing" secondItem="jYH-Ml-8EO" secondAttribute="trailing" constant="16" id="j0f-Tm-glu"/>
-                            <constraint firstItem="87m-Vi-laO" firstAttribute="top" secondItem="jYH-Ml-8EO" secondAttribute="bottom" constant="10" id="nYI-xM-OLD"/>
+                            <constraint firstItem="lai-Oq-GQV" firstAttribute="top" secondItem="0oi-yU-okQ" secondAttribute="bottom" constant="8" symbolic="YES" id="c86-In-Ded"/>
+                            <constraint firstItem="lai-Oq-GQV" firstAttribute="trailing" secondItem="87m-Vi-laO" secondAttribute="trailing" id="fDr-AQ-w8a"/>
                             <constraint firstAttribute="trailing" secondItem="87m-Vi-laO" secondAttribute="trailing" id="oBB-ia-Ac8"/>
+                            <constraint firstItem="lai-Oq-GQV" firstAttribute="leading" secondItem="87m-Vi-laO" secondAttribute="leading" id="sv8-Wb-GoP"/>
+                            <constraint firstItem="87m-Vi-laO" firstAttribute="bottom" secondItem="4a5-FR-eWX" secondAttribute="bottom" id="voR-Cx-5Rm"/>
                             <constraint firstItem="0oi-yU-okQ" firstAttribute="top" secondItem="4a5-FR-eWX" secondAttribute="top" constant="27" id="yfe-5w-MC4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4a5-FR-eWX"/>
@@ -1007,7 +1021,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y5t-oK-e9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="U2W-zM-rZD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2917.5999999999999" y="903.59820089955031"/>
+            <point key="canvasLocation" x="2917.3913043478265" y="903.34821428571422"/>
         </scene>
         <!--Embed Place View Controller-->
         <scene sceneID="CWJ-IO-MDn">
@@ -1213,14 +1227,8 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="H9U-48-D0r"/>
                                 </items>
                             </toolbar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjX-1v-GiZ">
-                                <rect key="frame" x="16" y="137" width="382" height="671"/>
-                                <connections>
-                                    <segue destination="TXc-YW-wJS" kind="embed" identifier="embedFromEditPlaceSegue" id="bjd-eb-tUb"/>
-                                </connections>
-                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit place" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDe-He-iRz" userLabel="Edit place">
-                                <rect key="frame" x="134.66666666666669" y="71" width="144.66666666666669" height="28"/>
+                                <rect key="frame" x="134.66666666666666" y="71" width="144.99999999999997" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Ixg-ea-TKz"/>
                                 </constraints>
@@ -1228,16 +1236,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tO1-vj-G5j">
+                                <rect key="frame" x="0.0" y="107" width="414" height="711"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjX-1v-GiZ">
+                                        <rect key="frame" x="16" y="20" width="382" height="671"/>
+                                        <connections>
+                                            <segue destination="TXc-YW-wJS" kind="embed" identifier="embedFromEditPlaceSegue" id="bjd-eb-tUb"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="HjX-1v-GiZ" firstAttribute="centerX" secondItem="tO1-vj-G5j" secondAttribute="centerX" id="1iw-t8-dZs"/>
+                                    <constraint firstItem="HjX-1v-GiZ" firstAttribute="centerY" secondItem="tO1-vj-G5j" secondAttribute="centerY" id="HZk-cR-UH3"/>
+                                    <constraint firstAttribute="trailing" secondItem="HjX-1v-GiZ" secondAttribute="trailing" constant="16" id="L07-ml-hXZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="HjX-1v-GiZ" secondAttribute="bottom" constant="20" id="RZ7-yL-swf"/>
+                                    <constraint firstItem="HjX-1v-GiZ" firstAttribute="leading" secondItem="tO1-vj-G5j" secondAttribute="leading" constant="16" id="m1x-V0-rHL"/>
+                                    <constraint firstItem="HjX-1v-GiZ" firstAttribute="top" secondItem="tO1-vj-G5j" secondAttribute="top" constant="20" id="rKn-GV-JYp"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="7rf-b7-jXo" firstAttribute="trailing" secondItem="HjX-1v-GiZ" secondAttribute="trailing" constant="16" id="1C7-3V-i3j"/>
-                            <constraint firstItem="HjX-1v-GiZ" firstAttribute="leading" secondItem="7rf-b7-jXo" secondAttribute="leading" constant="16" id="BOF-vv-Mjz"/>
+                            <constraint firstItem="tO1-vj-G5j" firstAttribute="leading" secondItem="HoB-fM-j9G" secondAttribute="leading" id="4gB-S3-261"/>
+                            <constraint firstItem="tO1-vj-G5j" firstAttribute="bottom" secondItem="HoB-fM-j9G" secondAttribute="top" id="6sA-Az-NGn"/>
                             <constraint firstItem="hDe-He-iRz" firstAttribute="top" secondItem="7rf-b7-jXo" secondAttribute="top" constant="27" id="CGe-54-FVG"/>
-                            <constraint firstItem="HoB-fM-j9G" firstAttribute="top" secondItem="HjX-1v-GiZ" secondAttribute="bottom" constant="10" id="FdQ-Mm-TEp"/>
                             <constraint firstItem="HoB-fM-j9G" firstAttribute="leading" secondItem="MPm-OY-Jsw" secondAttribute="leading" id="OBE-TN-T4j"/>
                             <constraint firstItem="hDe-He-iRz" firstAttribute="centerX" secondItem="MPm-OY-Jsw" secondAttribute="centerX" id="PTD-9F-z13"/>
-                            <constraint firstItem="HjX-1v-GiZ" firstAttribute="top" secondItem="hDe-He-iRz" secondAttribute="bottom" constant="38" id="Z1c-7U-17z"/>
+                            <constraint firstItem="tO1-vj-G5j" firstAttribute="trailing" secondItem="HoB-fM-j9G" secondAttribute="trailing" id="Rii-kq-9fI"/>
+                            <constraint firstItem="tO1-vj-G5j" firstAttribute="top" secondItem="hDe-He-iRz" secondAttribute="bottom" constant="8" symbolic="YES" id="Zz4-s9-H2K"/>
                             <constraint firstItem="HoB-fM-j9G" firstAttribute="bottom" secondItem="7rf-b7-jXo" secondAttribute="bottom" id="aW4-Qn-Zbz"/>
                             <constraint firstAttribute="trailing" secondItem="HoB-fM-j9G" secondAttribute="trailing" id="z0T-hb-Zad"/>
                         </constraints>
@@ -1247,7 +1274,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2r-P6-NNO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ScK-wo-Nce" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3821.5999999999999" y="903.59820089955031"/>
+            <point key="canvasLocation" x="3820.289855072464" y="903.34821428571422"/>
         </scene>
     </scenes>
     <resources>
